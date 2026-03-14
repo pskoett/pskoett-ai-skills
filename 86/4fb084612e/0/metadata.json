@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "864fb084612e",
+  "session_id": "949ae173-c227-4156-8304-7c58f28651c3",
+  "strategy": "manual-commit",
+  "created_at": "2026-03-14T14:18:44.333617Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".github/copilot-instructions.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "skills/context-surfing/SKILL.md"
+  ],
+  "agent": "Claude Code",
+  "turn_id": "bcf34a9f54e7",
+  "token_usage": {
+    "input_tokens": 3161,
+    "cache_creation_tokens": 72507,
+    "cache_read_tokens": 550960,
+    "output_tokens": 16533,
+    "api_call_count": 15
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-03-14T14:18:43.788624Z",
+    "agent_lines": 8,
+    "human_added": 226,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 234,
+    "agent_percentage": 3.418803418803419
+  }
+}
