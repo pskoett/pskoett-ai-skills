@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "fcf0479776ca",
+  "session_id": "949ae173-c227-4156-8304-7c58f28651c3",
+  "strategy": "manual-commit",
+  "created_at": "2026-03-14T14:57:22.55379Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "README.md",
+    "skills/context-surfing/SKILL.md",
+    "skills/context-surfing/scripts/handoff-checker.sh",
+    "skills/intent-framed-agent/SKILL.md",
+    "skills/plan-interview/SKILL.md"
+  ],
+  "agent": "Claude Code",
+  "turn_id": "1a220e4a8529",
+  "checkpoint_transcript_start": 413,
+  "transcript_lines_at_start": 413,
+  "token_usage": {
+    "input_tokens": 15,
+    "cache_creation_tokens": 25606,
+    "cache_read_tokens": 1326477,
+    "output_tokens": 8359,
+    "api_call_count": 11
+  },
+  "session_metrics": {
+    "turn_count": 10
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-03-14T14:57:21.816576Z",
+    "agent_lines": 153,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 153,
+    "agent_percentage": 100
+  }
+}

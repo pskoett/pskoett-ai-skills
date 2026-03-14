@@ -1,0 +1,29 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "fcf0479776ca",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "README.md",
+    "skills/context-surfing/SKILL.md",
+    "skills/context-surfing/scripts/handoff-checker.sh",
+    "skills/intent-framed-agent/SKILL.md",
+    "skills/plan-interview/SKILL.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/fc/f0479776ca/0/metadata.json",
+      "transcript": "/fc/f0479776ca/0/full.jsonl",
+      "content_hash": "/fc/f0479776ca/0/content_hash.txt",
+      "prompt": "/fc/f0479776ca/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 15,
+    "cache_creation_tokens": 25606,
+    "cache_read_tokens": 1326477,
+    "output_tokens": 8359,
+    "api_call_count": 11
+  }
+}

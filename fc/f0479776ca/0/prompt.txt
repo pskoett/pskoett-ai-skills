@@ -1,0 +1,32 @@
+add this to the readme 1. Each skill has a distinct failure mode. No overlap in purpose.
+
+  ┌─────────────────────┬──────────────────────────────┐
+  │        Skill        │     Failure it prevents      │
+  ├─────────────────────┼──────────────────────────────┤
+  │ plan-interview      │ Building the wrong thing     │
+  ├─────────────────────┼──────────────────────────────┤
+  │ intent-framed-agent │ Scope creep during execution │
+  ├─────────────────────┼──────────────────────────────┤
+  │ context-surfing     │ Degraded-context corruption  │
+  ├─────────────────────┼──────────────────────────────┤
+  │ simplify-and-harden │ Shipping rough/insecure code │
+  ├─────────────────────┼──────────────────────────────┤
+  │ self-improvement    │ Repeating the same mistakes  │
+  └─────────────────────┴──────────────────────────────┘ it is good information and also and fix these 1. plan-interview has no pipeline awareness. It's the only skill with no interoperability section. It doesn't mention how its plan file is consumed by intent-framed-agent and context-surfing downstream. Every other skill documents its inputs/outputs — plan-interview should too.
+
+  2. No pipeline-level overview. The README has the flow table, which is good. But a user encountering this repo reads nine skills and a brief table. There's no single page that maps the full lifecycle — what artifacts exist at each stage, how data flows between skills, what happens at each transition, what the concurrent execution model looks like. Each skill documents its own interfaces well, but the
+  system-level picture requires reading all five skills. A docs/pipeline-overview.md or a section in the README would help.
+
+  3. Concurrent monitoring precedence is undefined. Intent-framed-agent and context-surfing both run during execution. Both document this well. But: if intent-framed-agent fires an Intent Check (scope drift) and context-surfing fires a drift exit (context degradation) at the same time, which takes precedence? In practice, context-surfing's exit probably trumps (because if context is degraded, the scope check is
+  unreliable too). But this isn't stated anywhere.
+
+  4. Activation model is asymmetric (but this is fine). plan-interview requires explicit invocation (/plan-interview). intent-framed-agent auto-activates on cues. context-surfing auto-activates when intent + plan exist. simplify-and-harden auto-activates on completion. self-improvement auto-activates via hooks. The manual entry point is actually correct — planning should be deliberate — but it's worth being aware
+  that the pipeline has one manual gate and four automatic stages.
+
+  5. No mechanism to enforce handoff file pickup. Context-surfing writes handoff files for the next session, but nothing guarantees the next session actually reads them. If the user just starts fresh, the handoff sits unused. This is an inherent limitation of file-based continuity, not a design flaw, but could be mitigated with a hook that checks for unread handoff files at session start.
+
+  Verdict make the hook for handoff
+
+---
+
+yes
