@@ -1,0 +1,35 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "71c37865911d",
+  "session_id": "eca85d90-ed0b-4d60-8e27-2f5b5e2def56",
+  "strategy": "manual-commit",
+  "created_at": "2026-03-16T21:18:24.800231Z",
+  "branch": "main",
+  "checkpoints_count": 4,
+  "files_touched": [
+    "docs/plans/plan-001-standalone-skills.md",
+    "docs/plans/plan-002-agent-teams-full-flow.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6",
+  "turn_id": "81fecbfc4255",
+  "token_usage": {
+    "input_tokens": 644,
+    "cache_creation_tokens": 243899,
+    "cache_read_tokens": 6121688,
+    "output_tokens": 28805,
+    "api_call_count": 66
+  },
+  "session_metrics": {
+    "turn_count": 11
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-03-16T21:18:24.010261Z",
+    "agent_lines": 0,
+    "human_added": 151,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 151,
+    "agent_percentage": 0
+  }
+}

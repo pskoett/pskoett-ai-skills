@@ -1,0 +1,26 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "71c37865911d",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 4,
+  "files_touched": [
+    "docs/plans/plan-001-standalone-skills.md",
+    "docs/plans/plan-002-agent-teams-full-flow.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/71/c37865911d/0/metadata.json",
+      "transcript": "/71/c37865911d/0/full.jsonl",
+      "content_hash": "/71/c37865911d/0/content_hash.txt",
+      "prompt": "/71/c37865911d/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 644,
+    "cache_creation_tokens": 243899,
+    "cache_read_tokens": 6121688,
+    "output_tokens": 28805,
+    "api_call_count": 66
+  }
+}
