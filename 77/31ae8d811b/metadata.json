@@ -1,0 +1,27 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "7731ae8d811b",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "docs/plans/plan-002-agent-teams-full-flow.md",
+    "skills/agent-teams-simplify-and-harden/SKILL.md",
+    "skills/agent-teams-simplify-and-harden/references/auditor-prompts.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/77/31ae8d811b/0/metadata.json",
+      "transcript": "/77/31ae8d811b/0/full.jsonl",
+      "content_hash": "/77/31ae8d811b/0/content_hash.txt",
+      "prompt": "/77/31ae8d811b/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 114,
+    "cache_creation_tokens": 144593,
+    "cache_read_tokens": 7944102,
+    "output_tokens": 32351,
+    "api_call_count": 93
+  }
+}
