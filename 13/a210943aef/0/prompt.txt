@@ -1,0 +1,9 @@
+Let us make sure that even though we are making a flow here that all skills also work on their own /plan-interview
+
+---
+
+ok, make the changes
+
+---
+
+Do we need to update the readme to clarify this?
