@@ -1,0 +1,28 @@
+can we make our skill pipeline here in this repo into a claude code plugin https://code.claude.com/docs/en/plugins?
+
+---
+
+make a plan for the claude code plugin /plan-interview the name is pskoett-skills and we are only including the pipeline skills plan-interview, intent-framed agent, context surfing, simplify and harden, self-improvement, and then the option to run the full pipeline in the agent teams skill
+
+---
+
+yes
+
+---
+
+<task-notification>
+<task-id>b2y86s42k</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/REDACTED/eca85d90-ed0b-4d60-8e27-2f5b5e2def56/tasks/b2y86s42k.output</output-file>
+<status>completed</status>
+<summary>Background command "Copy all 6 skills into plugin directory" completed (exit code 0)</summary>
+</task-notification>
+Read the output file to retrieve the result: /private/tmp/claude-502/REDACTED/eca85d90-ed0b-4d60-8e27-2f5b5e2def56/tasks/b2y86s42k.output
+
+---
+
+i would like to gitignore the /docs folder and files in this repo
+
+---
+
+and can we call it pskoett-ai-skills

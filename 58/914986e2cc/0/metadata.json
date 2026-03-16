@@ -1,0 +1,58 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "58914986e2cc",
+  "session_id": "eca85d90-ed0b-4d60-8e27-2f5b5e2def56",
+  "strategy": "manual-commit",
+  "created_at": "2026-03-16T21:14:26.627651Z",
+  "branch": "main",
+  "checkpoints_count": 3,
+  "files_touched": [
+    ".claude-plugin/marketplace.json",
+    ".gitignore",
+    "plugin/.claude-plugin/plugin.json",
+    "plugin/agents/context-monitor.md",
+    "plugin/agents/harden-auditor.md",
+    "plugin/agents/self-improvement-logger.md",
+    "plugin/agents/simplify-auditor.md",
+    "plugin/agents/spec-auditor.md",
+    "plugin/hooks/hooks.json",
+    "plugin/scripts/entire-wrapper.sh",
+    "plugin/skills/agent-teams-simplify-and-harden/SKILL.md",
+    "plugin/skills/agent-teams-simplify-and-harden/references/auditor-prompts.md",
+    "plugin/skills/context-surfing/SKILL.md",
+    "plugin/skills/context-surfing/scripts/handoff-checker.sh",
+    "plugin/skills/intent-framed-agent/SKILL.md",
+    "plugin/skills/plan-interview/SKILL.md",
+    "plugin/skills/plan-interview/references/iterative-plan-refinement-prompts.md",
+    "plugin/skills/self-improvement/SKILL.md",
+    "plugin/skills/self-improvement/assets/LEARNINGS.md",
+    "plugin/skills/self-improvement/references/examples.md",
+    "plugin/skills/self-improvement/references/hooks-setup.md",
+    "plugin/skills/self-improvement/scripts/activator.sh",
+    "plugin/skills/self-improvement/scripts/error-detector.sh",
+    "plugin/skills/simplify-and-harden/SKILL.md",
+    "plugin/skills/simplify-and-harden/references/agent-context-snippets.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6",
+  "turn_id": "545306f3c458",
+  "token_usage": {
+    "input_tokens": 616,
+    "cache_creation_tokens": 241033,
+    "cache_read_tokens": 4417411,
+    "output_tokens": 27754,
+    "api_call_count": 52
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-03-16T21:14:25.874343Z",
+    "agent_lines": 4006,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 4006,
+    "agent_percentage": 100
+  }
+}

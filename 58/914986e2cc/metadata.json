@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "58914986e2cc",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 3,
+  "files_touched": [
+    ".claude-plugin/marketplace.json",
+    ".gitignore",
+    "plugin/.claude-plugin/plugin.json",
+    "plugin/agents/context-monitor.md",
+    "plugin/agents/harden-auditor.md",
+    "plugin/agents/self-improvement-logger.md",
+    "plugin/agents/simplify-auditor.md",
+    "plugin/agents/spec-auditor.md",
+    "plugin/hooks/hooks.json",
+    "plugin/scripts/entire-wrapper.sh",
+    "plugin/skills/agent-teams-simplify-and-harden/SKILL.md",
+    "plugin/skills/agent-teams-simplify-and-harden/references/auditor-prompts.md",
+    "plugin/skills/context-surfing/SKILL.md",
+    "plugin/skills/context-surfing/scripts/handoff-checker.sh",
+    "plugin/skills/intent-framed-agent/SKILL.md",
+    "plugin/skills/plan-interview/SKILL.md",
+    "plugin/skills/plan-interview/references/iterative-plan-refinement-prompts.md",
+    "plugin/skills/self-improvement/SKILL.md",
+    "plugin/skills/self-improvement/assets/LEARNINGS.md",
+    "plugin/skills/self-improvement/references/examples.md",
+    "plugin/skills/self-improvement/references/hooks-setup.md",
+    "plugin/skills/self-improvement/scripts/activator.sh",
+    "plugin/skills/self-improvement/scripts/error-detector.sh",
+    "plugin/skills/simplify-and-harden/SKILL.md",
+    "plugin/skills/simplify-and-harden/references/agent-context-snippets.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/58/914986e2cc/0/metadata.json",
+      "transcript": "/58/914986e2cc/0/full.jsonl",
+      "content_hash": "/58/914986e2cc/0/content_hash.txt",
+      "prompt": "/58/914986e2cc/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 616,
+    "cache_creation_tokens": 241033,
+    "cache_read_tokens": 4417411,
+    "output_tokens": 27754,
+    "api_call_count": 52
+  }
+}
