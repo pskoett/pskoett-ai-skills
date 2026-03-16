@@ -1,0 +1,5 @@
+one question about the context surfing skill, would it be better to have a middle stage before a full session reset where the agent if in doubt goes back to the plan and then asks questions with the ask questions tool to clarify uncertainty, but if the original intent is gone you restart the session?
+
+---
+
+ok make the changes
