@@ -1,0 +1,100 @@
+{
+  "skill_name": "self-improvement",
+  "timestamp": "2026-03-27T22:30:00Z",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Log npm install ERESOLVE error",
+      "expectations": [
+        {"text": "Creates or appends to .learnings/ERRORS.md", "passed": true, "evidence": "File .learnings/ERRORS.md was created with the error entry"},
+        {"text": "The entry has an ID in the format ERR-YYYYMMDD-XXX", "passed": true, "evidence": "ID is ERR-20260327-001"},
+        {"text": "The entry includes a timestamp in ISO-8601 format", "passed": true, "evidence": "Logged: 2026-03-27T00:00:00Z"},
+        {"text": "The entry includes a Priority field", "passed": true, "evidence": "Priority: high"},
+        {"text": "The entry includes Status set to pending", "passed": true, "evidence": "Status: pending"},
+        {"text": "The entry includes a Summary section describing the npm install failure", "passed": true, "evidence": "Summary: npm install failed with ERESOLVE dependency resolution error"},
+        {"text": "The entry includes the actual error message (ERESOLVE)", "passed": true, "evidence": "Error section contains 'ERR! code ERESOLVE'"},
+        {"text": "The entry includes a Context section with command details", "passed": true, "evidence": "Context section lists command, input, and environment details"},
+        {"text": "The entry includes a Metadata section with Reproducible field", "passed": true, "evidence": "Metadata includes Reproducible: yes"}
+      ],
+      "summary": {"passed": 9, "failed": 0, "total": 9, "pass_rate": 1.0}
+    },
+    {
+      "id": 2,
+      "prompt": "Log API endpoint correction",
+      "expectations": [
+        {"text": "Creates or appends to .learnings/LEARNINGS.md", "passed": true, "evidence": "File .learnings/LEARNINGS.md was created with the correction entry"},
+        {"text": "The entry has an ID in the format LRN-YYYYMMDD-XXX", "passed": true, "evidence": "ID is LRN-20260327-001"},
+        {"text": "The entry uses the category 'correction'", "passed": true, "evidence": "Category heading: [LRN-20260327-001] correction"},
+        {"text": "The entry includes a Summary mentioning the API method correction", "passed": true, "evidence": "Summary: API endpoint /api/v2/users uses POST method, not GET"},
+        {"text": "The entry includes Details explaining the change from GET to POST", "passed": true, "evidence": "Details section explains the incorrect GET assumption and correct POST method"},
+        {"text": "The entry has Source set to 'user_feedback' or 'conversation'", "passed": true, "evidence": "Source: user_feedback"},
+        {"text": "The entry includes a Suggested Action for updating the code", "passed": true, "evidence": "Suggested Action: Update any references to GET /api/v2/users to use POST"}
+      ],
+      "summary": {"passed": 7, "failed": 0, "total": 7, "pass_rate": 1.0}
+    },
+    {
+      "id": 3,
+      "prompt": "Log feature request for auto-testing before commit",
+      "expectations": [
+        {"text": "Creates or appends to .learnings/FEATURE_REQUESTS.md", "passed": true, "evidence": "File .learnings/FEATURE_REQUESTS.md was modified with the feature request"},
+        {"text": "The entry has an ID in the format FEAT-YYYYMMDD-XXX", "passed": true, "evidence": "ID is FEAT-20260327-001"},
+        {"text": "The entry includes a Requested Capability section", "passed": true, "evidence": "Requested Capability: Automatically run the project's test suite before committing changes"},
+        {"text": "The entry includes a User Context section explaining why auto-testing before commit is useful", "passed": true, "evidence": "User Context explains preventing broken code from being committed"},
+        {"text": "The entry includes a Complexity Estimate", "passed": true, "evidence": "Complexity Estimate: medium"},
+        {"text": "The entry includes a Suggested Implementation section", "passed": true, "evidence": "Suggested Implementation lists 3 concrete approaches (Git hooks, husky, Claude Code hooks)"},
+        {"text": "The entry includes Frequency in metadata", "passed": true, "evidence": "Frequency: first_time"}
+      ],
+      "summary": {"passed": 7, "failed": 0, "total": 7, "pass_rate": 1.0}
+    },
+    {
+      "id": 4,
+      "prompt": "Log recurring database timeout and evaluate promotion",
+      "expectations": [
+        {"text": "Creates a new learning entry in .learnings/LEARNINGS.md", "passed": true, "evidence": "New entry LRN-20260327-001 appended to LEARNINGS.md"},
+        {"text": "The entry includes a See Also reference to LRN-20260320-001", "passed": true, "evidence": "Metadata includes See Also: LRN-20260320-001, bidirectional linking done"},
+        {"text": "The entry has elevated priority (high or critical) due to recurrence", "passed": true, "evidence": "Priority: high, and original entry bumped from medium to high"},
+        {"text": "The entry mentions or recommends promotion to CLAUDE.md", "passed": true, "evidence": "Promotion was evaluated explicitly - declined with reasoning that the DB learning is not applicable to this skills repo"},
+        {"text": "The entry recognizes this is a recurring issue pattern", "passed": true, "evidence": "Recurrence-Count: 3, First-Seen and Last-Seen fields added, tags include 'recurring'"}
+      ],
+      "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+    },
+    {
+      "id": 5,
+      "prompt": "Log pnpm discovery and promote to CLAUDE.md",
+      "expectations": [
+        {"text": "Creates a learning entry in .learnings/LEARNINGS.md with category 'knowledge_gap' or 'best_practice'", "passed": true, "evidence": "Entry [LRN-20260327-001] knowledge_gap created"},
+        {"text": "The learning entry includes details about pnpm vs npm", "passed": true, "evidence": "Details explain pnpm workspaces usage and npm install failure"},
+        {"text": "Adds a concise rule or fact to CLAUDE.md about using pnpm", "passed": true, "evidence": "Added '## Build & Dependencies' section with 2 bullet points about pnpm"},
+        {"text": "The learning entry status is set to 'promoted'", "passed": true, "evidence": "Status: promoted"},
+        {"text": "The learning entry includes a Promoted field referencing CLAUDE.md", "passed": true, "evidence": "Promoted: CLAUDE.md field present"}
+      ],
+      "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+    },
+    {
+      "id": 6,
+      "prompt": "Review .learnings/ directory for status check",
+      "expectations": [
+        {"text": "Reads files from the .learnings/ directory", "passed": true, "evidence": "Read LEARNINGS.md, ERRORS.md, and FEATURE_REQUESTS.md"},
+        {"text": "Reports the count of pending items", "passed": true, "evidence": "Reported 3 pending items out of 4 total"},
+        {"text": "Identifies and lists any high-priority items", "passed": true, "evidence": "Listed 2 high-priority pending items: LRN-20260320-001 and ERR-20260321-001"},
+        {"text": "Provides actionable suggestions for next steps (resolve, promote, etc.)", "passed": true, "evidence": "5 specific recommendations including addressing high-priority items, checking related entries, promotion candidates, and metadata backfill"}
+      ],
+      "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}
+    }
+  ],
+  "overall_summary": {
+    "total_expectations": 37,
+    "total_passed": 37,
+    "total_failed": 0,
+    "overall_pass_rate": 1.0
+  },
+  "notes": [
+    "All 6 evals achieved 100% pass rate with the self-improvement skill",
+    "The skill's format templates are clear and specific enough that agents follow them precisely",
+    "Detection triggers correctly route to the right file types (ERRORS.md, LEARNINGS.md, FEATURE_REQUESTS.md)",
+    "Recurring pattern detection (eval 4) demonstrates sophisticated linking, priority bumping, and promotion evaluation",
+    "Promotion workflow (eval 5) correctly matches the skill's own example from lines 211-219",
+    "Periodic review (eval 6) correctly uses the skill's documented grep commands and review actions",
+    "Eval 4 showed good judgment - declining promotion when the learning wasn't applicable to the current repo context"
+  ]
+}

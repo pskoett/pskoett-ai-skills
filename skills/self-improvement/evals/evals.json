@@ -1,0 +1,84 @@
+{
+  "skill_name": "self-improvement",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just ran `npm install` and got an error: 'ERR! code ERESOLVE'. Log this error to the learnings system.",
+      "expected_output": "An error entry appended to .learnings/ERRORS.md with the correct format including ERR ID, timestamp, priority, status, summary, error details, context, and metadata.",
+      "expectations": [
+        "Creates or appends to .learnings/ERRORS.md",
+        "The entry has an ID in the format ERR-YYYYMMDD-XXX",
+        "The entry includes a timestamp in ISO-8601 format",
+        "The entry includes a Priority field",
+        "The entry includes Status set to pending",
+        "The entry includes a Summary section describing the npm install failure",
+        "The entry includes the actual error message (ERESOLVE)",
+        "The entry includes a Context section with command details",
+        "The entry includes a Metadata section with Reproducible field"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Actually, you were wrong about that API endpoint - it uses POST not GET. The correct endpoint is POST /api/v2/users. Please log this correction.",
+      "expected_output": "A learning entry appended to .learnings/LEARNINGS.md with category 'correction', capturing the correct information.",
+      "expectations": [
+        "Creates or appends to .learnings/LEARNINGS.md",
+        "The entry has an ID in the format LRN-YYYYMMDD-XXX",
+        "The entry uses the category 'correction'",
+        "The entry includes a Summary mentioning the API method correction",
+        "The entry includes Details explaining the change from GET to POST",
+        "The entry has Source set to 'user_feedback' or 'conversation'",
+        "The entry includes a Suggested Action for updating the code"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I wish you could automatically run our test suite before committing. Can you log this as a feature request?",
+      "expected_output": "A feature request entry appended to .learnings/FEATURE_REQUESTS.md with the correct format.",
+      "expectations": [
+        "Creates or appends to .learnings/FEATURE_REQUESTS.md",
+        "The entry has an ID in the format FEAT-YYYYMMDD-XXX",
+        "The entry includes a Requested Capability section",
+        "The entry includes a User Context section explaining why auto-testing before commit is useful",
+        "The entry includes a Complexity Estimate",
+        "The entry includes a Suggested Implementation section",
+        "The entry includes Frequency in metadata"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "We've had 3 similar errors with database connection timeouts this week. The learning LRN-20260320-001 already documents the first occurrence. Log this new occurrence and link it, and check if it should be promoted to CLAUDE.md.",
+      "expected_output": "A linked learning entry that references the existing entry, with bumped priority and a recommendation to promote to project memory.",
+      "expectations": [
+        "Creates a new learning entry in .learnings/LEARNINGS.md",
+        "The entry includes a See Also reference to LRN-20260320-001",
+        "The entry has elevated priority (high or critical) due to recurrence",
+        "The entry mentions or recommends promotion to CLAUDE.md",
+        "The entry recognizes this is a recurring issue pattern"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I just discovered that our project uses pnpm workspaces, not npm. I kept trying npm install and it failed. This is important for anyone working on this project. Please log this and promote it to CLAUDE.md since it's broadly applicable.",
+      "expected_output": "A learning entry logged AND a corresponding addition to CLAUDE.md with a concise project convention.",
+      "expectations": [
+        "Creates a learning entry in .learnings/LEARNINGS.md with category 'knowledge_gap' or 'best_practice'",
+        "The learning entry includes details about pnpm vs npm",
+        "Adds a concise rule or fact to CLAUDE.md about using pnpm",
+        "The learning entry status is set to 'promoted'",
+        "The learning entry includes a Promoted field referencing CLAUDE.md"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Review the current .learnings/ directory and give me a status check - how many pending items are there, any high priority ones?",
+      "expected_output": "A summary of pending learnings including counts and high-priority items.",
+      "expectations": [
+        "Reads files from the .learnings/ directory",
+        "Reports the count of pending items",
+        "Identifies and lists any high-priority items",
+        "Provides actionable suggestions for next steps (resolve, promote, etc.)"
+      ]
+    }
+  ]
+}

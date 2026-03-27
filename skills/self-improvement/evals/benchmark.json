@@ -1,0 +1,173 @@
+{
+  "metadata": {
+    "skill_name": "self-improvement",
+    "skill_path": "skills/self-improvement",
+    "executor_model": "claude-opus-4-6",
+    "timestamp": "2026-03-27T22:30:00Z",
+    "evals_run": [1, 2, 3, 4, 5, 6],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "Error Logging (npm ERESOLVE)",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 57.2,
+        "tokens": 20086,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Creates or appends to .learnings/ERRORS.md", "passed": true, "evidence": "File created"},
+        {"text": "Entry has ERR-YYYYMMDD-XXX ID", "passed": true, "evidence": "ERR-20260327-001"},
+        {"text": "ISO-8601 timestamp", "passed": true, "evidence": "2026-03-27T00:00:00Z"},
+        {"text": "Priority field", "passed": true, "evidence": "high"},
+        {"text": "Status pending", "passed": true, "evidence": "pending"},
+        {"text": "Summary describes npm failure", "passed": true, "evidence": "Present"},
+        {"text": "ERESOLVE in error", "passed": true, "evidence": "Present"},
+        {"text": "Context section", "passed": true, "evidence": "Present"},
+        {"text": "Reproducible in metadata", "passed": true, "evidence": "yes"}
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "Correction Logging (API endpoint)",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 51.0,
+        "tokens": 20041,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Creates or appends to .learnings/LEARNINGS.md", "passed": true, "evidence": "File created"},
+        {"text": "LRN-YYYYMMDD-XXX ID", "passed": true, "evidence": "LRN-20260327-001"},
+        {"text": "Category correction", "passed": true, "evidence": "correction"},
+        {"text": "Summary mentions API correction", "passed": true, "evidence": "POST not GET"},
+        {"text": "Details explain change", "passed": true, "evidence": "Present"},
+        {"text": "Source user_feedback", "passed": true, "evidence": "user_feedback"},
+        {"text": "Suggested Action", "passed": true, "evidence": "Update references"}
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "Feature Request (auto-test)",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 58.9,
+        "tokens": 20814,
+        "tool_calls": 9,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Creates .learnings/FEATURE_REQUESTS.md", "passed": true, "evidence": "File modified"},
+        {"text": "FEAT-YYYYMMDD-XXX ID", "passed": true, "evidence": "FEAT-20260327-001"},
+        {"text": "Requested Capability section", "passed": true, "evidence": "Present"},
+        {"text": "User Context section", "passed": true, "evidence": "Present"},
+        {"text": "Complexity Estimate", "passed": true, "evidence": "medium"},
+        {"text": "Suggested Implementation", "passed": true, "evidence": "3 approaches listed"},
+        {"text": "Frequency in metadata", "passed": true, "evidence": "first_time"}
+      ]
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "Recurring Pattern + Promotion Check",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 94.2,
+        "tokens": 23861,
+        "tool_calls": 13,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "New learning entry created", "passed": true, "evidence": "LRN-20260327-001"},
+        {"text": "See Also links to LRN-20260320-001", "passed": true, "evidence": "Bidirectional link"},
+        {"text": "Elevated priority", "passed": true, "evidence": "high"},
+        {"text": "Promotion to CLAUDE.md evaluated", "passed": true, "evidence": "Evaluated and declined with reasoning"},
+        {"text": "Recurring pattern recognized", "passed": true, "evidence": "Recurrence-Count: 3"}
+      ]
+    },
+    {
+      "eval_id": 5,
+      "eval_name": "Promote Learning to CLAUDE.md",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 56.0,
+        "tokens": 24270,
+        "tool_calls": 10,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Learning with knowledge_gap or best_practice", "passed": true, "evidence": "knowledge_gap"},
+        {"text": "Details about pnpm vs npm", "passed": true, "evidence": "Present"},
+        {"text": "CLAUDE.md updated with pnpm rule", "passed": true, "evidence": "Build & Dependencies section added"},
+        {"text": "Status promoted", "passed": true, "evidence": "promoted"},
+        {"text": "Promoted field references CLAUDE.md", "passed": true, "evidence": "Promoted: CLAUDE.md"}
+      ]
+    },
+    {
+      "eval_id": 6,
+      "eval_name": "Periodic Review Status Check",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 89.7,
+        "tokens": 23022,
+        "tool_calls": 19,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Reads .learnings/ files", "passed": true, "evidence": "All 3 files read"},
+        {"text": "Reports pending count", "passed": true, "evidence": "3 pending"},
+        {"text": "Lists high-priority items", "passed": true, "evidence": "2 high-priority items listed"},
+        {"text": "Actionable suggestions", "passed": true, "evidence": "5 recommendations provided"}
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0},
+      "time_seconds": {"mean": 67.8, "stddev": 17.9, "min": 51.0, "max": 94.2},
+      "tokens": {"mean": 22016, "stddev": 1861, "min": 20041, "max": 24270}
+    }
+  },
+  "notes": [
+    "All 6 evals achieved 100% pass rate - the skill's format templates are precise enough for reliable execution",
+    "Eval 4 (recurring patterns) took the longest (94.2s) due to search-first workflow and bidirectional linking",
+    "Eval 6 (periodic review) used the most tool calls (19) due to reading multiple files and running grep commands",
+    "The skill's detection triggers correctly routed each prompt to the appropriate file type",
+    "Eval 4 showed good contextual judgment - agent correctly declined promotion when the learning wasn't repo-relevant",
+    "Eval 5 matched the skill's own promotion example almost exactly (pnpm use case)",
+    "No without_skill baseline was run in this iteration - recommend adding baseline comparison in future runs"
+  ]
+}
