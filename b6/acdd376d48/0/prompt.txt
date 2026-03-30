@@ -1,0 +1,65 @@
+ok, now put this philosify in our planning skill Something agents really aren't good at yet:
+
+"Make the change easy, then make the change."
+
+They still have a really hard time seeing how a refactor might help. They just plow through. and put my point that I have in most my skills that they are built around philosofies
+
+---
+
+this is not kent beck it is something i got from a thorsten ball post, the change is good though no kent beck
+
+---
+
+use the new plugin to have codex review the new skill changes
+
+---
+
+<task-notification>
+<task-id>bok2nicyd</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/REDACTED/97240463-b2b4-40d6-a9c3-4d28707d37bd/tasks/bok2nicyd.output</output-file>
+<status>killed</status>
+<summary>Background command "Forward review task to Codex companion" was stopped</summary>
+</task-notification>
+
+---
+
+rerun the review and fix the divergence
+
+---
+
+ok fix findings
+
+---
+
+ok, now i want you to review all my skills and I want you to make a paragraph for the readme of the repo that is about that my skills are all centered around skills have a philopsophy that it is built around, that address a core problem in working with agents.
+
+---
+
+have codex review this and see if it likes it, one note around the planning part the skill i also all about the collaboration between you and the agent in planning hence the plan interview
+
+---
+
+i want this -The common thread: agents have peak context at specific moments — after planning, mid-execution, at completion, after learning — and these skills are designed to exploi
+         -t those peaks. Each skill encodes a philosophy that agents struggle to internalize on their own, turning it into a structured workflow they can follow reliably.  and this back Every skill in this collection is built around a philosophy — a principle that addresses a specific failure mode in how agents work today
+
+---
+
+great
+
+---
+
+now can we make CI version of the rest of the skills? does that make sense?
+
+---
+
+do we catch this in our skills I read Thorsten Ball's newsletter this week and one question from it has been on my mind since: where is the knowledge?
+He's been trying to figure out why agents sometimes nail a task and sometimes don't. His answer: it comes down to whether the knowledge needed to complete the task actually exists somewhere the agent can reach. Your prompt, the codebase, or the model's training data. If it's in at least one of those places, things work. If it's in none of them, the agent fills the gap anyway. Just not with what you wanted. ? if there is a gap?
+
+---
+
+get codexes opinion on this as well
+
+---
+
+an addition to plan-interview?
