@@ -1,0 +1,31 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "dd78c62feed6",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".github/copilot-instructions.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "skills/skill-pipeline/SKILL.md",
+    "skills/skill-pipeline/references/classification-rules.md",
+    "skills/skill-pipeline/references/handoff-matrix.md",
+    "skills/skill-pipeline/references/pipeline-variants.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/dd/78c62feed6/0/metadata.json",
+      "transcript": "/dd/78c62feed6/0/full.jsonl",
+      "content_hash": "/dd/78c62feed6/0/content_hash.txt",
+      "prompt": "/dd/78c62feed6/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 34,
+    "cache_creation_tokens": 140480,
+    "cache_read_tokens": 1545585,
+    "output_tokens": 19096,
+    "api_call_count": 26
+  }
+}

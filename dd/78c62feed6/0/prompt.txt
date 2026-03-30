@@ -1,0 +1,23 @@
+ultrathink please analyse the pipeline of skills we have and all the skills and create a meta skill based on this idea Another cool skill in action as I'm onboarding the vastly improved fuzz testing skill I made this morning (see screenshot from within Claude Code below).
+
+For every new skill I add to the site, I use my /interactive-visualization-creator skill to make a slick looking visual for it on the website. 
+
+But that skill is so in-depth and huge that the agents never "saturate" what it can do in a single application. 
+
+So, with urging from 
+@joshmh
+ (see https://x.com/joshmh/status/2035769330194125003?s=20 ), I created a "meta skill" called /repeatedly-apply-skill that lets me reliably called the visualization skill 5 times in a row, with the first pass creating the visualization and the other passes iteratively polishing and improving it. 
+
+And all this is called automatically from within my  /onboarding-new-skills-to-jeffreys-skills-md (not included on the site because it's so specialized). 
+
+Skills calling meta-skills that apply other skills. Skills all the way down! to the full workflow analyse if it is a good idea and would make sense to do that /skill-creator
+
+---
+
+<task-notification>
+<task-id>bkm0jbd77</task-id>
+<tool-use-id>toolu_01V7oPicdmrWbMxZ97VxFHhd</tool-use-id>
+<output-file>/private/tmp/claude-502/REDACTED/97240463-b2b4-40d6-a9c3-4d28707d37bd/tasks/bkm0jbd77.output</output-file>
+<status>killed</status>
+<summary>Background command "grep -r "repeatedly\|iterative\|iterate\|meta\|loop\|pass\|cycle\|round\|phase\|audit" /Users/pepe/Library/CloudStorage/OneDrive-TV2DANMARK/Dokumenter/GitHub/pskoett-skills --include="*.md" | grep -v ".git" | head -40" was stopped</summary>
+</task-notification>
