@@ -1,0 +1,61 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "f847299959e8",
+  "session_id": "9c1bd16a-3fe6-4e94-9b66-b6fbfc4526cf",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-11T10:02:02.106579Z",
+  "branch": "main",
+  "checkpoints_count": 7,
+  "files_touched": [
+    ".github/copilot-instructions.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "plugin/CHANGELOG.md",
+    "plugin/agents/harness-updater.md",
+    "plugin/skills/eval-creator-ci/SKILL.md",
+    "plugin/skills/eval-creator-ci/references/workflow-example.md",
+    "plugin/skills/eval-creator/SKILL.md",
+    "plugin/skills/learning-aggregator-ci/SKILL.md",
+    "plugin/skills/learning-aggregator-ci/references/workflow-example.md",
+    "plugin/skills/learning-aggregator/SKILL.md",
+    "plugin/skills/pre-flight-check/SKILL.md",
+    "plugin/skills/pre-flight-check/scripts/pre-flight.sh",
+    "plugin/skills/self-improvement/SKILL.md",
+    "plugin/skills/verify-gate/SKILL.md",
+    "skills/eval-creator-ci/SKILL.md",
+    "skills/eval-creator-ci/references/workflow-example.md",
+    "skills/eval-creator/SKILL.md",
+    "skills/learning-aggregator-ci/SKILL.md",
+    "skills/learning-aggregator-ci/references/workflow-example.md",
+    "skills/learning-aggregator/SKILL.md",
+    "skills/pre-flight-check/SKILL.md",
+    "skills/pre-flight-check/scripts/pre-flight.sh",
+    "skills/skill-pipeline/SKILL.md",
+    "skills/verify-gate/SKILL.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "2f455d42c818",
+  "checkpoint_transcript_start": 136,
+  "transcript_lines_at_start": 136,
+  "token_usage": {
+    "input_tokens": 4183,
+    "cache_creation_tokens": 162584,
+    "cache_read_tokens": 14389392,
+    "output_tokens": 81128,
+    "api_call_count": 87
+  },
+  "session_metrics": {
+    "turn_count": 10
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-11T10:02:01.489667Z",
+    "agent_lines": 3174,
+    "human_added": 69,
+    "human_modified": 3,
+    "human_removed": 0,
+    "total_committed": 3246,
+    "agent_percentage": 97.78188539741221
+  }
+}
