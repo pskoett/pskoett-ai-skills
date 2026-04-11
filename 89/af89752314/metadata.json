@@ -1,0 +1,30 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "89af89752314",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "plugin/agents/harness-updater.md",
+    "skills/eval-creator-ci/references/workflow-example.md",
+    "skills/eval-creator/SKILL.md",
+    "skills/learning-aggregator-ci/SKILL.md",
+    "skills/learning-aggregator/SKILL.md",
+    "skills/verify-gate/SKILL.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/89/af89752314/0/metadata.json",
+      "transcript": "/89/af89752314/0/full.jsonl",
+      "content_hash": "/89/af89752314/0/content_hash.txt",
+      "prompt": "/89/af89752314/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 5293,
+    "cache_creation_tokens": 335429,
+    "cache_read_tokens": 46900943,
+    "output_tokens": 143044,
+    "api_call_count": 217
+  }
+}

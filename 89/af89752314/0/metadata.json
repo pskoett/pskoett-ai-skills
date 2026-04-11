@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "89af89752314",
+  "session_id": "9c1bd16a-3fe6-4e94-9b66-b6fbfc4526cf",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-11T10:54:43.311639Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "plugin/agents/harness-updater.md",
+    "skills/eval-creator-ci/references/workflow-example.md",
+    "skills/eval-creator/SKILL.md",
+    "skills/learning-aggregator-ci/SKILL.md",
+    "skills/learning-aggregator/SKILL.md",
+    "skills/verify-gate/SKILL.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "0caa638f047a",
+  "token_usage": {
+    "input_tokens": 5293,
+    "cache_creation_tokens": 335429,
+    "cache_read_tokens": 46900943,
+    "output_tokens": 143044,
+    "api_call_count": 217
+  },
+  "session_metrics": {
+    "turn_count": 19
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-11T10:54:42.446066Z",
+    "agent_lines": 18,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 18,
+    "agent_percentage": 100
+  }
+}
