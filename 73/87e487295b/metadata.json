@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "7387e487295b",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 4,
+  "files_touched": [
+    ".evals/EVAL_INDEX.md",
+    ".evals/cases/.gitkeep",
+    "plugin/agents/harness-updater.md",
+    "plugin/skills/eval-creator-ci/references/workflow-example.md",
+    "plugin/skills/eval-creator/SKILL.md",
+    "plugin/skills/learning-aggregator-ci/references/workflow-example.md",
+    "plugin/skills/learning-aggregator/SKILL.md",
+    "plugin/skills/pre-flight-check/SKILL.md",
+    "plugin/skills/self-improvement/SKILL.md",
+    "plugin/skills/self-improvement/assets/SKILL-TEMPLATE.md",
+    "plugin/skills/self-improvement/references/openclaw-integration.md",
+    "plugin/skills/self-improvement/scripts/extract-skill.sh",
+    "plugin/skills/verify-gate/SKILL.md",
+    "scripts/sync-plugin.sh",
+    "skills/eval-creator-ci/references/workflow-example.md",
+    "skills/learning-aggregator-ci/references/workflow-example.md",
+    "skills/self-improvement-ci/references/workflow-example.md",
+    "skills/simplify-and-harden-ci/references/workflow-example.md",
+    "skills/skill-tester-ci/SKILL.md",
+    "skills/skill-tester-ci/scripts/run-tests.sh",
+    "skills/skill-tester/SKILL.md",
+    "skills/skill-tester/scripts/run-tests.sh"
+  ],
+  "sessions": [
+    {
+      "metadata": "/73/87e487295b/0/metadata.json",
+      "transcript": "/73/87e487295b/0/full.jsonl",
+      "content_hash": "/73/87e487295b/0/content_hash.txt",
+      "prompt": "/73/87e487295b/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 5274,
+    "cache_creation_tokens": 319022,
+    "cache_read_tokens": 41387187,
+    "output_tokens": 135083,
+    "api_call_count": 200
+  }
+}
