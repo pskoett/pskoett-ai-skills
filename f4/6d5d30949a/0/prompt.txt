@@ -1,0 +1,286 @@
+ultrathink do an analysis here what we need to get the full loop in our skills to start improving the complete flow Two Loops You Need to Know
+Peter Skøtt Pedersen
+Peter Skøtt Pedersen
+People - AI - Software
+
+
+April 8, 2026
+If you want to improve agent output over time, you need to run two loops not one.
+
+The inner loop happens during a running session. The agent detects a problem, checks its work, and tries to recover without you touching anything.
+
+The outer loop happens across sessions. You capture where the agent failed, figure out what knowledge was missing, and encode it somewhere the agent can reach next time. 
+
+Both loops are required. The inner loop catches failures in the moment. The outer loop ensures the same failures stop happening. Without both, you are not improving the system, you are just managing it.
+
+A compact way to think about it:
+
+Inner loop: detect, verify, recover
+Outer loop: inspect, encode, regress-test
+
+Thorsten Ball has a useful framing for why agents fail in the first place: the knowledge required to complete a task has to live somewhere. It usually lives in one of three places:
+
+Your prompt/spec. What you explicitly tell the agent.
+The codebase or harness. Types, tests, tools, conventions, documentation anything the agent can read and reason from.
+Training data. What the model already knows from the world.
+
+If the knowledge exists in at least one of those places, the agent usually has a path forward. If it doesn't exist in any of them, there's a gap. The agent will plough through anyway and fill the gap with something: infer, improvise, guess. Sometimes that works. Often it doesn't.
+
+In workflows, the failure is often not the model. It's the assumption that the knowledge was somewhere it wasn't.
+
+This gets more dangerous as you move to end-to-end autonomous workflows. One gap mid-run and the whole thing goes sideways, silently. You can catch some of this with CI pipelines or quality gates, and you should. But gates only cover what you thought to test for. The gaps that slip through are the ones nobody anticipated.
+
+The two loops are how you close those gaps systematically, over time.
+
+The Inner Loop, the agent checks itself
+The inner loop is the one you can see. The agent runs, hits a problem, and adapts during execution without you touching anything. That might mean self-correcting on a bad output, but it also means replanning when a step fails, switching tools when the first approach doesn't work, handling uncertainty, or stopping instead of guessing when something critical is missing.
+
+An agent that can do any of these mid-task operates at a fundamentally different level than one that just barrels forward.
+
+The quality of the inner loop depends almost entirely on whether the agent has usable feedback signals: test runners, linters, Chrome DevTools CLI, API response validators. Anything that produces a clear signal the agent can read and act on. The agent doesn't need you to tell it the output was wrong if a test can. The more the agent can check itself, the fewer gaps slip through undetected.
+
+But the inner loop has a ceiling. It can only fix what the agent can observe in the moment, with the context and tools it has at the time. It catches syntax errors and misses intent drift. It repairs a broken command and still misunderstands the actual goal.
+
+Which is exactly why you need the second loop.
+
+The outer loop, closing the gaps systematically
+The outer loop operates across working sessions. Its job is to take what the inner loop couldn't fix and turn it into permanent harness improvements.
+
+Its raw material is session traces full captures of what the agent did, decided, and where it went wrong. Without traces, teams iterate on memory. They patch around the last failure and rediscover the same issue two weeks later.
+
+On a regular cadence, you have an agent read those traces and surface issues. Not you scrolling through logs an agent doing the analysis pass, finding the patterns, flagging where knowledge was missing.
+
+Then you close the gaps:
+
+Update instructions tighten what was ambiguous, add context that was missing
+Update tools add capabilities the agent improvised around, remove tools that created confusion
+Update skills refine the reusable behavior definitions the agent draws on
+Create a new skill if the same gap keeps appearing with no existing coverage, that's a skill specification waiting to be written
+Retest run the exact same case and verify the fix holds
+Make it an eval permanently lock the case so it never silently regresses
+
+That last step is where the discipline breaks down. Fix the issue once, move on, and it will come back. If a failure taught you something important, it should become a permanent test case. Otherwise the knowledge is still fragile.
+
+You can't front-load the simplification. The real gaps only surface after the agent has run the task. The outer loop's job is to learn where the failure came from, then fix the right thing.
+
+Not every failure is a knowledge gap. Some are reasoning failures. Some are poor tool strategy. Some come from an ambiguous prompt that creates bad incentives. Tracing which kind you're dealing with matters, because the fix is different each time.
+
+Agent Skill files, MCP tool descriptions, agent context files these aren't just documentation. They are the answer to "where is the knowledge?" They are how you move knowledge from nowhere into the prompt, the codebase, or the harness, where the agent can actually reach it.
+
+This compounds
+Every outer loop improvement feeds directly back into the inner loop.
+
+Better agent skills mean the agent has sharper behavior to draw on mid-task. Better context means fewer dead ends. Better tools mean fewer cases where the agent has to improvise around a gap. Better evals mean regressions get caught before they corrupt the next session.
+
+The inner loop gets stronger because the harness it runs on got stronger. The knowledge gaps get smaller with every cycle. That's not linear improvement. That's compounding and it's the only sustainable way to make agentic workflows genuinely reliable over time.
+
+In practice this could look like
+Inner loop: The agent runs with access to verification tools: test output, lint results, type errors, API contract checks. When something fails, it captures what went wrong and attempts recovery before moving on. When recovery works, nothing happens from the outside. When it doesn't, the trace has the evidence.
+
+Outer loop: Sessions are wrapped with intent capture at the start and drift detection throughout. Traces accumulate. On cadence, an agent reads them, surfaces patterns, and flags where knowledge was missing. Gaps become updated instructions, new skills, or permanent evals. The harness evolves.
+
+The knowledge gaps close. The harness gets better. Even when the model changes, the harness determines whether those gains compound or disappear.
+
+That's the whole game.
+
+The model is not the moat, everyone has that its everything around it
+Once you think this way, "where is the knowledge?" becomes a design constraint. Two loops become the operating model for improving agent reliability over time.
+
+If your harness is well designed, stronger models become upside, not a migration crisis. A better model should improve your output without forcing you to rewrite your skills, restructure your context, or rediscover your process from scratch. If it does, that's the signal your design is sound.
+
+The intelligence isn't trapped inside one model choice. It lives in the framing, the tools, the context, and the evals around it.
+
+That's the moat.
+
+Hat tip to Thorsten Ball's framing on knowledge location: Joy & Curiosity #80
+
+---
+
+if in doubt spawn up multiple more agents and ask codex for input
+
+---
+
+ultrathink do an analysis here what we need to get the full loop in our skills to start improving the
+   complete flow Two Loops You Need to Know
+  Peter Skøtt Pedersen
+  Peter Skøtt Pedersen
+  People - AI - Software
+
+
+  April 8, 2026
+  If you want to improve agent output over time, you need to run two loops not one.
+
+  The inner loop happens during a running session. The agent detects a problem, checks its work, and
+  tries to recover without you touching anything.
+
+  The outer loop happens across sessions. You capture where the agent failed, figure out what knowledge
+   was missing, and encode it somewhere the agent can reach next time.
+
+  Both loops are required. The inner loop catches failures in the moment. The outer loop ensures the
+  same failures stop happening. Without both, you are not improving the system, you are just managing
+  it.
+
+  A compact way to think about it:
+
+  Inner loop: detect, verify, recover
+  Outer loop: inspect, encode, regress-test
+
+  Thorsten Ball has a useful framing for why agents fail in the first place: the knowledge required to
+  complete a task has to live somewhere. It usually lives in one of three places:
+
+  Your prompt/spec. What you explicitly tell the agent.
+  The codebase or harness. Types, tests, tools, conventions, documentation anything the agent can read
+  and reason from.
+  Training data. What the model already knows from the world.
+
+  If the knowledge exists in at least one of those places, the agent usually has a path forward. If it
+  doesn't exist in any of them, there's a gap. The agent will plough through anyway and fill the gap
+  with something: infer, improvise, guess. Sometimes that works. Often it doesn't.
+
+  In workflows, the failure is often not the model. It's the assumption that the knowledge was
+  somewhere it wasn't.
+
+  This gets more dangerous as you move to end-to-end autonomous workflows. One gap mid-run and the
+  whole thing goes sideways, silently. You can catch some of this with CI pipelines or quality gates,
+  and you should. But gates only cover what you thought to test for. The gaps that slip through are the
+   ones nobody anticipated.
+
+  The two loops are how you close those gaps systematically, over time.
+
+  The Inner Loop, the agent checks itself
+  The inner loop is the one you can see. The agent runs, hits a problem, and adapts during execution
+  without you touching anything. That might mean self-correcting on a bad output, but it also means
+  replanning when a step fails, switching tools when the first approach doesn't work, handling
+  uncertainty, or stopping instead of guessing when something critical is missing.
+
+  An agent that can do any of these mid-task operates at a fundamentally different level than one that
+  just barrels forward.
+
+  The quality of the inner loop depends almost entirely on whether the agent has usable feedback
+  signals: test runners, linters, Chrome DevTools CLI, API response validators. Anything that produces
+  a clear signal the agent can read and act on. The agent doesn't need you to tell it the output was
+  wrong if a test can. The more the agent can check itself, the fewer gaps slip through undetected.
+
+  But the inner loop has a ceiling. It can only fix what the agent can observe in the moment, with the
+  context and tools it has at the time. It catches syntax errors and misses intent drift. It repairs a
+  broken command and still misunderstands the actual goal.
+
+  Which is exactly why you need the second loop.
+
+  The outer loop, closing the gaps systematically
+  The outer loop operates across working sessions. Its job is to take what the inner loop couldn't fix
+  and turn it into permanent harness improvements.
+
+  Its raw material is session traces full captures of what the agent did, decided, and where it went
+  wrong. Without traces, teams iterate on memory. They patch around the last failure and rediscover the
+   same issue two weeks later.
+
+  On a regular cadence, you have an agent read those traces and surface issues. Not you scrolling
+  through logs an agent doing the analysis pass, finding the patterns, flagging where knowledge was
+  missing.
+
+  Then you close the gaps:
+
+  Update instructions tighten what was ambiguous, add context that was missing
+  Update tools add capabilities the agent improvised around, remove tools that created confusion
+  Update skills refine the reusable behavior definitions the agent draws on
+  Create a new skill if the same gap keeps appearing with no existing coverage, that's a skill
+  specification waiting to be written
+  Retest run the exact same case and verify the fix holds
+  Make it an eval permanently lock the case so it never silently regresses
+
+  That last step is where the discipline breaks down. Fix the issue once, move on, and it will come
+  back. If a failure taught you something important, it should become a permanent test case. Otherwise
+  the knowledge is still fragile.
+
+  You can't front-load the simplification. The real gaps only surface after the agent has run the task.
+   The outer loop's job is to learn where the failure came from, then fix the right thing.
+
+  Not every failure is a knowledge gap. Some are reasoning failures. Some are poor tool strategy. Some
+  come from an ambiguous prompt that creates bad incentives. Tracing which kind you're dealing with
+  matters, because the fix is different each time.
+
+  Agent Skill files, MCP tool descriptions, agent context files these aren't just documentation. They
+  are the answer to "where is the knowledge?" They are how you move knowledge from nowhere into the
+  prompt, the codebase, or the harness, where the agent can actually reach it.
+
+  This compounds
+  Every outer loop improvement feeds directly back into the inner loop.
+
+  Better agent skills mean the agent has sharper behavior to draw on mid-task. Better context means
+  fewer dead ends. Better tools mean fewer cases where the agent has to improvise around a gap. Better
+  evals mean regressions get caught before they corrupt the next session.
+
+  The inner loop gets stronger because the harness it runs on got stronger. The knowledge gaps get
+  smaller with every cycle. That's not linear improvement. That's compounding and it's the only
+  sustainable way to make agentic workflows genuinely reliable over time.
+
+  In practice this could look like
+  Inner loop: The agent runs with access to verification tools: test output, lint results, type errors,
+   API contract checks. When something fails, it captures what went wrong and attempts recovery before
+  moving on. When recovery works, nothing happens from the outside. When it doesn't, the trace has the
+  evidence.
+
+  Outer loop: Sessions are wrapped with intent capture at the start and drift detection throughout.
+  Traces accumulate. On cadence, an agent reads them, surfaces patterns, and flags where knowledge was
+  missing. Gaps become updated instructions, new skills, or permanent evals. The harness evolves.
+
+  The knowledge gaps close. The harness gets better. Even when the model changes, the harness
+  determines whether those gains compound or disappear.
+
+  That's the whole game.
+
+  The model is not the moat, everyone has that its everything around it
+  Once you think this way, "where is the knowledge?" becomes a design constraint. Two loops become the
+  operating model for improving agent reliability over time.
+
+  If your harness is well designed, stronger models become upside, not a migration crisis. A better
+  model should improve your output without forcing you to rewrite your skills, restructure your
+  context, or rediscover your process from scratch. If it does, that's the signal your design is sound.
+
+  The intelligence isn't trapped inside one model choice. It lives in the framing, the tools, the
+  context, and the evals around it.
+
+  That's the moat.
+
+  Hat tip to Thorsten Ball's framing on knowledge location: Joy & Curiosity #80 pull in codex rescue and initiate an agent to for the analysis
+
+---
+
+Build it
+
+---
+
+/simplify-and-harden
+
+---
+
+Yes
+
+---
+
+great insights tell more more how each of these can improve what we have
+
+---
+
+yes do it but we do not have mcp scripts so those are examples?
+
+---
+
+i mean this https://github.com/anthropics/skills/tree/main/skills/skill-creator the skill has an eval for skills and if the failure in the workflow is in relation to a skill or a new skill has to be created to adress the workflow from self-improvement
+
+---
+
+ok, recheck everything then run the plugin validation yes
+
+---
+
+do not delete the philopsosy part combine it with the loops
+
+---
+
+re-view these changes we made what is your honest opinion
+
+---
+
+now you use the entire plugin as it is now and see if we are to token heavy and run an eval on all the skills

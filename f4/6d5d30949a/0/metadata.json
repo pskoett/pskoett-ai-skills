@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "f46d5d30949a",
+  "session_id": "9c1bd16a-3fe6-4e94-9b66-b6fbfc4526cf",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-11T10:14:47.204996Z",
+  "branch": "main",
+  "checkpoints_count": 8,
+  "files_touched": [
+    "plugin/skills/eval-creator-ci/SKILL.md",
+    "plugin/skills/eval-creator/SKILL.md",
+    "plugin/skills/learning-aggregator-ci/SKILL.md",
+    "plugin/skills/learning-aggregator/SKILL.md",
+    "plugin/skills/pre-flight-check/SKILL.md",
+    "skills/eval-creator-ci/SKILL.md",
+    "skills/eval-creator/SKILL.md",
+    "skills/learning-aggregator-ci/SKILL.md",
+    "skills/learning-aggregator/SKILL.md",
+    "skills/pre-flight-check/SKILL.md",
+    "skills/verify-gate/SKILL.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "944aeea24962",
+  "checkpoint_transcript_start": 136,
+  "transcript_lines_at_start": 136,
+  "token_usage": {
+    "input_tokens": 4203,
+    "cache_creation_tokens": 180232,
+    "cache_read_tokens": 18207315,
+    "output_tokens": 91153,
+    "api_call_count": 103
+  },
+  "session_metrics": {
+    "turn_count": 12
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-11T10:14:46.583565Z",
+    "agent_lines": 2132,
+    "human_added": 1102,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 3234,
+    "agent_percentage": 65.92455163883734
+  }
+}

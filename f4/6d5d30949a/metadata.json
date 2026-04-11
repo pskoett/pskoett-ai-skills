@@ -1,0 +1,35 @@
+{
+  "cli_version": "0.5.0",
+  "checkpoint_id": "f46d5d30949a",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 8,
+  "files_touched": [
+    "plugin/skills/eval-creator-ci/SKILL.md",
+    "plugin/skills/eval-creator/SKILL.md",
+    "plugin/skills/learning-aggregator-ci/SKILL.md",
+    "plugin/skills/learning-aggregator/SKILL.md",
+    "plugin/skills/pre-flight-check/SKILL.md",
+    "skills/eval-creator-ci/SKILL.md",
+    "skills/eval-creator/SKILL.md",
+    "skills/learning-aggregator-ci/SKILL.md",
+    "skills/learning-aggregator/SKILL.md",
+    "skills/pre-flight-check/SKILL.md",
+    "skills/verify-gate/SKILL.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/f4/6d5d30949a/0/metadata.json",
+      "transcript": "/f4/6d5d30949a/0/full.jsonl",
+      "content_hash": "/f4/6d5d30949a/0/content_hash.txt",
+      "prompt": "/f4/6d5d30949a/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 4203,
+    "cache_creation_tokens": 180232,
+    "cache_read_tokens": 18207315,
+    "output_tokens": 91153,
+    "api_call_count": 103
+  }
+}
