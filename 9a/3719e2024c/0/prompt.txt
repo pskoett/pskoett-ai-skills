@@ -1,0 +1,5 @@
+end to end test the plugin we have in this repo and make sure it is ready to get published I want to get an approval from antropiv
+
+---
+
+there should be a self-improvement hook you can change everything else the hook i know is in the readme
