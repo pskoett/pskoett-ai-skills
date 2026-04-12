@@ -1,0 +1,9 @@
+we need to update the readme about how to install the plugin it is not correct https://code.claude.com/docs/en/plugin-marketplaces https://code.claude.com/docs/en/plugins keep it as simple as possible with the instructions
+
+---
+
+do not remove the NPX install
+
+---
+
+explain how to install the the plugin do not link to the sites
