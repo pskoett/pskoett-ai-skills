@@ -1,0 +1,28 @@
+{
+  "cli_version": "0.5.4",
+  "checkpoint_id": "34882557532d",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "plugin/skills/context-surfing/SKILL.md",
+    "plugin/skills/intent-framed-agent/SKILL.md",
+    "skills/context-surfing/SKILL.md",
+    "skills/intent-framed-agent/SKILL.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/34/882557532d/0/metadata.json",
+      "transcript": "/34/882557532d/0/full.jsonl",
+      "content_hash": "/34/882557532d/0/content_hash.txt",
+      "prompt": "/34/882557532d/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 5463,
+    "cache_creation_tokens": 1218796,
+    "cache_read_tokens": 80933231,
+    "output_tokens": 180241,
+    "api_call_count": 288
+  }
+}
