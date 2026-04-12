@@ -390,3 +390,7 @@ yes that sounds right i would not cal it mining just session/trace analysis for 
 ---
 
 verify the entire integration and if it possible and make the changes
+
+---
+
+make sure intent framed agent is also up to date in relation to entire or check if it is
