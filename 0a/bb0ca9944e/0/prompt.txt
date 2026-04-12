@@ -544,3 +544,7 @@ the rename is not approved yet so do not mention it when people install this plu
 ---
 
 yes bump
+
+---
+
+this wont effect the new submission right?
