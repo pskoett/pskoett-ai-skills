@@ -1,0 +1,29 @@
+https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating, https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace lets make a plugin for github copilot like we did for claude code
+
+---
+
+i think parallel
+
+---
+
+plan the opencode version https://opencode.ai/docs/plugins/
+
+---
+
+ill wait on the opencode the codex plugin is added
+
+---
+
+ill wait on the opencode the codex plugin is added
+
+---
+
+where did codex add the plugin for codex?
+
+---
+
+where did codex add the plugin for codex?
+
+---
+
+ah the codex plugin is in the plugin folder maybe we should do the same with copilot then
