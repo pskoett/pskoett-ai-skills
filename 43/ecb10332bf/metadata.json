@@ -1,0 +1,47 @@
+{
+  "cli_version": "0.5.4",
+  "checkpoint_id": "43ecb10332bf",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".github/plugin/marketplace.json",
+    "README.md",
+    "copilot-plugin/LICENSE",
+    "copilot-plugin/agents/context-monitor.agent.md",
+    "copilot-plugin/agents/harden-auditor.agent.md",
+    "copilot-plugin/agents/harness-updater.agent.md",
+    "copilot-plugin/agents/self-improvement-logger.agent.md",
+    "copilot-plugin/agents/simplify-auditor.agent.md",
+    "copilot-plugin/agents/spec-auditor.agent.md",
+    "copilot-plugin/hooks/hooks.json",
+    "copilot-plugin/plugin.json",
+    "copilot-plugin/skills/agent-teams-simplify-and-harden",
+    "copilot-plugin/skills/context-surfing",
+    "copilot-plugin/skills/eval-creator",
+    "copilot-plugin/skills/eval-creator-ci",
+    "copilot-plugin/skills/intent-framed-agent",
+    "copilot-plugin/skills/learning-aggregator",
+    "copilot-plugin/skills/learning-aggregator-ci",
+    "copilot-plugin/skills/plan-interview",
+    "copilot-plugin/skills/pre-flight-check",
+    "copilot-plugin/skills/self-improvement",
+    "copilot-plugin/skills/simplify-and-harden",
+    "copilot-plugin/skills/verify-gate"
+  ],
+  "sessions": [
+    {
+      "metadata": "/43/ecb10332bf/0/metadata.json",
+      "transcript": "/43/ecb10332bf/0/full.jsonl",
+      "content_hash": "/43/ecb10332bf/0/content_hash.txt",
+      "prompt": "/43/ecb10332bf/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 1269,
+    "cache_creation_tokens": 79447,
+    "cache_read_tokens": 439340,
+    "output_tokens": 6997,
+    "api_call_count": 13
+  }
+}
