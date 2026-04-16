@@ -1,0 +1,57 @@
+ultrathink please analyse the context surfing skill I feel like the drift detection could be better like are we inluding the thinking tokens the reasoning in the drift detection by including i mean this is something the agent is doing by itself using the intent frame as guidance wave anchor
+
+---
+
+ultrathink please analyse the context surfing skill I feel like the drift detection could be better like are we inluding the thinking tokens the reasoning in the drift detection by including i mean this is something the agent is doing by itself using the intent frame as guidance wave anchor
+
+---
+
+continue
+
+---
+
+continue
+
+---
+
+now get codexes opionion as well codex-rescue
+
+---
+
+<task-notification>
+<task-id>a0fd7b8a85b274662</task-id>
+<tool-use-id>toolu_01Jfb8nhu2CnTdr6E1ZD8B8w</tool-use-id>
+<output-file>/private/tmp/claude-502/REDACTED/1169a6bd-601f-4ede-abf1-20e282f8e1ba/tasks/a0fd7b8a85b274662.output</output-file>
+<status>completed</status>
+<summary>Agent "Codex review of context-surfing analysis" completed</summary>
+<result>Sharpened MVE: the gap is real, but the proposed MVE mostly restates existing instructions, while the Expanded package adds more ceremony than signal.
+
+1. Yes, the gap is real. The skill explicitly says context-surfing fires when "the agent's own coherence degrades" and names hallucination, contradiction, and hedging as examples, which is broader than pure output review (`/Users/pepe/Library/CloudStorage/OneDrive-TV2DANMARK/Dokumenter/GitHub/pskoett-skills/skills/context-surfing/SKILL.md:52-54`). But the concrete detection bullets are still phrased around "output," "responses," "language," and observable behavior (`skills/context-surfing/SKILL.md:147-158`). So reasoning-surface checking is implied, not operationalized. Also, your cited line numbers match the local Claude copy more closely (`.claude/skills/context-surfing/SKILL.md:133-165`) than the public skill (`skills/context-surfing/SKILL.md:143-175`); the substance is similar, but the citation target is ambiguous.
+
+2. The self-corrections are partly right, but they over-defend the status quo. Several signals are mode-agnostic: contradiction, reopened resolved scope, vague intent references, and approach switching can all occur inside reasoning as well as output (`skills/context-surfing/SKILL.md:148-150`, `153-158`). But that is not enough, because the skill never tells the agent to inspect its in-flight reasoning surface explicitly; instead it repeatedly frames the checks as output-alignment and artifact rereads (`skills/context-surfing/SKILL.md:171-175`, `202-205`). So "mode-agnostic" is not a strong defense; it is latent coverage, not reliable behavior shaping.
+
+3. The proposed MVE is too soft as written. Sentence 2 largely duplicates existing text: the skill already says "Re-read the wave anchor before each major step" and "If what you're about to do doesn't match what you read, stop," plus "Check the wave anchor before non-trivial decisions" (`skills/context-surfing/SKILL.md:171-173`, `212-214`). The smallest edit that would actually change behavior is to replace the current "major step / non-trivial decisions" cadence with a concrete action boundary and an explicit next step: before any side-effecting action, quote the relevant anchor line verbatim, state the pending action, and if traceability is unclear, enter Recovery Protocol rather than just "stop" (`skills/context-surfing/SKILL.md:171-175`, `177-205`, `212-214`).
+
+4. The Expanded version is mostly over-engineered. A separate reasoning-surface catalog is probably unnecessary because the skill already has a general signal taxonomy and already defines context drift as degraded internal coherence, not just bad text (`skills/context-surfing/SKILL.md:52-57`, `145-158`). The better move is to bind existing signals to a stricter check cadence. The "Reasoning state at exit" handoff field is low value: the skill itself says compromised agents are least able to detect their own degradation, while the handoff already captures concrete drift notes and externally grounded work state (`skills/context-surfing/SKILL.md:165-175`, `251-263`).
+
+5. Two missing issues matter more than your framing. First, `context-monitor` is described as "Spawnable by the context-surfing skill," but context-surfing never invokes it; unresolved uncertainty currently goes straight to user escalation or exit (`/Users/pepe/Library/CloudStorage/OneDrive-TV2DANMARK/Dokumenter/GitHub/pskoett-skills/plugin/agents/context-monitor.md:3`, `skills/context-surfing/SKILL.md:184-197`). Second, a side-effect gate can collide with intent-framed-agent's own "natural boundaries" checks before new files or work units, creating double ritual unless cadence separation is made explicit (`/Users/pepe/Library/CloudStorage/OneDrive-TV2DANMARK/Dokumenter/GitHub/pskoett-skills/skills/intent-framed-agent/SKILL.md:71-75`, `82-95`).
+
+6. MVE, but only if tightened. The right move is a narrow change that explicitly targets side-effecting actions, defines "stop" as Recovery Protocol or `context-monitor`, and states that the check applies to the agent's current reasoning, not just emitted text. Expanded is too much process for a skill whose own guardrails say "Keep it lightweight" and "Do not interrupt on every small step" (`skills/intent-framed-agent/SKILL.md:164-167`).
+
+**What you are missing**
+
+- The anchor itself is mutable. The skill says to re-read current artifacts directly, and separately says modified context files should be flagged for the next session, but it never defines whether activation-time or latest-version artifacts are authoritative mid-session (`skills/context-surfing/SKILL.md:101-102`, `136-140`, `171-173`).
+- "If it does not, stop" is not operational unless it names the next branch. Right now "stop" could mean pause, re-anchor, spawn `context-monitor`, or exit; the skill only makes that concrete in Recovery Protocol, not at the decision point (`skills/context-surfing/SKILL.md:171-175`, `177-205`).
+- The real architecture gap is not introspection; it is missing escalation routing. `context-monitor` exists as the externalized second opinion, but the main skill currently bypasses it.
+
+Relevant files:
+- `/Users/pepe/Library/CloudStorage/OneDrive-TV2DANMARK/Dokumenter/GitHub/pskoett-skills/skills/context-surfing/SKILL.md`
+- `/Users/pepe/Library/CloudStorage/OneDrive-TV2DANMARK/Dokumenter/GitHub/pskoett-skills/.claude/skills/context-surfing/SKILL.md`
+- `/Users/pepe/Library/CloudStorage/OneDrive-TV2DANMARK/Dokumenter/GitHub/pskoett-skills/skills/intent-framed-agent/SKILL.md`
+- `/Users/pepe/Library/CloudStorage/OneDrive-TV2DANMARK/Dokumenter/GitHub/pskoett-skills/plugin/agents/context-monitor.md`</result>
+<usage><total_tokens>23603</total_tokens><tool_uses>0</tool_uses><duration_ms>41382</duration_ms></usage>
+</task-notification>
+
+---
+
+yes add the refined items

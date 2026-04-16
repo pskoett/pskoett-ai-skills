@@ -1,0 +1,83 @@
+{
+  "cli_version": "0.5.4",
+  "checkpoint_id": "9340ff2a18bc",
+  "session_id": "1169a6bd-601f-4ede-abf1-20e282f8e1ba",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-16T01:03:31.556646Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "skills/context-surfing/SKILL.md",
+    "skills/intent-framed-agent/SKILL.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "e36685781712",
+  "token_usage": {
+    "input_tokens": 248,
+    "cache_creation_tokens": 395911,
+    "cache_read_tokens": 923167,
+    "output_tokens": 55681,
+    "api_call_count": 19
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-16T01:03:31.221157Z",
+    "agent_lines": 24,
+    "agent_removed": 3,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 24,
+    "total_lines_changed": 27,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 9349,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".claude/settings.json": 97,
+        ".claude/settings.local.json": 18,
+        ".claude/skills/context-surfing/SKILL.md": 365,
+        ".claude/skills/intent-framed-agent/SKILL.md": 188,
+        ".claude/skills/mcp-builder/LICENSE.txt": 202,
+        ".claude/skills/mcp-builder/SKILL.md": 292,
+        ".claude/skills/plan-interview/SKILL.md": 317,
+        ".claude/skills/plan-interview/references/iterative-plan-refinement-prompts.md": 98,
+        ".claude/skills/self-improvement/SKILL.md": 500,
+        ".claude/skills/self-improvement/assets/LEARNINGS.md": 45,
+        ".claude/skills/self-improvement/assets/SKILL-TEMPLATE.md": 177,
+        ".claude/skills/self-improvement/references/examples.md": 374,
+        ".claude/skills/self-improvement/references/hooks-setup.md": 223,
+        ".claude/skills/self-improvement/scripts/activator.sh": 20,
+        ".claude/skills/self-improvement/scripts/error-detector.sh": 55,
+        ".claude/skills/self-improvement/scripts/extract-skill.sh": 203,
+        ".claude/skills/simplify-and-harden/SKILL.md": 519,
+        ".claude/skills/skill-creator/LICENSE.txt": 202,
+        ".claude/skills/skill-creator/SKILL.md": 485,
+        ".claude/skills/skill-creator/agents/analyzer.md": 274,
+        ".claude/skills/skill-creator/agents/comparator.md": 202,
+        ".claude/skills/skill-creator/agents/grader.md": 223,
+        ".claude/skills/skill-creator/assets/eval_review.html": 146,
+        ".claude/skills/skill-creator/eval-viewer/generate_review.py": 471,
+        ".claude/skills/skill-creator/eval-viewer/viewer.html": 1325,
+        ".claude/skills/skill-creator/references/schemas.md": 430,
+        ".claude/skills/skill-creator/scripts/aggregate_benchmark.py": 401,
+        ".claude/skills/skill-creator/scripts/generate_report.py": 326,
+        ".claude/skills/skill-creator/scripts/improve_description.py": 247,
+        ".claude/skills/skill-creator/scripts/package_skill.py": 136,
+        ".claude/skills/skill-creator/scripts/quick_validate.py": 103,
+        ".claude/skills/skill-creator/scripts/run_eval.py": 310,
+        ".claude/skills/skill-creator/scripts/run_loop.py": 328,
+        ".claude/skills/skill-creator/scripts/utils.py": 47
+      }
+    }
+  ]
+}
