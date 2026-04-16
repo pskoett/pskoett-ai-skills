@@ -3,7 +3,7 @@
   "checkpoint_id": "9340ff2a18bc",
   "strategy": "manual-commit",
   "branch": "main",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
     "skills/context-surfing/SKILL.md",
     "skills/intent-framed-agent/SKILL.md"
@@ -14,13 +14,19 @@
       "transcript": "/93/40ff2a18bc/0/full.jsonl",
       "content_hash": "/93/40ff2a18bc/0/content_hash.txt",
       "prompt": "/93/40ff2a18bc/0/prompt.txt"
+    },
+    {
+      "metadata": "/93/40ff2a18bc/1/metadata.json",
+      "transcript": "/93/40ff2a18bc/1/full.jsonl",
+      "content_hash": "/93/40ff2a18bc/1/content_hash.txt",
+      "prompt": "/93/40ff2a18bc/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 248,
-    "cache_creation_tokens": 395911,
-    "cache_read_tokens": 923167,
-    "output_tokens": 55681,
-    "api_call_count": 19
+    "input_tokens": 5903,
+    "cache_creation_tokens": 3361117,
+    "cache_read_tokens": 120106614,
+    "output_tokens": 311420,
+    "api_call_count": 374
   }
 }
