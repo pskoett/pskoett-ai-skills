@@ -117,6 +117,7 @@ skills/
 | [self-improvement](skills/self-improvement/) | Captures learnings and errors with hook-based activation and automatic skill extraction |
 | [skill-pipeline](skills/skill-pipeline/) | Pipeline orchestrator that classifies tasks and routes them through the right skill combination at the right depth |
 | [simplify-and-harden](skills/simplify-and-harden/) | Post-completion self-review that runs simplify, harden, and micro-documentation passes before signaling done |
+| [tweetclaw-x-twitter](skills/tweetclaw-x-twitter/) | Approval-gated TweetClaw guidance for X/Twitter automation from OpenClaw |
 | [verify-gate](skills/verify-gate/) | Machine verification gate (compile, test, lint) between implementation and quality review with fix loop |
 | [learning-aggregator](skills/learning-aggregator/) | Cross-session analysis of .learnings/ files — finds patterns, ranks promotion candidates |
 | [pre-flight-check](skills/pre-flight-check/) | Session-start scan that surfaces relevant learnings, errors, and eval status before work begins |

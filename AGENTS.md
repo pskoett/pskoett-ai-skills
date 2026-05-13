@@ -41,6 +41,7 @@ Public skills (`skills/`):
 - `skills/eval-creator-ci/SKILL.md` - CI-only eval regression runner using gh-aw.
 - `skills/agent-teams-simplify-and-harden/SKILL.md` - Parallel implementation and audit loop.
 - `skills/skill-pipeline/SKILL.md` - Pipeline orchestrator that classifies tasks and routes them through the right skill combination.
+- `skills/tweetclaw-x-twitter/SKILL.md` - Approval-gated TweetClaw guidance for X/Twitter automation from OpenClaw.
 - `skills/verify-gate/SKILL.md` - Machine verification gate (compile, test, lint) between implementation and quality review.
 - `skills/learning-aggregator/SKILL.md` - Cross-session analysis of accumulated .learnings/ files for pattern detection and promotion.
 - `skills/pre-flight-check/SKILL.md` - Session-start scan that surfaces relevant learnings and eval status before work begins.
