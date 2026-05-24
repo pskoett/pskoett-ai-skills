@@ -12,7 +12,8 @@ Artifact flow, signal routing, precedence rules, and budget constraints across t
 | `simplify-and-harden` | `learning_loop.candidates` (YAML) | `self-improvement` (pattern logging) |
 | `simplify-and-harden-ci` | PR comment + check run + YAML findings | `self-improvement-ci` (recurrence tracking) |
 | `agent-teams` | Learning loop candidates (same format as S&H) | `self-improvement` (cross-team pattern aggregation) |
-| `self-improvement` | `.learnings/LEARNINGS.md`, `.learnings/ERRORS.md` | Promotion targets: `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md` |
+| `self-healing` | `.learnings/HEALS.md` (HEAL entries with verification proof) + `.learnings/heals/<HEAL-ID>/` (lazy artifacts: scripts, patches, notes) | `pre-flight-check` (surfaces prior heals by Pattern-Key / Active-Context); `learning-aggregator` (cross-session recurrence); `self-improvement` (Handoff blocks at Recurrence ≥ 3) |
+| `self-improvement` | `.learnings/LEARNINGS.md`, `.learnings/ERRORS.md`, `.learnings/FEATURE_REQUESTS.md` | Promotion targets: `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md` |
 
 ## Signal Routing
 
@@ -27,6 +28,9 @@ Artifact flow, signal routing, precedence rules, and budget constraints across t
 | Drift exit (strong signal) | `context-surfing` | Stop execution, write handoff file, notify user |
 | Weak drift signal | `context-surfing` | Recovery protocol (re-anchor, reconcile, escalate if uncertain) |
 | Intent Check fired | `intent-framed-agent` | Pause, evaluate scope, user decides |
+| Command / test / build / lint failure | Any execution step (esp. `verify-gate`) | Activate `self-healing` (diagnose → patch → verify → file HEAL) |
+| Missing capability / helper needed | Implementation | Activate `self-healing` (write the helper, save under `.learnings/heals/<HEAL-ID>/`, file HEAL) |
+| Heal Handoff block emitted | `self-healing` (at Recurrence ≥ 3) | Activate `self-improvement` for promotion to memory file or new skill |
 | Error, correction, knowledge gap | Any skill | Activate `self-improvement` |
 | Learning promotion threshold met | `self-improvement` | Update CLAUDE.md / AGENTS.md / copilot-instructions.md |
 

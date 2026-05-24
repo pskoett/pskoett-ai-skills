@@ -29,6 +29,7 @@ Read these files in `.learnings/`:
 | `LEARNINGS.md` | Corrections, knowledge gaps, best practices, recurring patterns |
 | `ERRORS.md` | Command failures, API errors, exceptions |
 | `FEATURE_REQUESTS.md` | Missing capabilities |
+| `HEALS.md` | Verified runtime recoveries filed by `self-healing` — including `Handoff` blocks flagging recurring patterns ready for promotion |
 
 Parse each entry's metadata:
 - `Pattern-Key` — the stable deduplication key

@@ -20,7 +20,8 @@ This is the inner loop's **verify** step. Without it, the agent hands off code w
 
 ```
 [implementation] → verify-gate → simplify-and-harden → self-improvement
-                   ↻ fix loop
+                   ↻ fix loop — on failure, hands diagnostics to self-healing
+                   ↳ self-healing (diagnose → patch → verify → file HEAL); verify-gate re-checks
 ```
 
 ## Step 1: Discover Project Commands
@@ -135,11 +136,11 @@ verify-gate should run at every pipeline depth except Trivial:
 ### agent-teams-simplify-and-harden
 agent-teams already has compile + tests embedded in Step 4. verify-gate can replace that embedded logic for consistency — the team lead spawns verify-gate instead of running ad-hoc compile/test commands.
 
+### self-healing
+On any failure during the verify run, hand the diagnostics to `self-healing` (don't just retry the same command). Self-healing runs the diagnose → patch → verify loop, files a `HEAL-` entry to `.learnings/HEALS.md`, and returns control. Verify-gate then re-runs the checks. Up to 3 heal attempts per phase before abandoning.
+
 ### self-improvement
-If the fix loop resolves an error that was non-obvious, log it:
-- Pattern: what broke and why
-- Fix: what resolved it
-- Prevention: what convention or check would have caught it earlier
+If the heal loop surfaces a recurring pattern (Recurrence-Count >= 3 in `HEALS.md`), the heal's Handoff block flags it for promotion via self-improvement to `CLAUDE.md` / `AGENTS.md` / a new skill. For non-heal learnings (corrections, knowledge gaps, feature requests), log to `.learnings/LEARNINGS.md`, `ERRORS.md`, or `FEATURE_REQUESTS.md` per the self-improvement skill.
 
 ## What This Skill Does NOT Do
 

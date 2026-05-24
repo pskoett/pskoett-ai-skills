@@ -1,0 +1,11 @@
+[project]
+name = "recurring-heal-fixture"
+version = "0.0.0"
+requires-python = ">=3.11"
+dependencies = [
+  "requests>=2.31",
+  "pydantic>=2.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]

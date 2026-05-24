@@ -38,12 +38,12 @@ Evaluate these signals to determine task class:
 ### Small
 **Examples:** isolated bug fix, single-file feature addition, test fix
 **Signals:** 1 file, <10 lines of logic change, low risk, known area
-**Pipeline:** `simplify-and-harden` only (post-completion)
+**Pipeline:** `verify-gate` + `self-healing` (on failure) + `simplify-and-harden` (post-completion)
 
 ### Medium
 **Examples:** feature in a known area spanning 2-5 files, adding an API endpoint, component refactor
 **Signals:** 2-5 files, known patterns, moderate complexity
-**Pipeline:** `intent-framed-agent` + `simplify-and-harden`
+**Pipeline:** `intent-framed-agent` + `verify-gate` + `self-healing` (on failure) + `simplify-and-harden`
 
 ### Large
 **Examples:** complex refactor, new architecture, unfamiliar codebase, auth system changes, database migration

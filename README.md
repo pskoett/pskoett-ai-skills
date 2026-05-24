@@ -5,11 +5,11 @@ This repository is my personal skill testing ground.
 
 ## Philosophy
 
-Every skill in this collection is built around a philosophy — a principle that addresses a specific failure mode in how agents work today. `plan-interview` is about collaborative planning: before codebase exploration starts, user and agent run a structured interview to align on constraints, scope, risk, and success criteria — and to surface whether a preparatory refactor should come before the main change. `intent-framed-agent` makes execution intent explicit so scope drift becomes visible. `context-surfing` monitors context quality and exits cleanly before degradation corrupts output. `verify-gate` runs compile, test, and lint checks so the agent doesn't need you to tell it the output was wrong if a test can. `simplify-and-harden` uses the peak context at end-of-task for a focused quality and security review. `self-improvement` turns repeated mistakes into durable rules that persist across sessions.
+Every skill in this collection is built around a philosophy — a principle that addresses a specific failure mode in how agents work today. `plan-interview` is about collaborative planning: before codebase exploration starts, user and agent run a structured interview to align on constraints, scope, risk, and success criteria — and to surface whether a preparatory refactor should come before the main change. `intent-framed-agent` makes execution intent explicit so scope drift becomes visible. `context-surfing` monitors context quality and exits cleanly before degradation corrupts output. `verify-gate` runs compile, test, and lint checks so the agent doesn't need you to tell it the output was wrong if a test can. `self-healing` turns mid-task failures into verified, reusable artifacts instead of swept-under-the-rug retries. `simplify-and-harden` uses the peak context at end-of-task for a focused quality and security review. `self-improvement` turns repeated mistakes into durable rules that persist across sessions.
 
 The common thread: agents have peak context at specific moments — after planning, mid-execution, at completion, after learning — and these skills are designed to exploit those peaks. Each skill encodes a philosophy that agents struggle to internalize on their own, turning it into a structured workflow they can follow reliably.
 
-If you want to improve agent output over time, you need two loops, not one. The inner loop catches failures during a running session: the agent detects a problem, verifies its work against machine signals, and recovers without you touching anything. The outer loop closes gaps across sessions: you capture where the agent failed, figure out what knowledge was missing, and encode it somewhere the agent can reach next time. `learning-aggregator` reads accumulated learnings across sessions and surfaces patterns. `harness-updater` encodes those patterns as permanent rules in project instruction files. `eval-creator` turns promoted rules into regression tests. `pre-flight-check` surfaces all of this at the start of the next session — closing the loop. The knowledge gaps get smaller with every cycle as it compounds.
+If you want to improve agent output over time, you need two loops, not one. The inner loop catches failures during a running session: the agent detects a problem, verifies its work against machine signals, and — with `self-healing` — recovers, files the verified fix as a reusable artifact, and continues, without you touching anything. The outer loop closes gaps across sessions: you capture where the agent failed, figure out what knowledge was missing, and encode it somewhere the agent can reach next time. `learning-aggregator` reads accumulated learnings across sessions and surfaces patterns. `harness-updater` encodes those patterns as permanent rules in project instruction files. `eval-creator` turns promoted rules into regression tests. `pre-flight-check` surfaces all of this at the start of the next session — closing the loop. The knowledge gaps get smaller with every cycle as it compounds.
 
 `skill-pipeline` ties these pieces together by classifying the task and routing it through the right combination at the right depth.
 
@@ -63,6 +63,7 @@ gh skill install pskoett/pskoett-skills
 
 # Install specific skills directly
 gh skill install pskoett/pskoett-skills verify-gate
+gh skill install pskoett/pskoett-skills self-healing
 gh skill install pskoett/pskoett-skills simplify-and-harden
 gh skill install pskoett/pskoett-skills self-improvement
 
@@ -78,6 +79,7 @@ If you only want specific skills and not the full plugin bundle:
 
 ```bash
 npx skills add pskoett/pskoett-skills/skills/verify-gate
+npx skills add pskoett/pskoett-skills/skills/self-healing
 npx skills add pskoett/pskoett-skills/skills/simplify-and-harden
 npx skills add pskoett/pskoett-skills/skills/self-improvement
 ```
@@ -114,6 +116,7 @@ skills/
 | [dx-data-navigator](skills/dx-data-navigator/) | Query DX Data Cloud for developer productivity metrics, DORA metrics, PR/deployment data, and engineering analytics |
 | [intent-framed-agent](skills/intent-framed-agent/) | Captures a lightweight intent contract at execution start and monitors coding-task drift until resolution |
 | [plan-interview](skills/plan-interview/) | Runs a structured interview before planning non-trivial implementations |
+| [self-healing](skills/self-healing/) | Active runtime recovery — diagnose, patch, verify, file the verified fix when a command, test, helper, env, or external service fails mid-task |
 | [self-improvement](skills/self-improvement/) | Captures learnings and errors with hook-based activation and automatic skill extraction |
 | [skill-pipeline](skills/skill-pipeline/) | Pipeline orchestrator that classifies tasks and routes them through the right skill combination at the right depth |
 | [simplify-and-harden](skills/simplify-and-harden/) | Post-completion self-review that runs simplify, harden, and micro-documentation passes before signaling done |
@@ -128,6 +131,7 @@ Headless CI variants for GitHub Agentic Workflows. Each mirrors an interactive s
 
 | Skill | Description |
 |-------|-------------|
+| [self-healing-ci](skills/self-healing-ci/) | CI-only self-healing workflow — diagnoses failed PR checks, proposes verified patches as PR comments or label-gated commits, files HEAL entries to `.learnings/HEALS.md` |
 | [self-improvement-ci](skills/self-improvement-ci/) | CI-only self-improvement workflow for recurring failure-pattern capture using gh-aw |
 | [simplify-and-harden-ci](skills/simplify-and-harden-ci/) | CI-only simplify/harden workflow for pull requests using gh-aw with headless scan/report gates |
 | [learning-aggregator-ci](skills/learning-aggregator-ci/) | CI-only cross-session learning aggregation — scheduled pattern detection and gap reporting using gh-aw |
@@ -148,6 +152,7 @@ Each skill prevents a distinct failure mode:
 | `intent-framed-agent` | Inner (detect) | Scope creep during execution |
 | `context-surfing` | Inner (detect + recover) | Degraded-context corruption |
 | `verify-gate` | Inner (verify + recover) | Shipping code that doesn't compile or pass tests |
+| `self-healing` | Inner (recover) | Mid-task failures becoming silent recurrences instead of verified, reusable fixes |
 | `simplify-and-harden` | Inner (detect) | Shipping rough/insecure code |
 | `self-improvement` | Bridge (capture) | Repeating the same mistakes |
 | `pre-flight-check` | Bridge (surface) | Starting work blind to known patterns |
@@ -159,14 +164,15 @@ Each skill prevents a distinct failure mode:
 
 ```
 [plan-interview] → [intent-framed-agent] ⟂ [context-surfing] → [verify-gate] → [simplify-and-harden] → [self-improvement]
-                                          ↑   concurrent    ↑    ↻ fix loop
+                                          ↑   concurrent    ↑    ↳ [self-healing] (on failure: diagnose → patch → verify → file HEAL)
+                                                                  ↻ fix loop
 ```
 
 **Stage 1 — Planning** (manual gate): `plan-interview` runs a structured interview and produces a plan file in `docs/plans/`. This is the only skill that requires explicit invocation (`/plan-interview`). Downstream skills activate automatically when present, but each works independently if earlier stages are skipped.
 
 **Stage 2 — Execution** (concurrent monitoring): `intent-framed-agent` captures the intent frame and monitors *scope* drift. `context-surfing` monitors *context quality* drift. Both run simultaneously. If both fire at once, context-surfing's exit takes precedence — degraded context makes scope checks unreliable.
 
-**Stage 3 — Verification** (machine gate): `verify-gate` runs the project's compile, test, and lint commands. If any fail, it enters a fix loop (up to 3 attempts per phase). Only when all checks pass does work proceed to the quality review.
+**Stage 3 — Verification** (machine gate): `verify-gate` runs the project's compile, test, and lint commands. If any fail, `self-healing` takes the diagnosis loop: identify root cause, write the fix (script, env tweak, alt command), verify by re-running, and file a `HEAL-` entry to `.learnings/HEALS.md`. Verify-gate then re-checks. Up to 3 attempts per phase before abandoning. Only when all checks pass does work proceed to the quality review.
 
 **Stage 4 — Review** (post-completion): `simplify-and-harden` runs three passes (simplify, harden, document) on the completed work.
 
@@ -196,6 +202,7 @@ Each skill prevents a distinct failure mode:
 | Execution | Intent frame | Emitted in session output |
 | Execution | Handoff file (on drift exit) | `.context-surfing/handoff-<slug>-<timestamp>.md` |
 | Verification | Pass/fail signal | Emitted in session output |
+| Recovery | Verified heal entry + (lazy) artifacts | `.learnings/HEALS.md`, `.learnings/heals/<HEAL-ID>/` |
 | Review | Structured YAML summary | Appended to task output |
 | Learning | Learning entries | `.learnings/LEARNINGS.md`, `ERRORS.md`, `FEATURE_REQUESTS.md` |
 | Aggregation | Gap report | Emitted by learning-aggregator |
@@ -211,8 +218,8 @@ Match depth to complexity:
 | Task | Skills |
 |------|--------|
 | Trivial (typo fix, rename) | None |
-| Small (isolated bug fix) | `verify-gate` + `simplify-and-harden` |
-| Medium (feature, multi-file) | `intent-framed-agent` + `verify-gate` + `simplify-and-harden` |
+| Small (isolated bug fix) | `verify-gate` + `self-healing` (on failure) + `simplify-and-harden` |
+| Medium (feature, multi-file) | `intent-framed-agent` + `verify-gate` + `self-healing` + `simplify-and-harden` |
 | Large (refactor, new architecture) | Full inner loop pipeline |
 | Long-running (multi-session) | Full inner loop — `context-surfing` is critical |
 | Periodic (weekly, sprint boundary) | Outer loop: `learning-aggregator` → `harness-updater` → `eval-creator` |

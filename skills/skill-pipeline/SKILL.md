@@ -5,11 +5,13 @@ description: >
   through the correct combination of skills at the right depth. Implements two
   feedback loops: the inner loop (detect, verify, recover) runs within a session
   via plan-interview, intent-framed-agent, context-surfing, verify-gate,
-  simplify-and-harden, and self-improvement. The outer loop (inspect, encode,
-  regress-test) runs across sessions via learning-aggregator, harness-updater,
-  and eval-creator. pre-flight-check bridges the two by surfacing accumulated
-  knowledge at session start. Handles standard, team-based, CI, and outer-loop
-  pipeline variants. Does not replace individual skills; dispatches to them.
+  self-healing (active recovery on failure), simplify-and-harden, and
+  self-improvement. The outer loop (inspect, encode, regress-test) runs across
+  sessions via learning-aggregator, harness-updater, and eval-creator.
+  pre-flight-check bridges the two by surfacing accumulated knowledge — past
+  heals and learnings — at session start. Handles standard, team-based, CI,
+  and outer-loop pipeline variants. Does not replace individual skills;
+  dispatches to them.
 ---
 
 # Skill Pipeline
@@ -71,15 +73,17 @@ Route task class to the right variant:
 ### Standard Pipeline (Inner Loop)
 
 ```
-pre-flight-check (SessionStart hook — surfaces prior learnings)
+pre-flight-check (SessionStart hook — surfaces prior learnings + heals)
   → classify
   → (recommend /plan-interview if Large or Long-running)
   → intent-framed-agent (at planning-to-execution transition)
   → context-surfing (auto-activates when intent frame + plan exist; concurrent with intent monitoring)
   → [IMPLEMENTATION]
-  → verify-gate (compile + test + lint; fix loop if red)
+  → self-healing  ← inner-loop recovery primitive; called whenever a command/test/build/external call fails or a helper is missing.
+  →                Diagnoses, patches, verifies, files HEAL- entry. Resumes when verified.
+  → verify-gate (compile + test + lint; fix loop if red — fix loop calls self-healing)
   → simplify-and-harden (post-completion, if non-trivial diff)
-  → self-improvement (on errors, corrections, or S&H learning candidates)
+  → self-improvement (on errors, corrections, S&H learning candidates, recurring heal handoffs)
 ```
 
 **Skill-by-class activation:**
@@ -91,6 +95,7 @@ pre-flight-check (SessionStart hook — surfaces prior learnings)
 | intent-framed-agent | - | - | Activate | Activate | Activate |
 | context-surfing | - | - | - | Activate | Critical |
 | verify-gate | - | Activate | Activate | Activate | Activate |
+| self-healing | On failure | On failure | On failure | On failure | On failure |
 | simplify-and-harden | - | If non-trivial | If non-trivial | If non-trivial | If non-trivial |
 | self-improvement | On error only | On error only | On error/completion | On error/completion | On error/completion |
 
@@ -148,6 +153,7 @@ Not just which skills — how deep each goes:
 | Intent frame | - | Single frame | Full frame + monitoring | Full + handoff | Team lead frame |
 | Context-surfing | - | - | Active | Critical (exit protocol ready) | Lightweight drift checks |
 | Verify-gate | Compile + test | Compile + test | Compile + test + lint | Compile + test + lint | Compile + test (per round) |
+| Self-healing | On failure (file HEAL) | On failure (file HEAL) | On failure + recurrence check | On failure + recurrence check | On failure (per task) |
 | S&H budget | 20% diff, 60s | 20% diff, 60s | 20% diff, 60s | 20% diff, 60s | 30% team growth cap |
 | Audit rounds (teams) | - | - | - | - | Up to 3 |
 | Self-improvement | Error-triggered | Error-triggered | Error + S&H feed | Error + S&H feed | Error + teams feed |
@@ -164,15 +170,17 @@ Artifacts flow between skills. The orchestrator ensures each skill receives what
 
 3. **Handoff file** (`.context-surfing/handoff-[slug]-[timestamp].md`) — produced by `context-surfing` on drift exit, consumed by next session for resume.
 
-4. **Verify-gate signal** — produced by `verify-gate` (pass/fail + diagnostics), consumed by `simplify-and-harden` (only activates after green gate) and fix loop (on failure).
+4. **Verify-gate signal** — produced by `verify-gate` (pass/fail + diagnostics), consumed by `simplify-and-harden` (only activates after green gate) and the heal loop (on failure — verify-gate hands the diagnostics to self-healing, which diagnoses + patches + re-verifies, then signals verify-gate to re-check).
 
-5. **Learning candidates** (`learning_loop.candidates`) — produced by `simplify-and-harden` and `agent-teams`, consumed by `self-improvement` for pattern tracking.
+5. **HEAL entries + artifacts** (`.learnings/HEALS.md`, `.learnings/heals/<HEAL-ID>/`) — produced by `self-healing`, consumed by `pre-flight-check` (surfaces prior heals at session start by `Pattern-Key` / `Active-Context`), `learning-aggregator` (cross-session recurrence analysis), and `self-improvement` (when `Handoff` block flags promotion at Recurrence ≥ 3).
 
-6. **Learning entries** (`.learnings/*.md`) — produced by `self-improvement`, consumed by `learning-aggregator` for cross-session analysis and by `pre-flight-check` at session start.
+6. **Learning candidates** (`learning_loop.candidates`) — produced by `simplify-and-harden` and `agent-teams`, consumed by `self-improvement` for pattern tracking.
 
-7. **Gap report** — produced by `learning-aggregator`, consumed by `harness-updater` agent for promotion and `eval-creator` for test case generation.
+7. **Learning entries** (`.learnings/*.md`) — produced by `self-improvement`, consumed by `learning-aggregator` for cross-session analysis and by `pre-flight-check` at session start.
 
-8. **Eval cases** (`.evals/cases/*.md`) — produced by `eval-creator`, consumed by regression runs and surfaced by `pre-flight-check`.
+8. **Gap report** — produced by `learning-aggregator`, consumed by `harness-updater` agent for promotion and `eval-creator` for test case generation.
+
+9. **Eval cases** (`.evals/cases/*.md`) — produced by `eval-creator`, consumed by regression runs and surfaced by `pre-flight-check`.
 
 **Precedence:** If `context-surfing` and `intent-framed-agent` both fire simultaneously, context-surfing's exit takes precedence. Degraded context makes scope checks unreliable.
 
@@ -191,8 +199,11 @@ When user approves a plan from `plan-interview`, flow directly into the executio
 ### Planning-to-Execution Transition
 When no plan-interview was used and the user signals readiness ("go ahead", "implement this", "let's start"), activate `intent-framed-agent`. Emit Intent Frame. Wait for user confirmation of the frame before coding.
 
+### Failure mid-implementation
+A command, test, build, lint, or external call fails before verify-gate even runs (or any other mid-task gap appears — missing helper, env drift, API change). Route into `self-healing`: diagnose, patch, verify, file the HEAL entry. Resume execution from the working state. Most heals are recurrences — `self-healing` searches `HEALS.md` by Pattern-Key first.
+
 ### Implementation Complete
-Activate `verify-gate` to run compile, test, and lint checks. If any fail, enter the fix loop (up to 3 attempts per phase). Once all checks pass and the diff meets the non-trivial threshold (see `references/classification-rules.md`), activate `simplify-and-harden`. If the diff is trivial, signal completion directly after verify-gate passes.
+Activate `verify-gate` to run compile, test, and lint checks. If any fail, route into `self-healing` for the diagnosis/patch/verify loop (up to 3 attempts per phase). After each heal, verify-gate re-runs the checks. Once all checks pass and the diff meets the non-trivial threshold (see `references/classification-rules.md`), activate `simplify-and-harden`. If the diff is trivial, signal completion directly after verify-gate passes.
 
 ### Drift Detected
 If `context-surfing` fires a drift exit, stop execution. Write handoff file. If the task was classified below Large, consider re-classifying upward for the next session.

@@ -12,7 +12,8 @@ For single-feature depth work. Not all stages activate for every task class — 
 
 Full pipeline (Large/Long-running):
 ```
-[plan-interview] → [intent-framed-agent] ⟂ [context-surfing] → [simplify-and-harden] → [self-improvement]
+[plan-interview] → [intent-framed-agent] ⟂ [context-surfing] → [verify-gate] → [simplify-and-harden] → [self-improvement]
+                                                                    ↳ on failure → [self-healing] (diagnose → patch → verify → file HEAL) → re-verify
 ```
 
 ### Step-by-step
@@ -28,13 +29,15 @@ Full pipeline (Large/Long-running):
    - `context-surfing` monitors **context quality** (are we still capable of doing it well?)
    - If both fire simultaneously, `context-surfing` exit takes precedence.
 
-5. **Review** — On task completion, `simplify-and-harden` runs three passes:
+5. **Heal on failure (inner-loop recovery)** — Any time a command, test, build, lint, missing helper, environment drift, or external service issue blocks progress, route into `self-healing`. The loop: diagnose root cause, write/apply the patch (artifacts under `.learnings/heals/<HEAL-ID>/` only if files are generated), verify by re-running the failing operation, file the verified `HEAL-` entry to `.learnings/HEALS.md`. Most heals are recurrences — search `HEALS.md` by `Pattern-Key` first. At Recurrence ≥ 3 across distinct tasks, append a `Handoff` block to flag the entry for promotion via self-improvement.
+
+6. **Review** — On task completion, `simplify-and-harden` runs three passes:
    - Simplify (clarity, dead code, naming, control flow)
    - Harden (validation, injection vectors, auth, secrets)
    - Document (max 5 comments on non-obvious decisions)
    - Cosmetic fixes auto-apply; refactors require human approval.
 
-6. **Learn** — `self-improvement` ingests `learning_loop.candidates` from S&H. Logs entries with `pattern_key`. Promotes recurring patterns (>= 3 occurrences, >= 2 tasks, 30 days) to project memory.
+7. **Learn** — `self-improvement` ingests `learning_loop.candidates` from S&H plus `Handoff` blocks from recurring heals. Logs entries with `pattern_key`. Promotes recurring patterns (>= 3 occurrences, >= 2 tasks, 30 days) to project memory.
 
 ### Wave Anchor Composition
 

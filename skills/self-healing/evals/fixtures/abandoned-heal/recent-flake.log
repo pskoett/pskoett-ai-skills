@@ -1,0 +1,29 @@
+$ pnpm test
+ RUN  v1.6.0
+
+ ❯ src/Card.test.tsx (1)
+   × Card > renders default
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/Card.test.tsx > Card > renders default
+Error: Snapshot `Card > renders default 1` mismatched
+
+- Expected
++ Received
+
+  <article
+-   data-id="9c1a7f2d-4b8e-4c11-9e3a-1f2d8b0c5e44"
++   data-id="f3a7c2e1-6d59-4a8b-b1f0-3c8e2a9d4b71"
+    data-rendered-at="2023-11-14T22:13:20.000Z"
+  >
+    <h2>
+      Hello
+    </h2>
+  </article>
+
+# Note: 3 runs ago this passed. Then with the time stubbed, it passed twice. Now it fails again with a different `data-id`. The clock stub fixed only one of two non-deterministic inputs; the UUID is still random.
+
+Test Files  1 failed | 0 passed (1)
+     Tests  1 failed (1)
+exit code: 1

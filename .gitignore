@@ -1,2 +1,5 @@
 docs/
 .context-surfing/
+
+# Skill-creator eval workspaces (iteration outputs, snapshots, benchmark artifacts)
+skills/*-workspace/

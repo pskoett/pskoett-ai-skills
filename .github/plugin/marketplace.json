@@ -6,20 +6,21 @@
   },
   "metadata": {
     "description": "AI agent skill pipeline for quality, security, and continuous improvement — GitHub Copilot CLI edition",
-    "version": "2.0.0"
+    "version": "2.1.0"
   },
   "plugins": [
     {
       "name": "pskoett-ai-skills",
       "source": "./plugin/.copilot-plugin",
-      "description": "Two-loop skill pipeline for GitHub Copilot CLI. Inner loop (plan-interview, intent-framed-agent, context-surfing, verify-gate, simplify-and-harden) catches failures in-session. Outer loop (learning-aggregator, harness-updater, eval-creator, pre-flight-check) captures recurring patterns, promotes them to AGENTS.md as permanent rules, and turns failures into regression tests. The harness gets stronger with every cycle.",
-      "version": "2.0.0",
+      "description": "Two-loop skill pipeline for GitHub Copilot CLI. Inner loop (plan-interview, intent-framed-agent, context-surfing, verify-gate, self-healing, simplify-and-harden) catches failures in-session — including active runtime recovery via self-healing when a command, test, build, helper, env, or external service fails mid-task. Outer loop (learning-aggregator, harness-updater, eval-creator, pre-flight-check) captures recurring patterns, promotes them to AGENTS.md as permanent rules, and turns failures into regression tests. The harness gets stronger with every cycle.",
+      "version": "2.1.0",
       "license": "MIT",
       "repository": "https://github.com/pskoett/pskoett-skills",
       "keywords": [
         "skill-pipeline",
         "two-loop",
         "verify-gate",
+        "self-healing",
         "learning-aggregator",
         "eval-creator",
         "context-management",

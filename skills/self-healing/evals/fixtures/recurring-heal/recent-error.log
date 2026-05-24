@@ -1,0 +1,22 @@
+$ pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.11.6, pytest-8.0.2, pluggy-1.4.0
+rootdir: /tmp/recurring-heal
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_____________________ ERROR collecting tests/test_model.py _____________________
+ImportError while importing test module '/tmp/recurring-heal/tests/test_model.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+.venv/lib/python3.11/site-packages/_pytest/python.py:493: in importtestmodule
+    mod = import_path(...)
+tests/test_model.py:1: in <module>
+    from pydantic import BaseModel
+E   ModuleNotFoundError: No module named 'pydantic'
+
+=========================== short test summary info ============================
+ERROR tests/test_model.py
+!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.04s ===============================
+exit code: 2

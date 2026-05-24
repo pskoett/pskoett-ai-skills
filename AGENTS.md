@@ -33,7 +33,9 @@ Public skills (`skills/`):
 - `skills/dx-data-navigator/SKILL.md` - Query DX data via MCP + SQL patterns.
 - `skills/intent-framed-agent/SKILL.md` - Capture intent at execution start and monitor coding-task scope drift.
 - `skills/plan-interview/SKILL.md` - Structured interview before implementation planning.
-- `skills/self-improvement/SKILL.md` - Capture learnings, errors, and feature requests.
+- `skills/self-healing/SKILL.md` - Active runtime recovery: diagnose, patch, verify, file the verified fix when something breaks mid-task. Pairs with self-improvement (verifies + persists; self-improvement promotes).
+- `skills/self-healing-ci/SKILL.md` - CI-only self-healing workflow using gh-aw — diagnoses failed PR checks and proposes verified patches as PR comments / label-gated commits.
+- `skills/self-improvement/SKILL.md` - Capture learnings, errors, and feature requests. Receives recurrence handoffs from self-healing.
 - `skills/self-improvement-ci/SKILL.md` - CI-only self-improvement workflow using gh-aw.
 - `skills/simplify-and-harden/SKILL.md` - Post-completion simplify/harden quality pass for general agent sessions.
 - `skills/simplify-and-harden-ci/SKILL.md` - CI-only simplify/harden workflow using gh-aw.
@@ -57,15 +59,27 @@ Local Claude skills (`.claude/skills/`):
 
 Keep this section synchronized across `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
 
+## Self-Healing Workflow
+
+When a command, test, build, or external call fails mid-task — or when the agent needs a helper that doesn't exist yet:
+
+1. Run `skills/self-healing/SKILL.md` to diagnose, patch, verify, and file a `HEAL-` entry to `.learnings/HEALS.md`.
+2. Mandatory verify before persist — re-run the failing operation; only `verified` if it passes. Use `pending-verify` honestly when sandboxed; use `abandoned` when the fix can't be made to work.
+3. Most heals are recurrences — search `HEALS.md` by `Pattern-Key` first; increment `Recurrence-Count` on the existing entry rather than creating a duplicate.
+4. At `Recurrence-Count >= 3` across distinct tasks, append a `Handoff` block to flag the entry for promotion via self-improvement.
+
+Self-healing files the verified patch; self-improvement promotes it. Do not overlap.
+
 ## Self-Improvement Workflow
 
 When errors or corrections occur:
 1. Log to `.learnings/ERRORS.md`, `LEARNINGS.md`, or `FEATURE_REQUESTS.md`.
-2. Review and promote broadly applicable learnings to:
+2. For active runtime failures with verified fixes, use `skills/self-healing/SKILL.md` (files to `HEALS.md`) instead.
+3. Review and promote broadly applicable learnings — including heal handoffs at `Recurrence-Count >= 3` — to:
    - `CLAUDE.md` - project facts and conventions
    - `AGENTS.md` - workflows and automation
    - `.github/copilot-instructions.md` - Copilot context
-3. For CI-only/headless learning capture, use `skills/self-improvement-ci/SKILL.md` (gh-aw).
+4. For CI-only/headless learning capture, use `skills/self-improvement-ci/SKILL.md` (gh-aw).
 
 ## Simplify and Harden Workflow
 

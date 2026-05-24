@@ -41,10 +41,11 @@ When invoked explicitly, the pre-flight check does a deeper analysis:
 
 ### Step 1: Scan .learnings/
 
-Read `.learnings/LEARNINGS.md`, `.learnings/ERRORS.md`, `.learnings/FEATURE_REQUESTS.md`.
+Read `.learnings/LEARNINGS.md`, `.learnings/ERRORS.md`, `.learnings/FEATURE_REQUESTS.md`, and `.learnings/HEALS.md` (the last from `self-healing` — verified runtime fixes filed during prior sessions; surface these prominently so the agent applies known fixes before reinventing them).
 
 For each entry, extract:
 - Pattern-Key, Summary, Priority, Status, Area, Related Files, Recurrence-Count, Last-Seen
+- For HEAL entries: also Active-Context, Trigger, and any Handoff block flagging promotion readiness
 
 ### Step 2: Scan .evals/ (if exists)
 

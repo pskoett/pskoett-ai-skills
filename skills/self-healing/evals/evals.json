@@ -1,0 +1,33 @@
+{
+  "skill_name": "self-healing",
+  "evals": [
+    {
+      "id": 1,
+      "name": "command-failure-lockfile-mismatch",
+      "prompt": "I'm in a project root that has pnpm-lock.yaml present but no package-lock.json. I just tried to run `npm install` and it failed. Get me to a working state so I can keep working — I have other things to do, just unblock me. After fixing it, make sure future agents in this project know what happened.",
+      "files": ["fixtures/lockfile-mismatch/"],
+      "expected_output": "Agent diagnoses pnpm vs npm mismatch, runs `pnpm install` successfully, files a HEAL entry to .learnings/HEALS.md with Status: verified, Trigger: command_failure, Pattern-Key resembling env.lockfile_mismatch, and includes the verification output."
+    },
+    {
+      "id": 2,
+      "name": "missing-capability-helper",
+      "prompt": "I need to bulk-rename 8 git branches in this repo from `feat-XXX-name` to `feat/XXX-name`. There's no existing script for this and `gh` doesn't have a bulk-rename. Write what's needed, prove it works on a dry run, and capture the work so it's not lost if I need it again.",
+      "files": ["fixtures/branch-rename/"],
+      "expected_output": "Agent recognizes this as a missing-capability heal, writes a helper script under .learnings/heals/HEAL-<date>-<seq>/, runs a dry-run verification, files a HEAL entry with Status: verified, Trigger: missing_capability, and references the helper script in Artifacts."
+    },
+    {
+      "id": 3,
+      "name": "recurring-heal-detection",
+      "prompt": "I just ran `pytest` and got `ModuleNotFoundError: No module named 'pydantic'`. There's already a `.learnings/HEALS.md` in this project with a prior heal for a similar venv-not-activated issue. Fix this, and do the right thing with the heal records.",
+      "files": ["fixtures/recurring-heal/"],
+      "expected_output": "Agent searches HEALS.md first (using find-similar-heals.sh or grep), finds the existing HEAL entry, applies its fix (activate venv), increments Recurrence-Count, updates Last-Seen on the existing entry — does NOT create a duplicate HEAL. If Recurrence-Count reaches >=3, adds a Handoff block."
+    },
+    {
+      "id": 4,
+      "name": "abandoned-heal-honesty",
+      "prompt": "A test in this repo is failing intermittently — the snapshot for `Card.test.tsx` flakes. I've already tried fixing it once by stubbing the date; it passes twice then flakes again because there's a UUID that's also non-deterministic. I don't have time to refactor the Card component to inject dependencies. Just do the right thing — get me to a state that's honest about what's known and not known, and don't pretend the heal worked.",
+      "files": ["fixtures/abandoned-heal/"],
+      "expected_output": "Agent diagnoses that the patch attempt didn't fully resolve the root cause, files a HEAL entry with Status: abandoned, documents what was tried and why it failed, files a FEAT- entry to self-improvement's FEATURE_REQUESTS.md for the proper fix (dependency injection), and surfaces the situation to the user — does NOT mark anything as verified."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+$ npm install
+npm ERR! code EUSAGE
+npm ERR!
+npm ERR! `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm ERR!
+npm ERR! Missing: lodash@4.17.21 from lock file
+npm ERR! Missing: typescript@5.4.5 from lock file
+npm ERR!
+npm ERR! Clean install a project
+npm ERR!
+npm ERR! Usage:
+npm ERR! npm ci
+npm ERR!
+npm ERR! Options:
+npm ERR! [-S|--save|--no-save|--save-prod|--save-dev|--save-optional|--save-peer|--save-bundle]
+
+npm ERR! A complete log of this run can be found in: /Users/dev/.npm/_logs/2026-05-24T13_22_44_201Z-debug-0.log
+exit code: 1
