@@ -1,0 +1,9 @@
+it looks good, explain the main use-case here and re-view the skills design and purpose and the overall skill with fresh eyes and in the mindset that this is an agnostic skill
+
+---
+
+great work, are we covering this list ?
+
+---
+
+yes, fix these issues you found as well
