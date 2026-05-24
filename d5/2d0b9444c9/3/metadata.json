@@ -1,0 +1,62 @@
+{
+  "cli_version": "0.5.4",
+  "checkpoint_id": "d52d0b9444c9",
+  "session_id": "ae438fb7-7396-4870-8193-b8cde8f487fb",
+  "strategy": "manual-commit",
+  "created_at": "2026-05-24T19:20:38.261628Z",
+  "branch": "feat/self-healing-skill",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".claude-plugin/marketplace.json",
+    ".github/copilot-instructions.md",
+    ".github/plugin/marketplace.json",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "plugin/.claude-plugin/plugin.json",
+    "plugin/.codex-plugin/plugin.json",
+    "plugin/.copilot-plugin/plugin.json",
+    "skills/learning-aggregator/SKILL.md",
+    "skills/pre-flight-check/SKILL.md",
+    "skills/self-improvement/SKILL.md",
+    "skills/skill-pipeline/SKILL.md",
+    "skills/skill-pipeline/references/classification-rules.md",
+    "skills/skill-pipeline/references/handoff-matrix.md",
+    "skills/skill-pipeline/references/pipeline-variants.md",
+    "skills/verify-gate/SKILL.md"
+  ],
+  "agent": "Claude Code",
+  "model": "",
+  "turn_id": "4fdaa0ec0823",
+  "token_usage": {
+    "input_tokens": 5,
+    "cache_creation_tokens": 17795,
+    "cache_read_tokens": 18699,
+    "output_tokens": 7,
+    "api_call_count": 1
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-05-24T19:20:38.214631Z",
+    "agent_lines": 136,
+    "agent_removed": 55,
+    "human_added": 2899,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 3035,
+    "total_lines_changed": 3090,
+    "agent_percentage": 6.181229773462784,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
