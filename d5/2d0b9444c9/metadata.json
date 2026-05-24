@@ -3,7 +3,7 @@
   "checkpoint_id": "d52d0b9444c9",
   "strategy": "manual-commit",
   "branch": "feat/self-healing-skill",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
     ".claude-plugin/marketplace.json",
     ".github/copilot-instructions.md",
@@ -29,13 +29,19 @@
       "transcript": "/d5/2d0b9444c9/0/full.jsonl",
       "content_hash": "/d5/2d0b9444c9/0/content_hash.txt",
       "prompt": "/d5/2d0b9444c9/0/prompt.txt"
+    },
+    {
+      "metadata": "/d5/2d0b9444c9/1/metadata.json",
+      "transcript": "/d5/2d0b9444c9/1/full.jsonl",
+      "content_hash": "/d5/2d0b9444c9/1/content_hash.txt",
+      "prompt": "/d5/2d0b9444c9/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 5,
-    "cache_creation_tokens": 36506,
+    "input_tokens": 11,
+    "cache_creation_tokens": 82068,
     "cache_read_tokens": 0,
-    "output_tokens": 6,
-    "api_call_count": 1
+    "output_tokens": 557,
+    "api_call_count": 2
   }
 }
