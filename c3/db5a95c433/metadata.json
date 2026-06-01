@@ -1,0 +1,40 @@
+{
+  "cli_version": "0.5.4",
+  "checkpoint_id": "c3db5a95c433",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 4,
+  "files_touched": [
+    ".claude-plugin/marketplace.json",
+    ".github/copilot-instructions.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "skills/agent-teams-simplify-and-harden/SKILL.md",
+    "skills/context-surfing/SKILL.md",
+    "skills/context-surfing/scripts/handoff-checker.sh",
+    "skills/eval-creator-ci/references/workflow-example.md",
+    "skills/learning-aggregator/SKILL.md",
+    "skills/pre-flight-check/SKILL.md",
+    "skills/pre-flight-check/scripts/pre-flight.sh",
+    "skills/self-healing-ci/SKILL.md",
+    "skills/self-healing/SKILL.md",
+    "skills/self-healing/references/hooks.md",
+    "skills/self-healing/references/interop-with-self-improvement.md",
+    "skills/skill-tester/SKILL.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/c3/db5a95c433/0/metadata.json",
+      "transcript": "/c3/db5a95c433/0/full.jsonl",
+      "content_hash": "/c3/db5a95c433/0/content_hash.txt",
+      "prompt": "/c3/db5a95c433/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 21480,
+    "cache_creation_tokens": 591302,
+    "cache_read_tokens": 14640344,
+    "output_tokens": 158677,
+    "api_call_count": 76
+  }
+}
