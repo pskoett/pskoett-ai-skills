@@ -1,0 +1,61 @@
+{
+  "cli_version": "0.5.4",
+  "checkpoint_id": "3aea92f9d869",
+  "session_id": "4657dd75-5cbf-4ff7-9356-31f55e55877a",
+  "strategy": "manual-commit",
+  "created_at": "2026-06-01T17:30:52.9847Z",
+  "branch": "codex-control-session-orchestrator-skill",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".github/copilot-instructions.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "plugin/.claude-plugin/plugin.json",
+    "plugin/.codex-plugin/plugin.json",
+    "plugin/.copilot-plugin/plugin.json"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-8[1m]",
+  "turn_id": "497e4890af81",
+  "checkpoint_transcript_start": 658,
+  "transcript_lines_at_start": 658,
+  "token_usage": {
+    "input_tokens": 12101,
+    "cache_creation_tokens": 1112830,
+    "cache_read_tokens": 8963369,
+    "output_tokens": 52541,
+    "api_call_count": 28
+  },
+  "session_metrics": {
+    "turn_count": 11
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-06-01T17:29:04.269324Z",
+    "agent_lines": 10,
+    "agent_removed": 0,
+    "human_added": 434,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 444,
+    "total_lines_changed": 444,
+    "agent_percentage": 2.2522522522522523,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}

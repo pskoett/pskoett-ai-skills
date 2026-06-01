@@ -1,0 +1,31 @@
+{
+  "cli_version": "0.5.4",
+  "checkpoint_id": "3aea92f9d869",
+  "strategy": "manual-commit",
+  "branch": "codex-control-session-orchestrator-skill",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".github/copilot-instructions.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "plugin/.claude-plugin/plugin.json",
+    "plugin/.codex-plugin/plugin.json",
+    "plugin/.copilot-plugin/plugin.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/3a/ea92f9d869/0/metadata.json",
+      "transcript": "/3a/ea92f9d869/0/full.jsonl",
+      "content_hash": "/3a/ea92f9d869/0/content_hash.txt",
+      "prompt": "/3a/ea92f9d869/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 12101,
+    "cache_creation_tokens": 1112830,
+    "cache_read_tokens": 8963369,
+    "output_tokens": 52541,
+    "api_call_count": 28
+  }
+}
