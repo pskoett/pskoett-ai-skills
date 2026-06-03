@@ -1,0 +1,29 @@
+walk me through the 2 last commits we did and what it changed
+
+---
+
+did we change our plugins here did we effect people potentially using them?
+
+---
+
+ok, good did we bump the versions of the plugins?
+
+---
+
+bump to 2.2.0 otherwise the new changes are not in, but before we do that does it make sense to include the control session skill? it is not a part of the skill pipeline
+
+---
+
+ok, now can you test out the self-healing skill i have not properly tested it myself
+
+---
+
+1, then 2
+
+---
+
+codex have not come back
+
+---
+
+codex have not come back

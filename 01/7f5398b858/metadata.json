@@ -1,0 +1,43 @@
+{
+  "cli_version": "0.5.4",
+  "checkpoint_id": "017f5398b858",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 4,
+  "files_touched": [
+    ".claude-plugin/marketplace.json",
+    ".github/plugin/marketplace.json",
+    "README.md",
+    "bench/README.md",
+    "bench/RESULTS.md",
+    "bench/corpus/selfheal-missing-helper/check.sh",
+    "bench/corpus/selfheal-missing-helper/oracle.sh",
+    "bench/corpus/selfheal-missing-helper/task.yaml",
+    "bench/corpus/selfheal-missing-helper/workspace/data.csv",
+    "bench/corpus/selfheal-missing-helper/workspace/run.sh",
+    "plugin/.claude-plugin/plugin.json",
+    "plugin/.codex-plugin/plugin.json",
+    "plugin/.copilot-plugin/plugin.json",
+    "plugin/skills/control-session-orchestrator/SKILL.md",
+    "plugin/skills/self-healing/scripts/new-heal.sh",
+    "skills/control-session-orchestrator/SKILL.md",
+    "skills/control-session-orchestrator/evals/evals.json",
+    "skills/self-healing/evals/evals.json",
+    "skills/self-healing/scripts/new-heal.sh"
+  ],
+  "sessions": [
+    {
+      "metadata": "/01/7f5398b858/0/metadata.json",
+      "transcript": "/01/7f5398b858/0/full.jsonl",
+      "content_hash": "/01/7f5398b858/0/content_hash.txt",
+      "prompt": "/01/7f5398b858/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 12559,
+    "cache_creation_tokens": 385533,
+    "cache_read_tokens": 12733076,
+    "output_tokens": 89384,
+    "api_call_count": 118
+  }
+}
