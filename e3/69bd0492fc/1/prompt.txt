@@ -1,0 +1,1 @@
+Return exactly the text: HOST_ACCEPTANCE_OK
