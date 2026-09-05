@@ -1,0 +1,76 @@
+<cross_session_message>
+from_project_session_id: 233cf0ed-285d-439e-b18e-a25915ec3de1
+from_session_id: 233cf0ed-285d-439e-b18e-a25915ec3de1
+from_project_session_name: DX vs leanix coverage
+from_display_name: DX vs leanix coverage
+from_project_session_branch: main
+from_project_repo: pskoett/personalclaude
+requested_mode: interactive
+
+To reply to the sender, use the send_session_message tool with session_id: "233cf0ed-285d-439e-b18e-a25915ec3de1"
+</cross_session_message>
+
+Act as the implementation worker for this user-authorized request from parent personalclaude session a09d50f8-8a6e-44f0-80fb-f96f9d4444f6: 'you can start a worker over in the pskoett-skills repo with the things you find that are not working'. A new in-place session was refused because this project already has an active Local workspace, so I am reusing this existing project session rather than forking or changing branches. If you are currently doing conflicting work, stop and report that before edits. Otherwise investigate AND implement the confirmed plugin/skill failures below. Reply to the parent with send_session_message(session_id='a09d50f8-8a6e-44f0-80fb-f96f9d4444f6', delivery_mode='immediate').
+
+Worker contract: worker_id skills-repair, wave_id w1, unit_key pskoett/plugin-and-skill-contracts. Repo pskoett/pskoett-ai-skills, project name pskoett-skills. Read repo instructions and inspect actual HEAD/dirty tree. Stay on current HEAD; preserve user/unrelated changes. No branches, stash/reset, commits, pushes, PRs, tags, publishing, installed-plugin/config writes, or other repository writes. No further persistent sessions. Prefer direct work; parent Task subagents currently fail on the plugin hook, so do not repeatedly attempt those or bypass hooks.
+
+Full local retrospective with source pointers: /Users/pepe/.copilot/session-state/233cf0ed-285d-439e-b18e-a25915ec3de1/files/session-improvement-report.md. Supplementary history-scan.json and learning-scan.json are in the same folder; use bounded reads only. The report contains private project context: do not copy it or raw transcripts into your repo, logs, commits or external systems. Use synthetic regression fixtures. The report says read-only because that was the original analysis scope; THIS new instruction authorizes source fixes in your repo, not live installation changes.
+
+PRIORITY A: Installed pskoett-ai-skills plugin v2.3.0 at /Users/pepe/.copilot/installed-plugins/pskoett-ai-skills/pskoett-ai-skills has hooks/hooks.json pointing at ${CLAUDE_PLUGIN_ROOT}/scripts/entire-wrapper.sh. Installed root has LICENSE, agents/, hooks/, plugin.json, skills/, but NO scripts/ directory or entire-wrapper.sh. Lifecycle hook commands use 'hooks claude-code ...' although this is a Copilot plugin. Two parent Task launches failed: Denied by preToolUse hook from "pskoett-ai-skills@pskoett-ai-skills" (hook errored). Inspect source packaging and host compatibility to find the root cause. Exact hook execution failure is not yet diagnosed, so do not assume environment-variable compatibility. Check whether current source already fixes it (stale install vs source bug). Verify current official host contracts if needed. Fix the actual packaging/source defect and add existing-framework coverage on the INSTALLABLE artifact. Every referenced asset must exist. Optional Entire absence must have an explicit safe unsupported state instead of incidental delegation failure; preserve intentional security/permission denial hooks. Do not simply disable hooks or edit installed files. Acceptance: clean supported-host install can invoke a harmless worker, optional integration absence is diagnosed, genuine policy denials still block. If real host acceptance is unavailable, report the gap rather than claiming full completion.
+
+PRIORITY B: Completion repeatedly used intermediate proof: iframe src rather than rendered app, built source rather than loaded desktop bundle, server-side smoke rather than working embedded button, expanded view rather than ordinary canvas, instant synthetic click rather than human press, queued/marked delivery rather than a turn in the target conversation. Existing guidance already says verify live. Inspect verify-gate/evals, and make narrowly scoped improvements to missing acceptance contracts for host/workspace/loaded-build identity and actual observable outcomes. Prefer discriminating evals over more generic instructions. PMX product code fixes are OUT OF SCOPE.
+
+PRIORITY C: Recovery/worker-contract evidence: 53 StructuredOutput validation failures across 3 Claude parent sessions, required root keys area, summary, files, keyFindings, snippets, openQuestions; 39 Fabric metadata failures in one batch on DIFFERENT report IDs, not identical retries; 11 session-store SQL timeouts across 2 sessions, including bounded queries; 31 QMD semantic-query negation errors across 21 session IDs, some on ordinary AI-enablement/bi-weekly language. QMD parser root cause is NOT proven and is outside this repo. Inspect owned self-healing/orchestration contracts/evals: propagate the actual worker schema, validate before submission, change diagnosis/input after deterministic failures, pilot before a large shared-service batch, pause repeated shared failures. Only fix concrete missing behavior; no fabricated tool syntax or blanket retries that harm transient recovery. No external mutation replay or credential changes.
+
+PRIORITY D: Learning loop: 23 standard logs across 8 repo locations produced 180 entries, 176 after copied-entry dedupe. 89 lack Pattern-Key and 150 explicit Recurrence-Count. Forked/forwarded transcripts and cloud/local overlaps must not count as independent recurrence. Strict promotion remains >=3 occurrences across >=2 distinct tasks within 30 days; no NEW exact-key log group here establishes all three. Inspect aggregator support for available Claude/Copilot/Codex transcripts when Entire has zero checkpoints, provenance/task identity, copied-log dedupe, legacy metadata and already-resolved/promoted status. Implement focused missing contracts/evals through existing mechanisms, not a large new ingestion framework or dependency pile. If a material architectural decision is needed, report it and complete the clearly bounded fixes first.
+
+Other report themes (preserve intentional deletions/exact wording/protected colors; finish agreed scope; ground in current source) are eval candidates only if demonstrably absent and owned here. Do not auto-promote everything into AGENTS.md. Many historical issues are already fixed.
+
+Use repo-existing narrow tests and package checks, prove regression discrimination, follow canonical/mirror generation conventions. Do not introduce a new testing framework. Report already-fixed/out-of-scope items separately. You own this scope; parent will not edit it. Send parent concrete blockers promptly. No need to wait for further approval for the authorized source fixes.
+
+End with a brief handoff and a fenced block starting ```json control-result with strict JSON containing all fields: {"worker_id":"skills-repair","wave_id":"w1","unit_key":"pskoett/plugin-and-skill-contracts","scope":"plugin distribution and reproducible skill-contract fixes","status":"complete|blocked|needs-decision|failed","files_changed":[],"verification":{"command":"actual commands","result":"pass|fail|not-run","evidence":"factual bounded evidence"},"subagents_used":"0 or actual","risks":[],"next_step":"...","report_ref":"local report/session reference"}. Choose one allowed enum per field. No complete with failed/not-run verification or missing installed-package acceptance evidence. No commits/publishing.
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+you stopped
+
+---
+
+you stopped
+
+---
+
+You have not yet marked the task as complete using the task_complete tool. If you were planning, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+---
+
+<cross_session_message>
+from_project_session_id: 233cf0ed-285d-439e-b18e-a25915ec3de1
+from_session_id: 233cf0ed-285d-439e-b18e-a25915ec3de1
+from_project_session_name: DX vs leanix coverage
+from_display_name: DX vs leanix coverage
+from_project_session_branch: main
+from_project_repo: pskoett/personalclaude
+
+To reply to the sender, use the send_session_message tool with session_id: "233cf0ed-285d-439e-b18e-a25915ec3de1"
+</cross_session_message>
+
+Personalclaude ready pieces implemented locally: strict QMD JSON + CLI failure propagation, skill-sync missing/upstream failure reporting, content hashes/local edit and concurrent manifest protection, explicit retirement and scoped safe mirrors, managed registrations for all audited upstream skills, small artifact-preservation contract, PMX test skill scoped to product. No upstream skills imported yet and remaining local retired team routes intentionally await your corrected canonical copies. User authorized adoption as ready. Please send your w2 completion/readiness result here when ready (including exact canonical files + evidence); that is the checkpoint for parent to resume review/import. Source worker scope and no commit/publish/install constraints unchanged.
