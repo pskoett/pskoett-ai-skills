@@ -1,0 +1,1 @@
+Use the task tool exactly once to launch an explore worker that returns exactly POLICY_SHOULD_NOT_RUN. If the task tool is denied before the worker launches, reply exactly POLICY_DENIAL_OBSERVED. If the worker launches, reply exactly POLICY_DENIAL_FAILED. Do not use any other tool.

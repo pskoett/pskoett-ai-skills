@@ -1,9 +1,11 @@
 {
   "cli_version": "0.5.4",
   "checkpoint_id": "e369bd0492fc",
+  "session_id": "f6c69474-c9c4-4791-9502-e032d3f3e773",
   "strategy": "manual-commit",
+  "created_at": "2026-09-05T16:12:13.699466Z",
   "branch": "repair-plugin-and-skill-contracts",
-  "checkpoints_count": 3,
+  "checkpoints_count": 1,
   "files_touched": [
     ".claude-plugin/marketplace.json",
     ".github/copilot-instructions.md",
@@ -16,7 +18,6 @@
     "plugin/.copilot-plugin/plugin.json",
     "plugin/CHANGELOG.md",
     "plugin/hooks/hooks.json",
-    "plugin/hooks/scripts/entire-wrapper.sh",
     "plugin/scripts/entire-wrapper.sh",
     "plugin/skills/agent-teams-simplify-and-harden/SKILL.md",
     "plugin/skills/agent-teams-simplify-and-harden/references/auditor-prompts.md",
@@ -38,7 +39,6 @@
     "plugin/skills/skill-pipeline/references/handoff-matrix.md",
     "plugin/skills/skill-pipeline/references/pipeline-variants.md",
     "plugin/skills/verify-gate/SKILL.md",
-    "scripts/validate-plugin.py",
     "skills/agent-teams-simplify-and-harden/SKILL.md",
     "skills/agent-teams-simplify-and-harden/references/auditor-prompts.md",
     "skills/context-surfing/SKILL.md",
@@ -50,7 +50,6 @@
     "skills/learning-aggregator-ci/SKILL.md",
     "skills/learning-aggregator-ci/references/workflow-example.md",
     "skills/learning-aggregator/SKILL.md",
-    "skills/learning-aggregator/evals/evals.json",
     "skills/plan-interview/SKILL.md",
     "skills/self-healing/SKILL.md",
     "skills/self-healing/evals/evals.json",
@@ -58,40 +57,45 @@
     "skills/simplify-and-harden/SKILL.md",
     "skills/simplify-and-harden/references/agent-context-snippets.md",
     "skills/skill-pipeline/SKILL.md",
-    "skills/skill-pipeline/evals/evals.json",
     "skills/skill-pipeline/references/classification-rules.md",
     "skills/skill-pipeline/references/handoff-matrix.md",
     "skills/skill-pipeline/references/pipeline-variants.md",
     "skills/skill-tester/SKILL.md",
     "skills/skill-tester/scripts/run-tests.sh",
-    "skills/verify-gate/SKILL.md",
-    "skills/verify-gate/evals/evals.json"
+    "skills/verify-gate/SKILL.md"
   ],
-  "sessions": [
-    {
-      "metadata": "/e3/69bd0492fc/0/metadata.json",
-      "transcript": "/e3/69bd0492fc/0/full.jsonl",
-      "content_hash": "/e3/69bd0492fc/0/content_hash.txt",
-      "prompt": "/e3/69bd0492fc/0/prompt.txt"
-    },
-    {
-      "metadata": "/e3/69bd0492fc/1/metadata.json",
-      "transcript": "/e3/69bd0492fc/1/full.jsonl",
-      "content_hash": "/e3/69bd0492fc/1/content_hash.txt",
-      "prompt": "/e3/69bd0492fc/1/prompt.txt"
-    },
-    {
-      "metadata": "/e3/69bd0492fc/2/metadata.json",
-      "transcript": "/e3/69bd0492fc/2/full.jsonl",
-      "content_hash": "/e3/69bd0492fc/2/content_hash.txt",
-      "prompt": "/e3/69bd0492fc/2/prompt.txt"
-    }
-  ],
+  "agent": "Claude Code",
+  "model": "",
+  "turn_id": "68b998289f92",
   "token_usage": {
     "input_tokens": 0,
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
     "api_call_count": 0
-  }
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-05T16:12:13.623206Z",
+    "agent_lines": 1346,
+    "agent_removed": 1806,
+    "human_added": 410,
+    "human_modified": 1,
+    "human_removed": 0,
+    "total_committed": 1757,
+    "total_lines_changed": 3563,
+    "agent_percentage": 88.46477687342127,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
 }
