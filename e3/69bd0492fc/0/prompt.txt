@@ -1,0 +1,1 @@
+Use the task tool exactly once to launch an explore worker that returns exactly HOST_ACCEPTANCE_OK. Then reply exactly HOST_ACCEPTANCE_OK. Do not read or write files and do not use any other tool.
