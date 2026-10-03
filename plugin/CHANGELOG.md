@@ -1,5 +1,41 @@
 # Changelog
 
+## 2.6.2 — 2026-10-03
+
+### Added
+- **Skill context review**: assess whole-skill applicability and individual instructions, references, scripts, and dependencies, including skills without source learnings.
+- **Approval-bound proposals**: self-improvement and self-healing surface concrete skill changes on the first relevant occurrence, while preserving skill assets until explicit scoped approval.
+- **Behavioral coverage**: approval-boundary, standalone handoff, authorized-edit, and approval-blocked recovery fixtures.
+
+### Fixed
+- **Recovery state**: pending verification can honestly record an unapplied skill repair awaiting approval; task recovery proof never implies that a skill proposal was applied.
+
+---
+
+## 2.6.1 — 2026-10-03
+
+### Fixed
+- **Learning capture**: record decay type, rate, authority, revalidation, and honest validation state when saving each learning, including one-off entries that never recur or reach promotion.
+- **Unpromoted review**: maintain pending and resolved learnings as well as promoted context; preserve history and recurrence while retiring superseded guidance.
+- **Standalone self-improvement**: include capture and review guidance without requiring context-decay to be installed; refine the existing contract at promotion.
+
+### Added
+- **Capture and review evals**: fixtures for initial one-off logging and maintenance of unpromoted entries.
+
+---
+
+## 2.6.0 — 2026-10-03
+
+### Added
+- **Context Decay**: standalone persistent-knowledge maintenance using decay type and rate, source checks, and retain / revise / externalize / retire outcomes. Included in both native and portable plugin bundles.
+- **Behavioral evals**: three fixture-backed scenarios with nineteen checks covering standalone audits, promotion, and maintenance; development fixtures remain outside shipped bundles.
+
+### Changed
+- **Self-improvement integration**: optionally hand promoted learnings and due reviews to context-decay, preserve learning history and recurrence counts, and prefer source retrieval over stale copied facts.
+- **Version alignment**: update Claude Code, Codex, GitHub Copilot, marketplace, and portable package manifests to 2.6.0.
+
+---
+
 ## 2.5.0 — 2026-09-05
 
 ### Added

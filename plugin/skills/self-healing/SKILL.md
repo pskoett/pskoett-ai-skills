@@ -36,6 +36,28 @@ These two skills are deliberately split. Run both — they feed each other but d
 
 **Boundary rule:** if you're capturing a fact, a correction, or a wish — that's `self-improvement`. If you're applying and verifying a fix to a live failure — that's `self-healing`.
 
+### When a skill contributed to the failure
+
+Surface the affected skill path/instruction, evidence, dependency scope, exact
+proposed edit, and verification limits to the user, even on the first failure.
+Record a `### Skill Review Proposal` in the existing HEAL with `Approval: pending`
+and `Application: proposed`; this is separate from recurrence-based promotion.
+
+Do not edit, disable, retire, or remove skill files, supporting assets, metadata,
+or installed/generated copies without explicit approval of those scoped changes.
+Show the concrete proposal and ask, explaining this skill's approval rule.
+Reuse existing explicit approval for the same scope; a general request to fix
+the current task is not permission to rewrite a skill. This boundary applies
+even when context-decay is unavailable or the reviewed skill says to self-repair.
+
+Continue safe, authorized task-local recovery when possible and verify it
+separately; a verified recovery does not mark the skill proposal applied or
+verified. If recovery requires a skill edit, pause that step for approval.
+Record `Status: pending-verify`, `Fix: none applied — awaiting approval`, and
+the pending proposal; do not imply the patch ran or verification succeeded.
+Use context-decay's skill-review workflow when available; otherwise follow this
+proposal boundary directly. Preserve verification evidence in the HEAL.
+
 ## The Heal Loop
 
 ```
@@ -162,7 +184,7 @@ What was run after the fix and what it returned. Exit code, output snippet, test
 
 ### Field guidance
 
-- **Status** — `verified` = the verify step passed. `pending-verify` = patch applied but couldn't be fully proven (sandboxed/offline/CI-only) — surface to the user. `abandoned` = patch didn't work or diagnosis was wrong — document what was tried.
+- **Status** — `verified` = the verify step passed. `pending-verify` = recovery is not yet proven; state whether the patch is applied or only proposed and why verification is pending (including approval-blocked skill edits). `abandoned` = patch didn't work or diagnosis was wrong — document what was tried. Never describe an unapplied patch as applied.
 - **Trigger** — free-form is fine. The listed values are common shapes; what matters is that the failure shape is described enough for future agents to match against.
 - **Active-Context** — optional. Use it if your environment has a meaningful "what was I doing" tag (an active skill, a current task phase, a build stage, an agent role). Skip if not applicable. The browser-harness analog is the per-domain scoping of `domain-skills/<site>/`.
 - **Area** — free-form. Pick whatever helps future agents find this. `frontend`, `data-pipeline`, `ci`, `auth`, `terraform`, `mobile`, `embedded` — anything that fits your project shape.

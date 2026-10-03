@@ -58,8 +58,10 @@ Copy the file templates from `assets/` (`LEARNINGS.md`, `ERRORS.md`, `FEATURE_RE
 ## Logging Format
 
 ### Learning Entry
-
 Append to `.learnings/LEARNINGS.md`:
+
+Every saved learning gets maintenance fields at capture, even if never promoted.
+Use [references/context-maintenance.md](references/context-maintenance.md); keep unknowns explicit.
 
 ```markdown
 ## [LRN-YYYYMMDD-XXX] category
@@ -87,6 +89,14 @@ Specific fix or improvement to make
 - Recurrence-Count: 1 (optional)
 - First-Seen: 2025-01-15 (optional)
 - Last-Seen: 2025-01-15 (optional)
+
+### Context Maintenance
+- Decay-Type: reality | decision | dependency | relevance | unknown
+- Decay-Rate: fast | medium | slow | durable | unknown (brief basis)
+- Authority: source or unknown; Owner: known role or unknown
+- Revalidation: method; invalidating triggers; when to check; unavailable-source behavior
+- Validation: pending | verified | unresolved; Last-Validated: date or none; Evidence: checked source or none
+- Disposition: unassessed | retain | revise | externalize | retire; Application: proposed | applied
 
 ---
 ```
@@ -216,6 +226,13 @@ OpenClaw workspace targets (`SOUL.md`, `TOOLS.md`) are covered in `references/op
    - Change `**Status**: pending` → `**Status**: promoted`
    - Add `**Promoted**: CLAUDE.md`, `AGENTS.md`, or `.github/copilot-instructions.md`
 
+### Context Maintenance at Promotion
+Refine the capture-time contract at promotion; use `context-decay` when available.
+Keep metadata in the learning and only the rule or retrieval pointer in instructions.
+Review does not change recurrence or eligibility; see `references/context-maintenance.md`.
+For stale skill guidance, surface a concrete proposal even on the first learning.
+Skill edits/retirement need explicit scoped approval, even without `context-decay`; see the same reference.
+
 ### Promotion Examples
 
 **Learning** (verbose):
@@ -317,6 +334,10 @@ grep -l "Area\*\*: backend" .learnings/*.md
 - Promote applicable learnings
 - Link related entries
 - Escalate recurring issues
+- Review saved learnings, including one-off and unpromoted entries, when their
+  source, decision, dependency, or review point changes. Update the existing
+  contract using `references/context-maintenance.md`; use `context-decay` when
+  available. A review is not recurrence or evidence for age-based removal.
 
 ## Detection Triggers
 
@@ -375,7 +396,7 @@ Use to filter learnings by codebase region:
 4. **Link related files** - makes fixes easier
 5. **Suggest concrete fixes** - not just "investigate"
 6. **Use consistent categories** - enables filtering
-7. **Promote aggressively** - if in doubt, add to CLAUDE.md or .github/copilot-instructions.md
+7. **Promote selectively** - apply the promotion rule; prefer a source-retrieval pointer when a copied fact would quickly become stale
 8. **Review regularly** - stale learnings lose value
 
 ## Gitignore Options

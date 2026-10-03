@@ -100,3 +100,84 @@ Any claim about a host platform's API (hook events, payload fields, config file 
 
 ---
 
+
+## [LRN-20261003-001] correction
+
+**Logged**: 2026-10-03
+**Priority**: medium
+**Status**: resolved
+**Area**: docs
+
+### Summary
+Record decay contracts when saving learnings, including entries that never recur or reach promotion.
+
+### Details
+The initial integration classified only promoted knowledge. The user clarified
+that saved one-off learnings also need maintenance because some never reappear.
+
+### Suggested Action
+Classify saved learnings at capture and review unpromoted entries at relevant
+triggers. Refine the same contract at promotion; do not wait for recurrence.
+
+### Metadata
+- Source: user_feedback
+- Pattern-Key: context-decay.capture-time-maintenance
+- Recurrence-Count: 1
+- First-Seen: 2026-10-03
+- Last-Seen: 2026-10-03
+- Related Files: skills/self-improvement/SKILL.md, skills/context-decay/SKILL.md
+
+### Context Maintenance
+- Decay-Type: decision
+- Decay-Rate: durable — explicit workflow requirement until superseded
+- Authority: user instruction in this conversation; Owner: repository maintainer
+- Revalidation: check subsequent workflow decisions when changing capture or review; if authority is unavailable, retain this requirement pending clarification
+- Validation: verified; Last-Validated: 2026-10-03; Evidence: explicit user correction that one-off learnings may never be promoted
+- Disposition: retain; Application: applied to the skill guidance
+
+### Resolution
+- Resolved: 2026-10-03
+- Notes: Added capture-time contracts and review of unpromoted entries; behavioral validation recorded separately in eval outputs.
+
+---
+
+## [LRN-20261003-002] correction
+
+**Logged**: 2026-10-03
+**Priority**: high
+**Status**: resolved
+**Area**: docs
+
+### Summary
+Treat skill maintenance as a proposal requiring explicit scoped approval, including findings surfaced by self-improvement and self-healing.
+
+### Details
+The user asked for skills themselves to be reviewed as context, but required
+approval before changes. A generic task repair or learning request must not be
+interpreted as permission to rewrite skill assets or installation state.
+
+### Suggested Action
+Show evidence and exact proposed edits; reuse approval only for the same scoped
+change. Keep authorized task-local recovery separate from skill mutation.
+
+### Metadata
+- Source: user_feedback
+- Pattern-Key: context-decay.skill-edit-approval
+- Recurrence-Count: 1
+- First-Seen: 2026-10-03
+- Last-Seen: 2026-10-03
+- Related Files: skills/context-decay/references/skill-review.md, skills/self-improvement/SKILL.md, skills/self-healing/SKILL.md
+
+### Context Maintenance
+- Decay-Type: decision
+- Decay-Rate: durable — explicit user boundary until superseded
+- Authority: user instruction in this conversation; Owner: repository maintainer
+- Revalidation: check explicit user authorization before skill maintenance; reconsider on a superseding instruction; if authority is unclear, keep the proposal pending
+- Validation: verified; Last-Validated: 2026-10-03; Evidence: user required asking before skill changes, then authorized this scoped implementation
+- Disposition: retain; Application: applied to skill guidance
+
+### Resolution
+- Resolved: 2026-10-03
+- Notes: Added first-occurrence proposal handoffs and an approval boundary across the three skills; runtime recovery remains separate.
+
+---

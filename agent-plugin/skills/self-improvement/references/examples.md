@@ -1,6 +1,7 @@
 # Entry Examples
 
-Concrete examples of well-formatted entries with all fields.
+Entry examples. Every saved learning also includes the capture-time contract
+shown in the first example; see [context-maintenance.md](context-maintenance.md).
 
 ## Learning: Correction
 
@@ -29,6 +30,14 @@ check existing fixtures for scope patterns before defaulting to function scope.
 - Source: user_feedback
 - Related Files: tests/conftest.py
 - Tags: pytest, testing, fixtures
+
+### Context Maintenance
+- Decay-Type: decision
+- Decay-Rate: durable — project convention until explicitly changed
+- Authority: user correction; Owner: unknown
+- Revalidation: check current project convention on fixture-policy changes or contradictory evidence; if unavailable, report uncertainty before changing shared fixture scope
+- Validation: verified; Last-Validated: 2025-01-15; Evidence: user explicitly stated the convention (fixture behavior not tested)
+- Disposition: retain; Application: applied to this learning only
 
 ---
 ```
