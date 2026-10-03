@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.6.0 — 2026-10-03
+
+### Added
+- **Context Decay**: standalone persistent-knowledge maintenance using decay type and rate, source checks, and retain / revise / externalize / retire outcomes. Included in both native and portable plugin bundles.
+- **Behavioral evals**: three fixture-backed scenarios with nineteen checks covering standalone audits, promotion, and maintenance; development fixtures remain outside shipped bundles.
+
+### Changed
+- **Self-improvement integration**: optionally hand promoted learnings and due reviews to context-decay, preserve learning history and recurrence counts, and prefer source retrieval over stale copied facts.
+- **Version alignment**: update Claude Code, Codex, GitHub Copilot, marketplace, and portable package manifests to 2.6.0.
+
+---
+
 ## 2.5.0 — 2026-09-05
 
 ### Added

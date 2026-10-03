@@ -216,6 +216,22 @@ OpenClaw workspace targets (`SOUL.md`, `TOOLS.md`) are covered in `references/op
    - Change `**Status**: pending` → `**Status**: promoted`
    - Add `**Promoted**: CLAUDE.md`, `AGENTS.md`, or `.github/copilot-instructions.md`
 
+### Optional Context Maintenance
+
+When `context-decay` is available, use it at promotion to classify how the
+selected learning can become stale and how to revalidate it. Pass the learning
+ID or Pattern-Key, distilled claim, promotion target, and available evidence.
+Keep its lightweight contract under `### Context Maintenance` in the original
+learning; put only the concise rule or source-retrieval pointer in active
+instructions. Apply this to extracted skills as well as project memory.
+
+`context-decay` owns revalidation and the retain / revise / externalize / retire
+decision. This skill still owns capture, recurrence, and promotion eligibility;
+the handoff does not relax the promotion threshold or classify every raw
+observation. Keep maintenance disposition separate from learning status and
+preserve promotion history. If context-decay is not installed, continue the
+existing workflow without requiring it.
+
 ### Promotion Examples
 
 **Learning** (verbose):
@@ -317,6 +333,10 @@ grep -l "Area\*\*: backend" .learnings/*.md
 - Promote applicable learnings
 - Link related entries
 - Escalate recurring issues
+- When `context-decay` is available, review promoted context affected by a
+  changed source, superseding decision, dependency change, or due review point.
+  Update the existing maintenance contract; a review alone is not a recurrence
+  or evidence that an old rule should be removed.
 
 ## Detection Triggers
 
@@ -375,7 +395,7 @@ Use to filter learnings by codebase region:
 4. **Link related files** - makes fixes easier
 5. **Suggest concrete fixes** - not just "investigate"
 6. **Use consistent categories** - enables filtering
-7. **Promote aggressively** - if in doubt, add to CLAUDE.md or .github/copilot-instructions.md
+7. **Promote selectively** - apply the promotion rule; prefer a source-retrieval pointer when a copied fact would quickly become stale
 8. **Review regularly** - stale learnings lose value
 
 ## Gitignore Options

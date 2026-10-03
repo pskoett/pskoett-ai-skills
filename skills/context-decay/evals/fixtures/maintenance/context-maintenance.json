@@ -1,0 +1,51 @@
+{
+  "review_date": "2026-10-03",
+  "entries": [
+    {
+      "context_id": "product.priority",
+      "target": "AGENTS.md#priority",
+      "decay_type": "decision",
+      "decay_rate": "medium",
+      "authority": "decisions.md",
+      "next_review": "2026-12-01",
+      "last_validated": "2026-09-15",
+      "evidence": [
+        "September product planning decision"
+      ],
+      "disposition": "retain"
+    },
+    {
+      "context_id": "toolkit.parser",
+      "target": "AGENTS.md#tooling",
+      "decay_type": "dependency",
+      "decay_rate": "medium",
+      "depends_on": "ToolKit 1.8",
+      "last_validated": "2026-09-15",
+      "evidence": [
+        "Representative parser check on ToolKit 1.8 passed"
+      ],
+      "disposition": "retain"
+    },
+    {
+      "context_id": "runtime.version",
+      "target": "AGENTS.md#runtime",
+      "decay_type": "reality",
+      "decay_rate": "slow",
+      "authority": "config/runtime-version.txt",
+      "last_validated": "2026-09-15",
+      "evidence": [
+        "config/runtime-version.txt read on 2026-09-15"
+      ],
+      "disposition": "externalize"
+    },
+    {
+      "context_id": "security.secrets",
+      "target": "AGENTS.md#security",
+      "decay_type": "decision",
+      "decay_rate": "durable",
+      "authority": "decisions.md",
+      "last_validated": "2026-09-15",
+      "disposition": "retain"
+    }
+  ]
+}

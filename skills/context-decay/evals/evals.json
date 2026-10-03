@@ -1,0 +1,66 @@
+{
+  "skill_name": "context-decay",
+  "evals": [
+    {
+      "id": 1,
+      "name": "standalone-audit",
+      "prompt": "Audit context.md against sources.md for use on 2026-10-03. Explain what should stay, change, or be fetched when needed, and when to reconsider each item. This is a review only; do not edit the source files or set up a learning system. Save your findings in report.md. Use only the provided evidence.",
+      "expected_output": "An audit that distinguishes a historical measurement from an unavailable current value, retains the durable preference and safeguard, and proposes actionable maintenance without editing inputs.",
+      "files": [
+        "evals/fixtures/standalone-audit/context.md",
+        "evals/fixtures/standalone-audit/sources.md"
+      ],
+      "expectations": [
+        "Preserves context.md and sources.md byte-for-byte and creates no learning log or memory registry.",
+        "Treats the dated 42% metric as supported historical evidence while treating the current 42% claim as unverified; does not claim live analytics was checked.",
+        "Retains the concise-response preference until an explicit change or contradiction, without assigning an arbitrary expiry date.",
+        "Retains the customer-secrets safeguard despite its age and low usage.",
+        "Distinguishes what can invalidate each claim from when to check it; includes actionable check triggers and unavailable-source behavior for the live metric."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "promotion",
+      "prompt": "Promote LRN-20261003-001 into the project instructions using self-improvement. It already meets the recurrence threshold. Keep AGENTS.md, CLAUDE.md and .github/copilot-instructions.md synchronized. Check the runtime declarations in this workspace and make the guidance useful after future runtime upgrades. Record how the promoted knowledge will be maintained in the existing learning entry. Apply the edits and save a short report.md; leave the unrelated learning and billing guidance alone. Use 2026-10-03 as the review date.",
+      "expected_output": "A verified source retrieval rule in all mirrors, one maintenance contract in the existing promoted learning, preserved recurrence/history and unrelated material.",
+      "files": [
+        "evals/fixtures/promotion/AGENTS.md",
+        "evals/fixtures/promotion/CLAUDE.md",
+        "evals/fixtures/promotion/.github/copilot-instructions.md",
+        "evals/fixtures/promotion/.nvmrc",
+        "evals/fixtures/promotion/package.json",
+        "evals/fixtures/promotion/.learnings/LEARNINGS.md"
+      ],
+      "expectations": [
+        "Updates all three instruction mirrors identically and preserves the existing billing boundary.",
+        "Active runtime guidance directs the agent to read .nvmrc at runtime selection or dependency installation rather than treating 22.14.0 as a permanent instruction.",
+        "The original LRN-20261003-001 is marked promoted with all instruction targets and contains a maintenance contract identifying what can invalidate the rule, its authority, and concrete recheck triggers.",
+        "The promotion maintenance contract records a decay rate or an equivalent assessment of expected stability, independently of its event triggers.",
+        "The promotion maintenance contract states what to do when an authoritative runtime declaration is unavailable, without guessing a runtime version.",
+        "Validation evidence matches the supplied .nvmrc and package.json and uses the provided review date; the output does not assert successful runtime execution or dependency installation beyond the supplied evidence.",
+        "Recurrence-Count remains 3 for the promoted entry; the unrelated LRN-20261002-002 entry is unchanged; no duplicate learning or parallel maintenance registry is created."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "maintenance",
+      "prompt": "Maintain AGENTS.md and the existing context-maintenance.json using decisions.md and environment.md. Apply the changes supported by the evidence as of 2026-10-03 and record what you could and could not validate. Clean up context that no longer belongs, but preserve useful history. Work only from this fixture; unavailable tools and sources cannot be recovered. Save a concise report.md of applied changes, unresolved issues, and next checks.",
+      "expected_output": "Immediate priority revision despite a future review date; unresolved dependency and missing-source checks without invented validation or removal; retained security safeguard and historical evidence.",
+      "files": [
+        "evals/fixtures/maintenance/AGENTS.md",
+        "evals/fixtures/maintenance/decisions.md",
+        "evals/fixtures/maintenance/environment.md",
+        "evals/fixtures/maintenance/context-maintenance.json"
+      ],
+      "expectations": [
+        "Revises the active Q4 priority to reliability over checkout conversion using the October 2 decision despite the future December review date.",
+        "Retains the parser workaround pending verification rather than declaring it obsolete because ToolKit upgraded; explicitly records the unresolved dependency check.",
+        "Keeps the September 15 validation date and old evidence for the unresolved ToolKit and runtime entries; does not mark either as freshly verified.",
+        "Reports the missing runtime source without guessing a version or declaring the retrieval pointer successfully repaired.",
+        "Retains the customer-secrets rule; low recent usage does not trigger retirement.",
+        "Updates the existing inventory without duplicate context entries and records both applied changes and concrete next checks for unresolved items.",
+        "Preserves the superseded checkout-conversion priority, its September 15 validation date, and the September decision evidence as history while replacing the active priority."
+      ]
+    }
+  ]
+}
