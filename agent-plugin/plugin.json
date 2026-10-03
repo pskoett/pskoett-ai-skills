@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "pskoett-ai-skills",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "Portable Agent Skills for disciplined planning, verification, recovery, quality, and learning workflows.",
   "author": {
     "name": "Peter Skøtt Pedersen"

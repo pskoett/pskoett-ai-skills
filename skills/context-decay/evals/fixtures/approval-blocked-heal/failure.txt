@@ -1,0 +1,3 @@
+Observed failure from the installed exporter on ExportTool 3.0: error: unrecognized arguments: --legacy.
+The exporter binary is unavailable in this fixture, so no live retry can run.
+The only repair target is skills/export-data/scripts/export.py; no task-local workaround is requested.

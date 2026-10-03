@@ -21,6 +21,13 @@ Why the split, what each one owns, how they hand off. Read this if you're tempte
 self-healing is the **inner loop**: live failure recovery, mandatory verify, generates artifacts.
 self-improvement is the **outer loop**: pattern aggregation, promotion to durable memory, skill extraction.
 
+A skill-review proposal is a separate handoff: either skill can surface suspected
+stale skill guidance on the first occurrence, without meeting promotion thresholds.
+Keep the proposal in the originating LRN/HEAL, show its evidence and exact diff
+to the user, and wait for explicit scoped approval before skill mutation.
+Reuse approval already given for that same change. A verified task recovery
+does not imply the proposed skill edit was approved, applied, or verified.
+
 ## Decision table
 
 | Situation | Which skill |

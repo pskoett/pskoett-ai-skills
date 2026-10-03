@@ -63,3 +63,25 @@ At promotion, refine this same contract for the promoted target. Keep only the
 concise rule or retrieval pointer in instruction files; preserve metadata in
 the learning. Maintenance neither relaxes promotion thresholds nor starts a
 scheduler. Future automated reviews require a separate user request.
+
+## Skills implicated by a learning
+
+When a correction or learning suggests a skill is stale, review the affected
+claim as well as the skill's overall task fit. Record the target path/section,
+source or dependency evidence, exact proposed edit, and verification limits
+under `### Skill Review Proposal` in the existing learning. Set `Approval:
+pending` and `Application: proposed`, and surface the proposal to the user.
+One occurrence is sufficient for this handoff; promotion rules remain unchanged.
+
+Do not edit skill files, scripts, references, metadata, activation, or installed
+copies, or retire/remove a skill, without explicit approval for those scoped
+changes. Logging a learning or asking to improve the task does not authorize
+skill mutation. Show the exact proposal, ask for approval, and explain this
+skill's approval rule; reuse existing explicit approval for the same scope.
+Log metadata here instead of modifying the reviewed skill merely to attach it.
+
+When available, use context-decay's skill-review workflow for deeper analysis.
+Otherwise follow this boundary directly: preserve active skill assets, report
+uncertainty honestly, and keep approved/applied/verified states distinct.
+After approval, edit only the named source and verify the affected behavior;
+do not silently overwrite installed or generated copies outside that scope.

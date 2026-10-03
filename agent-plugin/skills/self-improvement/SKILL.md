@@ -229,8 +229,9 @@ OpenClaw workspace targets (`SOUL.md`, `TOOLS.md`) are covered in `references/op
 ### Context Maintenance at Promotion
 Refine the capture-time contract at promotion; use `context-decay` when available.
 Keep metadata in the learning and only the rule or retrieval pointer in instructions.
-Review does not change recurrence or eligibility. The standalone workflow is in
-`references/context-maintenance.md`.
+Review does not change recurrence or eligibility; see `references/context-maintenance.md`.
+For stale skill guidance, surface a concrete proposal even on the first learning.
+Skill edits/retirement need explicit scoped approval, even without `context-decay`; see the same reference.
 
 ### Promotion Examples
 

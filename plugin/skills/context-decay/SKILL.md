@@ -1,6 +1,6 @@
 ---
 name: context-decay
-description: Revalidate persistent agent knowledge by classifying why it can become stale and how quickly it changes, then retain, revise, externalize, or retire it. Use when reviewing stored instructions, facts, preferences, assumptions, or workflows; when a decision or dependency changes; or when self-improvement captures, reviews, or promotes a learning. Works independently of self-improvement. Not for runtime context-window degradation, unsaved task observations, or age-based deletion.
+description: Revalidate persistent agent knowledge by classifying why it can become stale and how quickly it changes, then retain, revise, externalize, or retire it. Use when reviewing skills, stored instructions, facts, preferences, assumptions, or workflows; when a decision or dependency changes; or when self-improvement captures, reviews, or promotes a learning. Works independently of self-improvement. Not for runtime context-window degradation, unsaved task observations, or age-based deletion.
 ---
 
 # Context Decay
@@ -29,9 +29,16 @@ or a learning being saved, reviewed, or promoted, including one-off entries.
 Do not inventory the whole repository on every turn or classify unsaved observations. For a broad audit, prioritize
 context whose staleness could affect the current work.
 
-Standalone inputs can be instruction files, project facts, product priorities,
+Standalone inputs can be authored or installed skills, instruction files, project facts, product priorities,
 research assumptions, user preferences, or workflow guidance. No learning log,
 memory service, hook, or scheduled process is required.
+
+For skills, review both whole-skill applicability and individual instructions,
+references, scripts, and dependencies. They need not share one decay rate.
+Read [references/skill-review.md](references/skill-review.md) for the review and
+approval workflow; no source learning is required. Skill changes are proposals
+until the user explicitly approves the scoped changes. A general maintenance,
+learning, or repair request is not approval to rewrite a skill.
 
 - `self-improvement` captures and promotes knowledge; this skill maintains its
   validity and representation after selection for persistent use.
@@ -156,8 +163,12 @@ For worked examples and review cases, read
 
 ## 5. Apply within scope and report
 
+For skill assets, use the approval boundary above, including changes to skill
+metadata, activation, and installation. Evidence or a passing eval does not
+grant permission to edit, disable, or remove a skill.
+
 An audit request produces findings and proposed changes. A maintenance or edit
-request authorizes relevant edits within that scope; it does not authorize
+request authorizes relevant non-skill edits within that scope; it does not authorize
 changing user preferences, weakening policies, or changing the source system's
 decisions. Apply supported updates without adding an extra approval step where
 authorization already exists. A policy's age or absence from recent tasks is
@@ -194,7 +205,21 @@ context and why; the original learning still records its promotion history.
 
 Neither skill requires the other to be installed. Without self-improvement,
 use the standalone workflow above. Without this skill, self-improvement can
-still records capture-time maintenance using its own guidance.
+still record capture-time maintenance using its own guidance.
+
+## Skill findings from learning and healing
+
+Self-improvement can surface a skill-review candidate from a correction or
+learning even on its first occurrence. Self-healing can surface one when a
+skill instruction contributed to an observed failure. Record the skill path,
+affected instruction, dependency scope, evidence, and proposed change in the
+existing LRN or HEAL entry; show the proposal to the user rather than merely
+burying it in the log. This review handoff is independent of promotion thresholds.
+
+Keep runtime recovery verification separate from proposed skill repair. A
+successful task workaround does not mean a skill was changed or validated.
+If context-decay is unavailable, each originating skill still enforces the
+approval boundary and presents the proposal itself.
 
 ## Provider use
 

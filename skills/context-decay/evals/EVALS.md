@@ -4,7 +4,7 @@ Use the Anthropic skill-creator eval workflow with `evals.json`. Paths in
 `files` are relative to the context-decay skill root. `expectations` follows
 that workflow's eval schema; metadata files use its `assertions` field.
 
-The suite contains five task scenarios and twenty-nine expectations:
+The suite contains ten task scenarios and forty-nine expectations:
 
 - Standalone audit: historical versus current metrics, durable preferences,
   rare safeguards, and audit-only scope.
@@ -16,6 +16,10 @@ The suite contains five task scenarios and twenty-nine expectations:
 - Capture: one-off learnings receive maintenance fields before recurrence or promotion.
 - Unpromoted review: superseded guidance can retire while durable preferences
   and original learning history remain intact.
+
+- Skill review: whole-skill versus individual-claim review, exact proposals,
+  standalone learning/healing handoffs, existing approval reuse, and a repair
+  blocked before patch application.
 
 ## Run setup
 
@@ -32,6 +36,11 @@ The suite contains five task scenarios and twenty-nine expectations:
    capture contract. For unpromoted review (eval 5), load both skills. When
    evaluating a revision, use the pre-change instructions as the paired baseline
    and label that comparison explicitly; do not call it a no-skill baseline.
+   For skill review and approved edits (evals 6 and 9), load context-decay.
+   For eval 7 load self-improvement alone; for evals 8 and 10 load self-healing
+   alone. These check the originating skills enforce approval without a dependency.
+   When an executor needs approval, save its question in report.md and stop the
+   dependent action; never send fixture questions to the real user.
 4. Save the actual edited fixture files, `report.md`, and execution notes.
    Grade each expectation against these artifacts and the original fixtures.
    Check unchanged inputs, mirror equality, recurrence counts, and inventory

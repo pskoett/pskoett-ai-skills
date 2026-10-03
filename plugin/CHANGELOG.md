@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.6.2 — 2026-10-03
+
+### Added
+- **Skill context review**: assess whole-skill applicability and individual instructions, references, scripts, and dependencies, including skills without source learnings.
+- **Approval-bound proposals**: self-improvement and self-healing surface concrete skill changes on the first relevant occurrence, while preserving skill assets until explicit scoped approval.
+- **Behavioral coverage**: approval-boundary, standalone handoff, authorized-edit, and approval-blocked recovery fixtures.
+
+### Fixed
+- **Recovery state**: pending verification can honestly record an unapplied skill repair awaiting approval; task recovery proof never implies that a skill proposal was applied.
+
+---
+
 ## 2.6.1 — 2026-10-03
 
 ### Fixed

@@ -1,6 +1,6 @@
 {
   "name": "pskoett-ai-skills",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "Two-loop skill pipeline for Codex. Inner loop skills catch failures in-session — now including self-healing for active runtime recovery (diagnose, patch, verify, file the verified fix). Outer loop skills turn recurring gaps into durable rules and evals.",
   "author": {
     "name": "Peter Skøtt Pedersen",
