@@ -5,8 +5,8 @@ description: >
   and how quickly it changes, then retain, revise, externalize, or retire it.
   Use when reviewing stored instructions, facts, preferences, assumptions, or
   workflows; when a decision or dependency changes; or when self-improvement
-  promotes a learning. Works independently of self-improvement. Not for runtime
-  context-window degradation, ordinary task observations, or age-based deletion.
+  captures, reviews, or promotes a learning. Works independently of self-improvement. Not for runtime
+  context-window degradation, unsaved task observations, or age-based deletion.
 ---
 
 # Context Decay
@@ -31,8 +31,8 @@ npx skills add pskoett/pskoett-skills/skills/context-decay
 ## Scope and activation
 
 Work on the context the user selected, context affected by an observed change,
-or a learning currently being promoted. Do not inventory the whole repository
-on every turn or classify every raw observation. For a broad audit, prioritize
+or a learning being saved, reviewed, or promoted, including one-off entries.
+Do not inventory the whole repository on every turn or classify unsaved observations. For a broad audit, prioritize
 context whose staleness could affect the current work.
 
 Standalone inputs can be instruction files, project facts, product priorities,
@@ -183,12 +183,16 @@ requires a user request.
 ## Self-improvement handoff
 
 When both skills are available, self-improvement retains ownership of capture,
-deduplication, recurrence, and promotion eligibility. At promotion, pass the
-learning ID or Pattern-Key, distilled claim, target, and available evidence to
-this skill. Store the contract under `### Context Maintenance` in that learning
-entry; keep only the rule or retrieval pointer in the promoted target.
+deduplication, recurrence, and promotion eligibility. At capture, pass the
+learning ID or Pattern-Key, claim, and available evidence to this skill.
+Store the contract under `### Context Maintenance` in that same learning,
+even if it never recurs or is promoted. Unknown classifications remain explicit;
+untested claims start pending with no validation date or assumed disposition.
+Capture classifies available evidence; do not delay logging for full revalidation.
+At promotion, refine the existing contract for its target; keep only the rule
+or retrieval pointer in active instructions.
 
-During review, select promoted entries affected by a trigger or due review
+During review, select saved entries, including unpromoted ones, affected by a trigger or due review
 point. Update the existing contract rather than creating a fresh learning for
 each check. Keep learning status (`promoted`, etc.) separate from validation
 status and maintenance disposition. A retirement records what left active
@@ -196,7 +200,7 @@ context and why; the original learning still records its promotion history.
 
 Neither skill requires the other to be installed. Without self-improvement,
 use the standalone workflow above. Without this skill, self-improvement can
-continue its existing capture and promotion workflow.
+still records capture-time maintenance using its own guidance.
 
 ## Provider use
 

@@ -30,8 +30,8 @@ targets: [AGENTS.md, CLAUDE.md, .github/copilot-instructions.md]
 evidence: [.nvmrc]
 ```
 
-Context-decay checks the source, then adds a `### Context Maintenance` block to
-that same learning. It records the reality/slow classification, retrieval
+Context-decay checks the source, then refines the existing `### Context Maintenance`
+block in that learning (or adds one for a legacy entry). It records the reality/slow classification, retrieval
 trigger, verified evidence (only after reading it), and externalization outcome.
 It does not add a recurrence merely because promotion or review happened.
 

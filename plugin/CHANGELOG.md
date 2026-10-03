@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.6.1 — 2026-10-03
+
+### Fixed
+- **Learning capture**: record decay type, rate, authority, revalidation, and honest validation state when saving each learning, including one-off entries that never recur or reach promotion.
+- **Unpromoted review**: maintain pending and resolved learnings as well as promoted context; preserve history and recurrence while retiring superseded guidance.
+- **Standalone self-improvement**: include capture and review guidance without requiring context-decay to be installed; refine the existing contract at promotion.
+
+### Added
+- **Capture and review evals**: fixtures for initial one-off logging and maintenance of unpromoted entries.
+
+---
+
 ## 2.6.0 — 2026-10-03
 
 ### Added

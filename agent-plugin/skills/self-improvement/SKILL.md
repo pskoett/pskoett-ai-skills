@@ -58,8 +58,10 @@ Copy the file templates from `assets/` (`LEARNINGS.md`, `ERRORS.md`, `FEATURE_RE
 ## Logging Format
 
 ### Learning Entry
-
 Append to `.learnings/LEARNINGS.md`:
+
+Every saved learning gets maintenance fields at capture, even if never promoted.
+Use [references/context-maintenance.md](references/context-maintenance.md); keep unknowns explicit.
 
 ```markdown
 ## [LRN-YYYYMMDD-XXX] category
@@ -87,6 +89,14 @@ Specific fix or improvement to make
 - Recurrence-Count: 1 (optional)
 - First-Seen: 2025-01-15 (optional)
 - Last-Seen: 2025-01-15 (optional)
+
+### Context Maintenance
+- Decay-Type: reality | decision | dependency | relevance | unknown
+- Decay-Rate: fast | medium | slow | durable | unknown (brief basis)
+- Authority: source or unknown; Owner: known role or unknown
+- Revalidation: method; invalidating triggers; when to check; unavailable-source behavior
+- Validation: pending | verified | unresolved; Last-Validated: date or none; Evidence: checked source or none
+- Disposition: unassessed | retain | revise | externalize | retire; Application: proposed | applied
 
 ---
 ```
@@ -216,21 +226,11 @@ OpenClaw workspace targets (`SOUL.md`, `TOOLS.md`) are covered in `references/op
    - Change `**Status**: pending` → `**Status**: promoted`
    - Add `**Promoted**: CLAUDE.md`, `AGENTS.md`, or `.github/copilot-instructions.md`
 
-### Optional Context Maintenance
-
-When `context-decay` is available, use it at promotion to classify how the
-selected learning can become stale and how to revalidate it. Pass the learning
-ID or Pattern-Key, distilled claim, promotion target, and available evidence.
-Keep its lightweight contract under `### Context Maintenance` in the original
-learning; put only the concise rule or source-retrieval pointer in active
-instructions. Apply this to extracted skills as well as project memory.
-
-`context-decay` owns revalidation and the retain / revise / externalize / retire
-decision. This skill still owns capture, recurrence, and promotion eligibility;
-the handoff does not relax the promotion threshold or classify every raw
-observation. Keep maintenance disposition separate from learning status and
-preserve promotion history. If context-decay is not installed, continue the
-existing workflow without requiring it.
+### Context Maintenance at Promotion
+Refine the capture-time contract at promotion; use `context-decay` when available.
+Keep metadata in the learning and only the rule or retrieval pointer in instructions.
+Review does not change recurrence or eligibility. The standalone workflow is in
+`references/context-maintenance.md`.
 
 ### Promotion Examples
 
@@ -333,10 +333,10 @@ grep -l "Area\*\*: backend" .learnings/*.md
 - Promote applicable learnings
 - Link related entries
 - Escalate recurring issues
-- When `context-decay` is available, review promoted context affected by a
-  changed source, superseding decision, dependency change, or due review point.
-  Update the existing maintenance contract; a review alone is not a recurrence
-  or evidence that an old rule should be removed.
+- Review saved learnings, including one-off and unpromoted entries, when their
+  source, decision, dependency, or review point changes. Update the existing
+  contract using `references/context-maintenance.md`; use `context-decay` when
+  available. A review is not recurrence or evidence for age-based removal.
 
 ## Detection Triggers
 

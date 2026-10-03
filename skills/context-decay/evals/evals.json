@@ -61,6 +61,42 @@
         "Updates the existing inventory without duplicate context entries and records both applied changes and concrete next checks for unresolved items.",
         "Preserves the superseded checkout-conversion priority, its September 15 validation date, and the September decision evidence as history while replacing the active priority."
       ]
+    },
+    {
+      "id": 4,
+      "name": "capture-one-off",
+      "prompt": "Use self-improvement to save the two learnings in notes.md as of 2026-10-03. Keep them unpromoted and preserve the existing billing entry and AGENTS.md. Only the fixture evidence is available. Save a short report.md of what was recorded.",
+      "expected_output": "Two saved one-off entries with capture-time maintenance contracts; the preference is supported by the user instruction, while the untested tool claim remains unverified.",
+      "files": [
+        "evals/fixtures/capture-one-off/notes.md",
+        "evals/fixtures/capture-one-off/.learnings/LEARNINGS.md",
+        "evals/fixtures/capture-one-off/AGENTS.md"
+      ],
+      "expectations": [
+        "Two new learning entries are saved, remain unpromoted, and each has its own decay cause and rate/stability assessment at initial capture.",
+        "Each new entry records authority or explicit unknown, actionable revalidation triggers/timing, and unavailable-source behavior without fabricated owners or sources.",
+        "The preference is treated as decision-dependent and durable until changed, with the user instruction as evidence rather than an arbitrary expiry.",
+        "The ToolKit claim is dependency-bound to the reported version and remains pending or unresolved, with no fabricated validation date, successful test, or accepted working workaround.",
+        "Existing billing entry and AGENTS.md remain unchanged; new entries are not given invented recurrence and no second maintenance registry is created."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "review-unpromoted",
+      "prompt": "Use self-improvement to review the two old pending learnings against decisions.md as of 2026-10-03. Neither has recurred or been promoted. Apply justified maintenance in the existing log, preserve useful history, and leave AGENTS.md alone. Save report.md with the outcomes and future checks. Use only this fixture evidence.",
+      "expected_output": "Retire the superseded legacy-host guidance with its provenance intact, retain the durable preference, and maintain both one-off entries without promotion or artificial recurrence.",
+      "files": [
+        "evals/fixtures/review-unpromoted/.learnings/LEARNINGS.md",
+        "evals/fixtures/review-unpromoted/decisions.md",
+        "evals/fixtures/review-unpromoted/AGENTS.md"
+      ],
+      "expectations": [
+        "The legacy-host reusable guidance is marked retired/inactive based on the explicit decommission decision, without deleting its incident or pretending the review is promotion.",
+        "The old concise-release-notes preference is retained; age and lack of recurrence are not treated as invalidation.",
+        "Both entries have maintenance contracts after review, including adding one to the legacy preference entry, with cause, rate, authority, and concrete next checks.",
+        "Original learning IDs, pending learning status, Recurrence-Count 1 and Last-Seen dates remain unchanged for both entries; AGENTS.md is unchanged.",
+        "The legacy-host entry preserves its original wording, February validation date/evidence as history and links the September superseding decision; no replacement host is invented."
+      ]
     }
   ]
 }

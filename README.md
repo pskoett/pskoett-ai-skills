@@ -121,7 +121,7 @@ skills/
 
 | Skill | Description |
 |-------|-------------|
-| [context-decay](skills/context-decay/) | Revalidates persistent knowledge by decay type and rate; works standalone or at self-improvement promotion and review |
+| [context-decay](skills/context-decay/) | Maintains persistent knowledge by decay type and rate; works standalone or at self-improvement capture, review, and promotion |
 | [context-surfing](skills/context-surfing/) | Monitors context window health and rides peak context quality for maximum output fidelity during multi-step execution |
 | [control-session-orchestrator](skills/control-session-orchestrator/) | Control-plane workflow for coordinating multi-agent, multi-session project work from Codex, GitHub Copilot, or agent-app sessions |
 | [intent-framed-agent](skills/intent-framed-agent/) | Captures a lightweight intent contract at execution start and monitors coding-task drift until resolution |
