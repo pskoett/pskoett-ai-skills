@@ -4,7 +4,7 @@ description: >
   Revalidate persistent agent knowledge by classifying why it can become stale
   and how quickly it changes, then retain, revise, externalize, or retire it.
   Use when reviewing skills, stored instructions, facts, preferences, assumptions, or
-  workflows; when a decision or dependency changes; or when self-improvement
+  workflows; when an owner, decision, or dependency changes; or when self-improvement
   captures, reviews, or promotes a learning. Works independently of self-improvement. Not for runtime
   context-window degradation, unsaved task observations, or age-based deletion.
 ---
@@ -66,6 +66,12 @@ owner or treat a copied instruction as independent proof of itself. Follow
 existing source precedence. If equally authoritative sources conflict, report
 the conflict rather than silently choosing the newest timestamp.
 
+Distinguish the accountable owner from the page's author or last editor.
+When known, link downstream decisions, automations, or derived outputs to the
+specific source claim they rely on; a page link alone does not explain the
+dependency. Keep these links in the existing context contract or inventory,
+and state when downstream coverage is unknown or incomplete.
+
 ## 2. Classify cause and cadence
 
 Choose the primary decay type; add another only when it changes the check.
@@ -92,6 +98,15 @@ Durable is a rate, not a fifth cause: a preference can be `decision` + `durable`
 Events override cadence. A new ownership decision invalidates an old one
 immediately even if its periodic review is months away. Where change events
 cannot be observed reliably, use a source check at use or a review fallback.
+
+On an observed ownership change, verify the handoff against the authoritative
+source and record the new owner, evidence, and affected scope. Flag known
+downstream uses that rely on the previous owner or their authority as needing
+revalidation, even if their documents were recently updated. A handoff is not
+proof that every policy or output is wrong: check whether the relied-on claim
+still holds. Preserve prior validation evidence; leave unconfirmed ownership
+or downstream checks unresolved rather than silently assigning an owner or
+rewriting dependent decisions and automations.
 
 Use the consequence of staleness to choose urgency and unavailable-source
 behavior. High-consequence actions need current evidence before relying on a

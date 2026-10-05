@@ -18,6 +18,22 @@ particular repository. Use actual sources and evidence in real reviews.
 | A promoted rule appears in three mirrored instruction files | type/rate depend on the rule | Maintain one contract linked to all targets; apply the same supported change to each required mirror |
 | A source path moved and its replacement cannot be found | reality / slow | Report the broken retrieval pointer and missing evidence; do not call externalization complete |
 
+## Ownership handoff and downstream uses
+
+An approval-policy page names Ops as the accountable owner. Its existing
+context contract links an approval-routing automation and a launch decision
+to the claim “Ops provides sign-off.” The authoritative ownership register
+now assigns that responsibility to Security, although both downstream documents
+were reviewed yesterday.
+
+Record the verified handoff and flag both uses as needing revalidation: check
+the automation's recipient and whether the launch decision's sign-off remains
+accepted under the handoff. Do not infer that earlier approval is revoked or
+automatically edit the automation. An unchanged retention period on the same
+page does not become false merely because its owner changed. Preserve earlier
+validation evidence and report any unknown downstream coverage. If only the
+page's last editor changed, do not treat that as an ownership transfer.
+
 ## Minimal promotion handoff
 
 Self-improvement supplies an existing learning, for example:
