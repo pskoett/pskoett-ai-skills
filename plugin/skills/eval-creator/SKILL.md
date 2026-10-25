@@ -13,7 +13,7 @@ The blog says: "If a failure taught you something important, it should become a 
 
 ## When to Use
 
-- **After harness-updater promotes a pattern** — create an eval for it
+- **After self-improvement promotes a pattern with human approval** — create an eval for it
 - **On cadence** — run all evals to check for regression
 - **Before major releases** — verify the harness is holding
 - **When a promoted rule seems to have stopped working** — diagnose with targeted eval run
@@ -33,7 +33,7 @@ The blog says: "If a failure taught you something important, it should become a 
 
 ### Input
 
-From harness-updater or manually:
+From the self-improvement promotion workflow or manually:
 - Pattern-Key of the promoted learning
 - The rule that was added to the project instruction files (CLAUDE.md, AGENTS.md, .github/copilot-instructions.md)
 - What to test (the assertion)
@@ -200,12 +200,12 @@ For each eval case:
 ## Integration
 
 ### Upstream
-- **harness-updater** flags eval candidates after promoting a pattern (harness-updater is a plugin-bundle agent, `plugin/agents/harness-updater.md`; without the plugin, the human applying promotions manually flags eval candidates from the gap report instead)
+- **self-improvement** flags eval candidates after human-approved promotion, including the rule, source IDs, Pattern-Key, assertion, and verification method
 - **learning-aggregator** identifies patterns with clear pass/fail conditions
 
 ### Downstream
 - Regression failures feed back into **self-improvement** as new error entries
-- Persistent failures may indicate the promoted rule needs refinement → feed back to **harness-updater**
+- Persistent failures may indicate the promoted rule needs refinement → feed back to the human-gated **self-improvement** promotion workflow
 
 ### Scheduled Use
 For projects with a CI pipeline, eval-creator can run as a scheduled check:
@@ -275,7 +275,7 @@ Execution: `python .claude/skills/skill-creator/scripts/quick_validate.py <targe
 
 ### Behavioral validation via `run_eval.py`
 
-For deeper validation, the skill-creator's `run_eval.py` tests whether a skill's description causes Claude to invoke it for given queries. This is useful when harness-updater modifies a skill's description or the outer loop creates a new skill — the eval verifies the skill still triggers correctly.
+For deeper validation, the skill-creator's `run_eval.py` tests whether a skill's description causes Claude to invoke it for given queries. This is useful after an approved skill-description change or when the outer loop creates a new skill — the eval verifies the skill still triggers correctly.
 
 This requires Claude CLI access and is expensive. Use it for high-value skills only, not as a routine CI check.
 
@@ -292,6 +292,6 @@ This closes the loop: failure → learning → new/updated skill → eval verifi
 ## What This Skill Does NOT Do
 
 - Does not fix regressions (reports them for the agent or human to fix)
-- Does not promote learnings (that's harness-updater)
+- Does not promote learnings (that's the human-gated self-improvement workflow)
 - Does not analyze patterns (that's learning-aggregator)
 - Does not replace project test suites — evals test the harness, not the code

@@ -124,6 +124,6 @@ The hook script can be extended to use a local cache file (`.pre-flight-cache.js
 ## What This Skill Does NOT Do
 
 - Does not modify `.learnings/` files (read-only)
-- Does not promote patterns (that's the harness-updater plugin agent, or a human applying the gap report when the plugin isn't installed)
+- Does not promote patterns (that's the human-gated self-improvement workflow)
 - Does not run evals (that's eval-creator)
 - Does not block execution — it surfaces information, the agent decides what to act on

@@ -55,6 +55,32 @@ Recommended flow:
 
 If the two disagree, treat the independent review findings as the external gate and either fix or explicitly waive findings.
 
+### On-demand independent review
+
+For larger or risky changes, use a general-purpose subagent with fresh context.
+No named agent preset is required. Give it the changed-file list, diff, approved
+plan or acceptance criteria, and relevant verification evidence. Ask it to read
+the scoped code directly and report findings without editing files. Restrict
+tools to read-only where the host supports it; otherwise state that constraint
+in the brief. In Copilot, request the same scoped independent review in chat.
+
+Use the Simplify and Harden checklists below for complexity and security. Also
+compare every supplied requirement against the implementation: missing features,
+incorrect behavior, incomplete edge/error paths, API and response contracts,
+test coverage, and unverified acceptance criteria. Classify spec gaps as missing,
+incorrect, incomplete, or untested.
+
+Require severity-ordered findings with file and line (or "not implemented"),
+category, concrete evidence, relevant spec reference or attack vector, and a
+specific fix. Keep out-of-scope observations separate and explicitly report
+when there are no in-scope findings. The reviewer reports; the implementing
+agent handles fixes under the existing approval and re-verification rules.
+
+One reviewer can cover all relevant dimensions. Split reviews only when scope
+or risk justifies it, not automatically into three agents. If independent
+review is unavailable, report that limitation; a self-pass is not a substitute
+for an independent merge gate.
+
 ## Trigger Conditions
 
 The skill activates automatically when ALL of the following are true:

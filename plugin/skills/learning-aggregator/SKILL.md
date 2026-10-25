@@ -169,7 +169,7 @@ Output a structured report:
 
 The gap report feeds into:
 
-1. **harness-updater agent** — takes promotion-ready patterns and applies them to project instruction files (CLAUDE.md, AGENTS.md, .github/copilot-instructions.md). harness-updater ships only in the plugin bundle (`plugin/agents/harness-updater.md`); without it, apply the gap report's recommended actions to the instruction files manually, human-gated, following the promotion format in `self-improvement`.
+1. **self-improvement skill** — the main agent follows its promotion workflow to revalidate candidates, show proposed diffs, and apply human-approved rules to project instruction files. Pass the Pattern-Key, evidence, recurrence, gap type, recommended action, related files, and tracker. No dedicated agent preset is required.
 2. **eval-creator skill** — takes eval candidates and creates permanent test cases
 3. **Human review** — for patterns classified as "reasoning failure" or "ambiguity" (these need human judgment)
 
@@ -302,12 +302,12 @@ Reads `.learnings/` from the working directory. This is the only persistence mod
 
 ### Tracker-id in gap reports
 
-Each promotion candidate in the gap report includes a `tracker` field set to the pattern-key. This tracker propagates through the full chain: harness-updater embeds it as a comment in project instruction files, eval-creator references it in eval cases. To audit the full lifecycle of a pattern, search for `tracker:[pattern-key]` across the repo and GitHub.
+Each promotion candidate in the gap report includes a `tracker` field set to the pattern-key. The `self-improvement` promotion workflow preserves it in the handoff and optionally as a comment in project instruction files; `eval-creator` references it in eval cases. To audit inline provenance where enabled, search for `tracker:[pattern-key]` across the repo and GitHub.
 
 ## What This Skill Does NOT Do
 
 - Does not modify `.learnings/` files (read-only analysis)
-- Does not apply promotions (that's harness-updater)
+- Does not apply promotions (that's the human-gated self-improvement workflow)
 - Does not create evals (that's eval-creator)
 - Does not fix code or run tests
 - Does not replace human judgment for ambiguous patterns

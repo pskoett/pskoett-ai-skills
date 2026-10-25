@@ -131,7 +131,7 @@ Intentionally NOT bundled into either generated skill tree:
 - `skill-tester`, `skill-tester-ci` — internal dev/validation tooling, not end-user skills.
 - `self-improvement-ci`, `simplify-and-harden-ci` — not currently shipped in the bundle.
 
-`harness-updater` is a plugin **agent** (`plugin/agents/`), not a skill, and ships only in the full plugin bundle.
+Keep workflow guidance in skills. Use general-purpose read-only subagents for independent reviews and cold-context checks; do not duplicate skill instructions in named agent presets. Learning promotion stays human-gated in `self-improvement`.
 
 Agent Plugins 1.0 standardizes skills and MCP configuration, not native hooks or agents. Keep those capabilities in the client-specific manifests under `plugin/`; do not claim them as portable or invent extension namespaces.
 

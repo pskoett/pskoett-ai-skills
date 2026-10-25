@@ -172,7 +172,7 @@ The schedule ensures regular outer-loop cadence. Manual dispatch allows on-deman
 - `simplify-and-harden-ci` — produces `learning_loop.candidates` consumed by self-improvement-ci
 
 ### Downstream (feeds into)
-- **harness-updater** (interactive) — takes promotion-ready patterns from the gap report and applies them
+- **self-improvement** (interactive) — takes promotion-ready patterns from the gap report and applies human-approved promotions
 - **eval-creator-ci** — takes eval candidates and creates permanent test cases
 - **Human review** — gap report posted as issue comment for team triage
 
@@ -185,7 +185,7 @@ self-improvement → .learnings/*.md   ←  self-healing(-ci) → HEALS.md
                        ↓
               gap report (issue comment + artifact)
                        ↓
-              harness-updater (interactive, human-gated)
+              self-improvement (interactive, human-gated promotion)
                        ↓
               eval-creator-ci (creates evals from promoted patterns)
 ```

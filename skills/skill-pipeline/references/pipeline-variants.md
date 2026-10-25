@@ -90,11 +90,7 @@ For breadth work (Batch tasks: multiple features, issue triage, batch hardening)
 
 5. **Verify** — Run `verify-gate` for each completed unit and again on the combined result.
 
-6. **Audit** — Independent read-only agents review the combined result across three dimensions:
-   - `simplify-auditor`: dead code, naming, control flow, over-abstraction
-   - `harden-auditor`: validation, injection vectors, auth, secrets, data exposure
-   - `spec-auditor`: completeness versus plan/spec
-   - Auditors report findings; implementation workers do not self-approve them.
+6. **Audit** — Use a general-purpose read-only subagent to review the combined result for complexity, security, and completeness against the plan/spec. Follow the on-demand independent review brief in `simplify-and-harden`, including its checklists and finding format. One reviewer can cover all three dimensions; split only when scope or risk justifies it. Reviewers report findings; implementation workers do not self-approve them. If independent execution is unavailable, report the missing review gate rather than treating self-review as equivalent.
 
 7. **Process findings** — Categorize by severity and impact. Behavior, API, policy, permission, or security changes require the same human consent as the standard pipeline. Apply approved fixes and rerun `verify-gate`.
 

@@ -1,1 +1,0 @@
-../../agents/self-improvement-logger.md

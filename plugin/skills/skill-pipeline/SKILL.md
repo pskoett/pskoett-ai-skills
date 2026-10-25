@@ -1,6 +1,6 @@
 ---
 name: skill-pipeline
-description: 'Pipeline orchestrator that classifies incoming coding tasks and routes them through the correct combination of skills at the right depth. Implements two feedback loops: the inner loop (detect, verify, recover) runs within a session via plan-interview, intent-framed-agent, session-context, context-surfing, verify-gate, self-healing (active recovery on failure), simplify-and-harden, and self-improvement. The outer loop (inspect, encode, regress-test) runs across sessions via learning-aggregator, harness-updater, and eval-creator. pre-flight-check bridges the two by surfacing accumulated knowledge — past heals and learnings — at session start. Handles standard, orchestrated-batch, CI, and outer-loop pipeline variants. Does not replace individual skills; dispatches to them.'
+description: 'Pipeline orchestrator that classifies incoming coding tasks and routes them through the correct combination of skills at the right depth. Implements two feedback loops: the inner loop (detect, verify, recover) runs within a session via plan-interview, intent-framed-agent, session-context, context-surfing, verify-gate, self-healing (active recovery on failure), simplify-and-harden, and self-improvement. The outer loop (inspect, encode, regress-test) runs across sessions via learning-aggregator, self-improvement, and eval-creator. pre-flight-check bridges the two by surfacing accumulated knowledge — past heals and learnings — at session start. Handles standard, orchestrated-batch, CI, and outer-loop pipeline variants. Does not replace individual skills; dispatches to them.'
 ---
 
 # Skill Pipeline
@@ -128,7 +128,7 @@ The outer loop runs across sessions, not within them. Trigger on cadence (weekly
 
 ```
 learning-aggregator (read .learnings/, find patterns, rank promotion candidates)
-  → harness-updater agent (apply promotions to CLAUDE.md, AGENTS.md, copilot-instructions.md)
+  → self-improvement (human-approved promotions to project instructions)
   → eval-creator (create permanent test cases from promoted patterns)
   → eval-creator run (regression check on all existing evals)
 ```
@@ -140,7 +140,7 @@ learning-aggregator (read .learnings/, find patterns, rank promotion candidates)
 - After a significant incident or recurring failure
 - Manually: user invokes `/learning-aggregator`
 
-**Outer loop is always human-gated.** `learning-aggregator` produces a gap report. `harness-updater` shows diffs for approval. No automatic writes to instruction files without human review.
+**Outer loop is always human-gated.** `learning-aggregator` produces a gap report. The main agent follows `self-improvement` to show proposed diffs for approval before applying promotions. No automatic writes to instruction files without human review.
 
 ## Depth Calibration
 
@@ -179,7 +179,7 @@ Artifacts flow between skills. The orchestrator ensures each skill receives what
 
 7. **Learning entries** (`.learnings/*.md`) — produced by `self-improvement`, consumed by `learning-aggregator` for cross-session analysis and by `pre-flight-check` at session start.
 
-8. **Gap report** — produced by `learning-aggregator`, consumed by `harness-updater` agent for promotion and `eval-creator` for test case generation.
+8. **Gap report** — produced by `learning-aggregator`, consumed by `self-improvement` for human-approved promotion and `eval-creator` for test case generation.
 
 9. **Eval cases** (`.evals/cases/*.md`) — produced by `eval-creator`, consumed by regression runs and surfaced by `pre-flight-check`.
 

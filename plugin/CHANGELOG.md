@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.8.0 - 2026-10-25
+
+### Removed
+- **Named agent presets**: remove all six definitions and their Copilot links. Explicit calls to those presets must migrate to the skill-guided workflows; no aliases remain.
+
+### Changed
+- **Independent review**: preserve complexity, security, and spec review guidance in `simplify-and-harden`; batch work uses on-demand general-purpose read-only reviewers rather than three fixed presets.
+- **Context recovery**: `context-surfing` supplies the cold-context review brief directly, including evidence, reporting, and unavailable-review handling.
+- **Learning promotion**: `self-improvement` owns revalidation, human-approved instruction changes, provenance, and eval handoff. Logging remains in the main agent's existing skill workflow.
+- **Version alignment**: bump native, portable, and marketplace manifests to 2.8.0 and synchronize generated skill bundles.
+
+---
+
 ## 2.7.1 - 2026-10-17
 
 ### Fixed

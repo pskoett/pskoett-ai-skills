@@ -200,11 +200,33 @@ When a learning is broadly applicable (not a one-off fix), promote it to permane
 
 ### How to Promote
 
-1. **Distill** the learning into a concise rule or fact
-2. **Add** to appropriate section in target file (create file if needed)
-3. **Update** original entry:
-   - Change `**Status**: pending` → `**Status**: promoted`
-   - Add `**Promoted**: CLAUDE.md`, `AGENTS.md`, or `.github/copilot-instructions.md`
+The main agent performs this step using the learning entry or the
+`learning-aggregator` gap report. No dedicated agent preset is required.
+
+1. **Check eligibility and relevance.** Apply the Promotion Rule below, read
+   the supporting entries and related files, and check existing instructions.
+   If the rule is already covered, record the existing target rather than
+   duplicating it. Flag stale evidence or conflicting rules for human review;
+   do not silently dismiss entries or overwrite existing guidance.
+2. **Distill** the pattern into one to three actionable, contextual sentences.
+   Choose the appropriate target and section, preserving its organization and
+   any required synchronization across instruction files. Promotion changes
+   instructions, not application code.
+3. **Show the proposed diff for human approval before writing instructions.**
+   Apply only the approved changes. In Copilot, present the diff and ask in chat.
+   Skill edits require explicit scoped approval as described below.
+4. **Update the source entry after promotion:** set `**Status**: promoted`,
+   record `**Promoted**: <target files>` and `Promoted-Date: YYYY-MM-DD`, and
+   retain the source IDs and Pattern-Key. Do not mark an unapplied proposal as
+   promoted. Promotion approval does not authorize committing or publishing.
+5. **Flag eval candidates** for `eval-creator` when the rule has a clear
+   pass/fail condition. Include the Pattern-Key, rule, target, source IDs,
+   recurrence evidence, assertion, and verification method.
+
+When a gap report supplies a `tracker`, preserve it as the Pattern-Key in the
+handoff. Projects using inline provenance can also place
+`<!-- tracker:[pattern-key] source:[entry-IDs] promoted:YYYY-MM-DD eval:[eval-ID] -->`
+above the rule; omit unknown fields. Tracker comments are optional.
 
 ### Context Maintenance at Promotion
 Refine the capture-time contract at promotion; use `context-decay` when available.

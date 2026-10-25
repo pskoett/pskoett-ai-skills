@@ -30,12 +30,31 @@ and its regression checks. Re-ran with
 Exit 0: `SYNCED self-improvement`, `Portable sync regression checks passed.`,
 and package validation passed for 17 portable skills and 17 native mirrors.
 
+On 2026-10-25, agent-preset removal hit the same missing `yaml` dependency.
+`uv run --with PyYAML==6.0.3 ./scripts/sync-plugin.sh` exited 0 and synced all
+17 skills. Validation with the pinned PyYAML/jsonschema environment passed for
+version 2.8.0, including 17 native mirrors and 5 managed installed copies.
+
 ### Metadata
 - Related Files: scripts/sync_plugin.py, scripts/validate-agent-plugin.py
 - Pattern-Key: env.plugin_validation_python_dependencies
-- Recurrence-Count: 2
+- Recurrence-Count: 3
 - First-Seen: 2026-10-05
-- Last-Seen: 2026-10-17
+- Last-Seen: 2026-10-25
+- See Also: https://ampcode.com/threads/T-01a1745a-d748-76f8-840f-3df0e1fe6be8
+
+### Context Maintenance
+- Decay-Type: dependency
+- Decay-Rate: medium, recheck when the Python environment or validation dependencies change
+- Authority: scripts/sync_plugin.py imports and executed validation; Owner: repository maintainer
+- Revalidation: run sync and package checks with the README's pinned dependencies; report unavailable tooling rather than skipping checks
+- Validation: verified; Last-Validated: 2026-10-25; Evidence: sync and package validation exited 0
+- Disposition: retain; Application: applied as a task-local command workaround
+
+### Handoff
+- Promotion Target: project validation guidance, pending human approval
+- Distilled Rule: Run plugin sync and validation in an isolated `uv run --with PyYAML==6.0.3 --with jsonschema==4.25.1` environment when the default interpreter lacks those dependencies.
+- Approval: pending; no instruction-file promotion applied
 
 ---
 
@@ -163,3 +182,40 @@ repair generated whitespace at its source rather than breaking mirror parity.
 - First-Seen: 2026-10-18
 - Last-Seen: 2026-10-18
 - Related Files: skills/simplify-and-harden/references/agent-context-snippets.md, scripts/sync_plugin.py
+
+---
+
+## [HEAL-20261025-001] preexisting-ci-skill-validation-failure
+
+**Logged**: 2026-10-25
+**Status**: abandoned
+**Trigger**: tool-failure
+**Area**: validation
+**Priority**: low
+
+### Failure and Diagnosis
+`bash skills/skill-tester-ci/scripts/run-tests.sh` exits 1 because
+`self-healing-ci/references/workflow-example.md` contains write permissions.
+The checker also emits `integer expression expected`: a zero-match `grep -c`
+prints `0` and exits 1, then `|| echo "0"` adds a second line to the value.
+Both files are unchanged by the agent-preset removal.
+
+### Fix
+No repair applied. The shipping request permits ignoring a failing check only
+after reproducing it on `origin/main`; changes to these CI skills are outside
+the requested agent-preset removal.
+
+### Verification
+The same command on a clean detached worktree at origin/main commit
+47dc16a produced the same permission failure, shell diagnostics, and exit 1.
+This proves the failure predates the thread, not that the check was fixed.
+Both runs skipped workflow compilation because `gh-aw` is absent. Independent
+`skills-ref validate` checks passed for all 21 canonical and 17 portable skills.
+
+### Metadata
+- Pattern-Key: validation.ci_skill_preexisting_permission_failure
+- Recurrence-Count: 1
+- First-Seen: 2026-10-25
+- Last-Seen: 2026-10-25
+- Related Files: skills/skill-tester-ci/scripts/run-tests.sh, skills/self-healing-ci/references/workflow-example.md
+- See Also: https://ampcode.com/threads/T-01a1745a-d748-76f8-840f-3df0e1fe6be8

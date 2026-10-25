@@ -98,6 +98,8 @@ The `name` field in frontmatter must match the folder name.
 
 `scripts/skill-distributions.json` owns bundle membership, native registration, and managed `.agents/skills/` membership. Skill-owned `assets/claude-hooks.json` overrides configured hooks. The sync command also refreshes managed `.agents` copies from canonical runtime files; unlisted local-only skills remain untouched. Never derive membership or registration from generated outputs.
 
+Keep workflow guidance in skills. Use general-purpose read-only subagents for independent reviews and cold-context checks; do not duplicate skill instructions in named agent presets. Learning promotion stays human-gated in `self-improvement`.
+
 Agent Plugins 1.0 standardizes skills and MCP configuration, not native hooks or agents. Keep those capabilities in the client-specific manifests under `plugin/`; do not claim them as portable or invent extension namespaces.
 
 ## Self-Healing Workflow

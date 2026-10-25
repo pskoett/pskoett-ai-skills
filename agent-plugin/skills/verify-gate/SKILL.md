@@ -179,8 +179,8 @@ If the heal loop surfaces a recurring pattern (Recurrence-Count >= 3 in `HEALS.m
 ## What This Skill Does NOT Do
 
 - Does not review code quality (that's simplify-and-harden)
-- Does not check security (that's harden-auditor)
-- Does not verify spec compliance (that's spec-auditor)
+- Does not check security (that's simplify-and-harden and independent review)
+- Does not verify spec compliance (that's independent review against the plan/spec)
 - Does not modify test files or add new tests
 - Does not run tests for code it didn't change (unless the test runner doesn't support scoping)
 

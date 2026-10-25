@@ -1,1 +1,0 @@
-../../agents/harden-auditor.md

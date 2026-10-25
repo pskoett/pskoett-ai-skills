@@ -1,1 +1,0 @@
-../../agents/spec-auditor.md

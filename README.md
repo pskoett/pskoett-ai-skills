@@ -16,7 +16,7 @@ The idea is to use context while it's available. Planning captures what the user
 
 I organize the skills into two feedback loops. The inner loop catches and fixes failures during a session. The outer loop uses what went wrong to improve later sessions.
 
-In the outer loop, `learning-aggregator` finds patterns in saved learnings, and `harness-updater` writes them into project instructions. `eval-creator` turns promoted rules into regression tests. `pre-flight-check` brings relevant learnings and eval status into the next session.
+In the outer loop, `learning-aggregator` finds patterns in saved learnings, and the main agent follows `self-improvement` to write human-approved rules into project instructions. `eval-creator` turns promoted rules into regression tests. `pre-flight-check` brings relevant learnings and eval status into the next session.
 
 `skill-pipeline` classifies the task and selects the skills and depth it needs. Each skill also works on its own.
 
@@ -28,7 +28,7 @@ In the outer loop, `learning-aggregator` finds patterns in saved learnings, and 
 
 Point an Agent Plugins-compatible client or packager at `agent-plugin/`. Its entrypoint is [`agent-plugin/plugin.json`](agent-plugin/plugin.json).
 
-The portable package contains only the curated Agent Skills bundle. Agent Plugins 1.0 does not standardize hooks, agents, commands, or installation. Use the native Claude Code, Codex, or GitHub Copilot adapters below for those capabilities.
+The portable package contains only the curated Agent Skills bundle. Agent Plugins 1.0 does not standardize hooks, agents, commands, or installation. Use the native Claude Code, Codex, or GitHub Copilot adapters below for client-specific installation and hooks. This repo does not ship named agent presets.
 
 A `hooks/` directory inside a portable skill is a skill resource. Clients don't automatically register it as a plugin hook. The repo provides no MCP server, so it has no portable `mcp.json`.
 
@@ -44,12 +44,12 @@ Install the plugin from this repo's marketplace. Run each command inside Claude 
    ```
    /plugin install pskoett-ai-skills@pskoett-skills
    ```
-3. Reload so skills, agents, and hooks register:
+3. Reload so skills and hooks register:
    ```
    /reload-plugins
    ```
 
-This installs the full bundle: skills, audit agents, and hooks.
+This installs the full bundle: skills and hooks. Independent reviews and cold-context checks use general-purpose read-only subagents on demand, following the skill guidance. Existing callers of the removed named presets should use that guidance instead; no compatibility aliases are provided.
 
 ### Codex
 
@@ -63,7 +63,7 @@ Codex reads the marketplace from `.agents/plugins/marketplace.json` and the plug
 
 ### GitHub Copilot CLI
 
-The Copilot CLI plugin root is `plugin/.copilot-plugin/`, selected by its marketplace entry. It contains Copilot-specific `agents/*.agent.md` copies and symlinks to the shared `plugin/skills/` and `plugin/hooks/` directories:
+The Copilot CLI plugin root is `plugin/.copilot-plugin/`, selected by its marketplace entry. It contains symlinks to the shared `plugin/skills/` and `plugin/hooks/` directories:
 
 ```
 copilot plugin marketplace add pskoett/pskoett-skills
@@ -203,7 +203,7 @@ Each skill addresses a different failure:
 | `pre-flight-check` | Bridge (surface) | Starting work without checking known patterns |
 | `session-context` | Bridge (retrieve) | Missing task-relevant decisions and failed approaches from prior sessions |
 | `learning-aggregator` | Outer (inspect) | Accumulated learnings nobody reads |
-| `harness-updater` | Outer (encode) | Patterns that never become rules |
+| `self-improvement` promotion | Outer (encode) | Patterns that never become human-approved rules |
 | `eval-creator` | Outer (regress-test) | Fixed issues that silently regress |
 
 ### Inner loop lifecycle
@@ -230,14 +230,14 @@ Session-context is beta and uses available, authorized history tools. It searche
 ### Outer loop lifecycle
 
 ```
-.learnings/ → [learning-aggregator] → [harness-updater] → [eval-creator]
-                                                              ↓
-                                              [pre-flight-check] → next session
+.learnings/ → [learning-aggregator] → [self-improvement] → [eval-creator]
+                                                               ↓
+                                               [pre-flight-check] → next session
 ```
 
 **Inspect**: `learning-aggregator` reads all `.learnings/` files, groups entries by pattern, and ranks candidates for promotion into rules.
 
-**Encode**: The `harness-updater` agent writes the selected patterns as rules in CLAUDE.md, AGENTS.md, and copilot-instructions.md.
+**Encode**: The main agent follows `self-improvement` to revalidate candidates and show proposed diffs. After human approval, it writes the selected rules into CLAUDE.md, AGENTS.md, and copilot-instructions.md and flags eval candidates.
 
 **Regress-test**: `eval-creator` turns promoted patterns into permanent test cases in `.evals/` and runs regression checks.
 
@@ -274,7 +274,7 @@ Choose the depth based on the task:
 | Medium (feature, multi-file) | `intent-framed-agent` + `session-context` + `verify-gate` + `self-healing` + `simplify-and-harden` |
 | Large (refactor, new architecture) | Full inner loop pipeline |
 | Long-running (multi-session) | Full inner loop, including `context-surfing` for handoffs |
-| Periodic (weekly, sprint boundary) | Outer loop: `learning-aggregator` → `harness-updater` → `eval-creator` |
+| Periodic (weekly, sprint boundary) | Outer loop: `learning-aggregator` → `self-improvement` promotion → `eval-creator` |
 
 ## Usage
 
@@ -354,9 +354,11 @@ uv run --with jsonschema==4.25.1 --with PyYAML==6.0.3 \
   python3 scripts/validate-agent-plugin.py
 ```
 
-The Copilot validator resolves the marketplace's `source`, uses that root's manifest and agents, and materializes repository-local resource symlinks into a temporary artifact. It tests packaged files and the optional hook wrapper, not Copilot installation or runtime hook dispatch. The portable validator also detects native registration and managed `.agents` drift.
+The Copilot validator resolves the marketplace's `source`, uses that root's manifest and declared resources, and materializes repository-local resource symlinks into a temporary artifact. It tests packaged files and the optional hook wrapper, not Copilot installation or runtime hook dispatch. The portable validator also detects native registration and managed `.agents` drift.
 
 Isolated Mac checks on 2026-10-18 verified local installation and discovery of all 17 skills with Claude Code 2.1.280, Copilot CLI 1.0.99-2, and Codex 0.160.1. Claude's strict manifest validation passed and listed six agents. Copilot's direct local installation materialized all shared symlink resources, with all 59 installed files matching source bytes and modes; its local marketplace instead loaded the source in place. Codex registered seven hook entries without diagnostics, all untrusted. Actual hook dispatch, Copilot/Codex runtime agent registration, and remote Git marketplace copying remain unverified. These are version-specific checks, not a cross-client runtime guarantee.
+
+Those installation checks predate removal of the named agent presets in 2.8.0 and do not verify the new package in a live client.
 
 Package layout references: [Claude manifest paths](https://code.claude.com/docs/en/plugins/manifest-reference#path-rules), [Copilot marketplace sources and component paths](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference), [Codex packaging](https://developers.openai.com/plugins/build/plugins), and [Amp's separate TypeScript plugin API](https://ampcode.com/docs/plugin-api).
 

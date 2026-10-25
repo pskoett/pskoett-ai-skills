@@ -183,7 +183,7 @@ Per-PR runs catch regressions before merge. Weekly runs catch drift in the harne
 ### Upstream (feeds from)
 - `eval-creator` (interactive) — creates eval cases manually
 - `learning-aggregator-ci` — produces promotion candidates with `eval_candidate: true`
-- `harness-updater` (interactive) — flags eval candidates after promoting patterns
+- `self-improvement` (interactive) — flags eval candidates after human-approved promotions
 
 ### Downstream (feeds into)
 - **self-improvement** / **self-improvement-ci** — regression failures become new error entries in `.learnings/`

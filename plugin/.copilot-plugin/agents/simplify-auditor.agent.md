@@ -1,1 +1,0 @@
-../../agents/simplify-auditor.md
