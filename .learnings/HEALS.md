@@ -35,12 +35,17 @@ On 2026-10-25, agent-preset removal hit the same missing `yaml` dependency.
 17 skills. Validation with the pinned PyYAML/jsonschema environment passed for
 version 2.8.0, including 17 native mirrors and 5 managed installed copies.
 
+On 2026-10-27, PR #12 review reproduced the missing `yaml` import. The same
+pinned uv environment passed the import probe, both packaging regression
+scripts, both distribution validators, and verify-gate regeneration. The
+isolated PR worktree remained clean after regeneration.
+
 ### Metadata
 - Related Files: scripts/sync_plugin.py, scripts/validate-agent-plugin.py
 - Pattern-Key: env.plugin_validation_python_dependencies
-- Recurrence-Count: 3
+- Recurrence-Count: 4
 - First-Seen: 2026-10-05
-- Last-Seen: 2026-10-25
+- Last-Seen: 2026-10-27
 - See Also: https://ampcode.com/threads/T-01a1745a-d748-76f8-840f-3df0e1fe6be8
 
 ### Context Maintenance
@@ -48,7 +53,7 @@ version 2.8.0, including 17 native mirrors and 5 managed installed copies.
 - Decay-Rate: medium, recheck when the Python environment or validation dependencies change
 - Authority: scripts/sync_plugin.py imports and executed validation; Owner: repository maintainer
 - Revalidation: run sync and package checks with the README's pinned dependencies; report unavailable tooling rather than skipping checks
-- Validation: verified; Last-Validated: 2026-10-25; Evidence: sync and package validation exited 0
+- Validation: verified; Last-Validated: 2026-10-27; Evidence: sync and package validation exited 0
 - Disposition: retain; Application: applied as a task-local command workaround
 
 ### Handoff
@@ -219,3 +224,27 @@ Both runs skipped workflow compilation because `gh-aw` is absent. Independent
 - Last-Seen: 2026-10-25
 - Related Files: skills/skill-tester-ci/scripts/run-tests.sh, skills/self-healing-ci/references/workflow-example.md
 - See Also: https://ampcode.com/threads/T-01a1745a-d748-76f8-840f-3df0e1fe6be8
+
+---
+
+## [HEAL-20261027-001] gh-pr-diff-stat
+
+**Logged**: 2026-10-27
+**Status**: verified
+**Trigger**: tool-failure
+**Area**: review
+**Priority**: low
+
+### Failure and Diagnosis
+`gh pr diff 12 --stat` exited 1 with `unknown flag: --stat`.
+The installed gh command supports diff output, not Git's stat flag.
+
+### Fix and Verification
+`gh pr diff 12 | git apply --stat` exited 0 and displayed the expected seven
+files and 224 insertions. Use gh for retrieval and Git for diff statistics.
+
+### Metadata
+- Pattern-Key: tooling.gh_pr_diff_stat
+- Recurrence-Count: 1
+- First-Seen: 2026-10-27
+- Last-Seen: 2026-10-27
