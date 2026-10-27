@@ -170,6 +170,8 @@ skills/
 | [pre-flight-check](skills/pre-flight-check/) | Checks relevant learnings, errors, and eval status before work begins |
 | [eval-creator](skills/eval-creator/) | Creates permanent eval cases from promoted learnings and runs regression checks |
 
+For projects using [agent-qa](https://github.com/vostride/agent-qa), `verify-gate` includes an [optional run-evidence reference](skills/verify-gate/references/agent-qa.md). It connects natural-language testing, advanced memidex memory, and self-improvement to the gate's selected tests and outcome evidence. Live execution requires an initialized project, a compatible Node.js runtime, and its configured browser/model provider; runs can change test data and incur provider costs.
+
 ## CI skills (gh-aw) (beta)
 
 These variants run in GitHub Agentic Workflows (gh-aw) without human interaction. Each adapts an interactive skill to scan, report, and optionally gate PRs.
