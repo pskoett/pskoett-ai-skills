@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.8.1 - 2026-10-27
+
+### Added
+- **Verification references**: add optional Playwright and agent-qa guidance for test selection, result interpretation, and outcome evidence.
+
+### Fixed
+- **agent-qa exit codes**: clarify that exit `2` can follow partial execution; preserve any run ID and available evidence.
+
+---
+
 ## 2.8.0 - 2026-10-25
 
 ### Removed
