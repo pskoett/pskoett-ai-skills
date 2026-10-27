@@ -82,6 +82,8 @@ Run the test command. Scope to changed files if the test runner supports it.
 
 If the selected project tests use agent-qa, read [agent-qa verification evidence](references/agent-qa.md). Validation and dry-run selection do not satisfy the test phase. Bind completed run evidence to the acceptance identity from Step 1, and retain any outcome gap for Phase 5.
 
+If the selected tests or outcome checks use Playwright, read [Playwright verification evidence](references/playwright.md). Keep Playwright Test results separate from browser-only observations, and retain any outcome gap for Phase 5.
+
 ```
 Exit 0 → proceed to Phase 3
 Exit non-zero → enter fix loop with test output
